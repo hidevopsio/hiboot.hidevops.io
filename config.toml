@@ -6,7 +6,7 @@ metadataformat = "yaml"
 canonifyurls = true
 # Enable Google Analytics by entering your tracking id
 googleAnalytics = ""
-layout = "single" 
+# layout = "single" 
 
 # Code highlighting options
 # Hugo uses Chroma but names are the same as the old pygments highlighter
@@ -16,7 +16,7 @@ pygmentscodefences = true
 
 # Change highlight style here.
 # For a full list see: https://xyproto.github.io/splash/docs/all.html
-pygmentsStyle = "friendly"
+pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # friendly
 
 # Other Chroma options can be added here (and in the highlight shortcode in the markdown file)
 # See list of supported options: https://gohugo.io/content-management/syntax-highlighting/#options
