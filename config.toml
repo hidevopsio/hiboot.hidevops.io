@@ -6,6 +6,7 @@ metadataformat = "yaml"
 canonifyurls = true
 # Enable Google Analytics by entering your tracking id
 googleAnalytics = ""
+layout = "single" 
 
 [params]
 	# General information
@@ -45,10 +46,10 @@ googleAnalytics = ""
 	email   = "hi.devops.io@gmail.com"
 
 
-# [[menu.main]]
-# 	name   = "Material"
-# 	url    = "/"
-# 	weight = 0
+[[menu.main]]
+	name   = "Home"
+	url    = "/"
+	weight = 0
 
 [[menu.main]]
 	name   = "Getting started"
