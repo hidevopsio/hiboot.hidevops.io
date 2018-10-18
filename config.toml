@@ -8,6 +8,20 @@ canonifyurls = true
 googleAnalytics = ""
 layout = "single" 
 
+# Code highlighting options
+# Hugo uses Chroma but names are the same as the old pygments highlighter
+
+# Highlight shortcode and code fences (```) will be treated similarly
+pygmentscodefences = true
+
+# Change highlight style here.
+# For a full list see: https://xyproto.github.io/splash/docs/all.html
+pygmentsStyle = "friendly"
+
+# Other Chroma options can be added here (and in the highlight shortcode in the markdown file)
+# See list of supported options: https://gohugo.io/content-management/syntax-highlighting/#options
+# for example: pygmentsoptions = "linenos=true"
+
 [params]
 	# General information
 	author = "John Deng"
@@ -39,9 +53,8 @@ layout = "single"
     	text = "Ubuntu"
     	code = "Ubuntu Mono"
 
-
 [social]
-	twitter = ""
+	twitter = "johndcn"
 	github  = "hidevopsio"
 	email   = "hi.devops.io@gmail.com"
 

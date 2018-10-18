@@ -69,6 +69,4 @@ Hiboot is not trying to reinvent everything, it integrates the popular libraries
     * replacer - replacing stuct field value with references or environment variables
     * sort - sort slice elements
     * str - string util enhancement util
-    * validator - struct field validation 
-       
-
+    * validator - struct field validation
