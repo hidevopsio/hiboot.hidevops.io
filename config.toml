@@ -1,12 +1,13 @@
 baseurl = "https://hiboot.hidevops.io/"
-languageCode = "en-us"
+# languageCode = "en-us"
+DefaultContentLanguage = "en"
 title = "Hiboot Documentation"
 theme = "hugo-material-docs"
 metadataformat = "yaml"
 canonifyurls = true
+sectionPagesMenu = "main"
 # Enable Google Analytics by entering your tracking id
 googleAnalytics = ""
-# layout = "single" 
 
 # Code highlighting options
 # Hugo uses Chroma but names are the same as the old pygments highlighter
@@ -16,7 +17,7 @@ pygmentscodefences = true
 
 # Change highlight style here.
 # For a full list see: https://xyproto.github.io/splash/docs/all.html
-pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # friendly
+pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # "friendly"
 
 # Other Chroma options can be added here (and in the highlight shortcode in the markdown file)
 # See list of supported options: https://gohugo.io/content-management/syntax-highlighting/#options
@@ -36,7 +37,7 @@ pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # friendly
 	logo = "images/logo.png"
 	favicon = ""
 
-	permalink = "#"
+	permalink = " "
 
 	# Custom assets
 	custom_css = []
@@ -45,30 +46,59 @@ pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # friendly
 	# Syntax highlighting theme
 	highlight_css  = ""
 
+	# Theme color, available values are: red, pink, purple, deep purple, indigo, blue, light-blue, cyan, teal, green, light-green, lime, yellow, amber, orange, deep-orange, brown, grey and blue-grey
 	[params.palette]
     	primary = "cyan"
-    	accent  = "green"
+    	accent  = "deep-purple"
 
     [params.font]
     	text = "Ubuntu"
     	code = "Ubuntu Mono"
+
+[languages]
+  [languages.en]
+	languageName = "English"
+    title = "Hiboot Documentation"
+    weight = 1
+	contentDir = "content/en-US"
+  [languages.cn]
+	languageName = "中文"
+    title = "Hiboot 文档"
+    weight = 2
+	contentDir = "content/zh-CN"
+
+
 
 [social]
 	twitter = "johndcn"
 	github  = "hidevopsio"
 	email   = "hi.devops.io@gmail.com"
 
-
 [[menu.main]]
 	name   = "Introduction"
 	url    = "/"
-	weight = 10
+	weight = 1
 
-[[menu.main]]
+[[languages.en.menu.main]]
+	name   = "Introduction"
+	url    = "/"
+	weight = 1
+
+[[languages.en.menu.main]]
 	name   = "Getting started"
 	url    = "getting-started/"
+	weight = 10
+
+
+[[languages.en.menu.main]]
+	name   = "Applications"
+	url    = "apps/"
 	weight = 20
 
+[[languages.en.menu.main]]
+	name   = "Inversion of Control"
+	url    = "inversion-of-control/"
+	weight = 30
 
 [blackfriday]
 	smartypants	= true

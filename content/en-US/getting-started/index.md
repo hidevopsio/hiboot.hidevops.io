@@ -4,7 +4,7 @@ title: Getting started
 weight: 10
 ---
 
-## Web application
+## Quick start web application
 
 This section will show you how to create and run a simple hiboot application. Let’s get started!
 
@@ -67,11 +67,9 @@ Output:
 Hello, world
 ```
 
-## Cli application
+## Quick start cli application
 
 Writing Hiboot cli application is as simple as web application, you can take the advantage of dependency injection introduced by Hiboot.
-
-e.g. flag tag dependency injection
 
 ```go
 

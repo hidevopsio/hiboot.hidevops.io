@@ -1,10 +1,9 @@
 ---
-date: 2016-03-08T21:07:13+01:00
+date: 2018-10-08T21:07:13+01:00
 title: Hiboot Framework
 type: index
-weight: 0
+weight: 1
 ---
-
 
 <p align="center">
   <a href="https://travis-ci.org/hidevopsio/hiboot?branch=master">
@@ -53,7 +52,7 @@ Hiboot is not trying to reinvent everything, it integrates the popular libraries
     * jwt - jwt starter
     * grpc - grpc application starter
 
-* **Tags** 
+* **Tags**
     * inject - inject generic instance into object
     * default - inject default value into struct object 
     * value - inject string value or references / variables into struct string field
