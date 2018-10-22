@@ -114,27 +114,27 @@ pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # "friendly"
 
 [[languages.cn.menu.main]]
 	name   = "介绍"
-	url    = "/"
+	url    = "/cn/"
 	weight = 1
 
 [[languages.cn.menu.main]]
 	name   = "入门"
-	url    = "getting-started/"
+	url    = "cn/getting-started/"
 	weight = 10
 
 [[languages.cn.menu.main]]
 	name   = "应用"
-	url    = "apps/"
+	url    = "cn/apps/"
 	weight = 20
 
 [[languages.cn.menu.main]]
 	name   = "控制翻转"
-	url    = "inversion-of-control/"
+	url    = "cn/inversion-of-control/"
 	weight = 30
 
 [[languages.cn.menu.main]]
 	name   = "自动配置"
-	url    = "auto-configure/"
+	url    = "cn/auto-configure/"
 	weight = 40
 
 [blackfriday]
