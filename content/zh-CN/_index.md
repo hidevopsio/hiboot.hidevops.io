@@ -29,44 +29,40 @@ weight: 1
 
 ## 关于 
 
-Hiboot is a high performance web and cli application framework with dependency injection
+Hiboot 是一高性能网络及命令行工具应用框架，通过Go语言实现的类似Spring Boot的网络或命令行客户端的应用框架，Hiboot提供了Web MVC框架，支持依赖注入，依赖自动配置，提供类似Spring Boot提供的Starter。
 
-Hiboot is not trying to reinvent everything, it integrates the popular libraries but make them simpler, easier to use. It borrowed some of the Spring features like dependency injection, aspect oriented programming, and auto configuration. You can integrate any other libraries easily by auto configuration with dependency injection support.
+Hiboot并不打算重复造轮子，故使用了自动配置的机制，很轻松的集成第三依赖包，使得其更方便使用，如连接数据库，不需要在业务代码中创建数据库连接，你只要依赖[hiboot-data/starter/gorm](https://github.com/hidevopsio/hiboot-data/tree/master/starter/gorm)即可直接实现数据库查询。
 
 ## 总览
 
-* Web MVC (Model-View-Controller).
-* Auto Configuration, pre-create instance with properties configs for dependency injection.
-* Dependency injection with struct tag name `inject:""` or Constructor func.
+* 网络应用 MVC (Model-View-Controller).
+* 自动配置, 事先配置好的依赖可以注入到任何你指定的构造函数参数中或者结构体变量
+* 依赖注入， 使用标签 \`inject:""\` 后构造函数.
 
 ## 功能列表
 
-
-* **应用**
-    * cli - command line application
-    * web - web application
-
-* **启动器**
-    * actuator - health check
-    * locale - locale starter
-    * logging - customized logging settings
-    * jwt - jwt starter
-    * grpc - grpc application starter
-
-* **标签**
-    * inject - inject generic instance into object
-    * default - inject default value into struct object 
-    * value - inject string value or references / variables into struct string field
-
-* **工具** 
-    * cmap - concurrent map
-    * copier - copy between struct
-    * crypto - aes, base64, md5, and rsa encryption / decryption
-    * gotest - go test util
-    * idgen - twitter snowflake id generator
-    * io - file io util
-    * mapstruct - convert map to struct
-    * replacer - replacing stuct field value with references or environment variables
-    * sort - sort slice elements
-    * str - string util enhancement util
-    * validator - struct field validation
+* Apps - 应用
+    * cli - 命令行应用
+    * web - 网络应用
+* Starters - 自动配置
+    * actuator - 健康检测
+    * locale - 国际化
+    * logging - 日志
+    * jwt - JWT 令牌
+    * grpc - 服务间通讯gRPC
+* Tags - 标签
+    * inject - 注入依赖
+    * default - 注入默认值
+    * value - 注入常量，环境变量或引用值
+* Utils - 工具
+    * cmap - 支持并发的map
+    * copier - 复制struct工具
+    * crypto - aes, base64, md5, and rsa 加／解密工具
+    * gotest - go test 工具
+    * idgen - twitter snowflake 唯一 id 生成器
+    * io - 文件操作工具
+    * mapstruct - 转换map 到 struct
+    * replacer - 替换struct中的值为引用或环境变量
+    * sort - 切片排序
+    * str - 字符串处理工具
+    * validator - 参数校验

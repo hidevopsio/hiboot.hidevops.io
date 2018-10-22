@@ -11,7 +11,7 @@ tags: ["cli", "web", "application"]
 
 * *Web MVC (Model-View-Controller).
 * Auto Configuration, pre-created instance with properties configs for dependency injection.
-* Dependency injection with the struct tag `inject:""` or the constructor.
+* Dependency injection with the struct tag \`inject:""\` or the constructor.
 
 ### Dependency injection in Go
 

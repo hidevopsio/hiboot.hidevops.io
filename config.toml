@@ -54,18 +54,6 @@ pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # "friendly"
     	text = "Ubuntu"
     	code = "Ubuntu Mono"
 
-# [languages]
-#   [languages.en]
-# 	languageName = "English"
-#     title = "Hiboot Documentation"
-#     weight = 0
-# 	contentDir = "content/en-US"
-#   [languages.cn]
-# 	languageName = "中文"
-#     title = "Hiboot 文档"
-#     weight = 1
-# 	contentDir = "content/zh-CN"
-
 [social]
 	twitter = "johndcn"
 	github  = "hidevopsio"
@@ -77,7 +65,7 @@ pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # "friendly"
     weight = 0
 	contentDir = "content/en-US"
   	url = "../en"
-	languageCode = "en-us"  
+	languageCode = "en"  
 
 [[languages.en.menu.main]]
 	name   = "Introduction"
@@ -110,7 +98,7 @@ pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # "friendly"
 	weight = 1
 	contentDir = "content/zh-CN"
   	url = "../cn"
-	languageCode = "zh-cn"
+	languageCode = "cn"
 
 [[languages.cn.menu.main]]
 	name   = "介绍"

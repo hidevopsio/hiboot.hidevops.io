@@ -9,9 +9,9 @@ tags: ["cli", "web", "application"]
 
 ### 主要功能列表
 
-* *Web MVC (Model-View-Controller).
-* Auto Configuration, pre-created instance with properties configs for dependency injection.
-* Dependency injection with the struct tag `inject:""` or the constructor.
+* 网络应用 MVC (Model-View-Controller).
+* 自动配置, 事先配置好的依赖可以注入到任何你指定的构造函数参数中或者结构体变量
+* 依赖注入， 使用标签 \`inject:""\` 后构造函数.
 
 ### Go语言实现依赖注入
 
