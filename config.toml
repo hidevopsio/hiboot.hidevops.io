@@ -100,6 +100,11 @@ pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # "friendly"
 	url    = "inversion-of-control/"
 	weight = 30
 
+[[languages.en.menu.main]]
+	name   = "Auto Configuration"
+	url    = "auto-configure/"
+	weight = 40
+
 [blackfriday]
 	smartypants	= true
 	fractions = true
