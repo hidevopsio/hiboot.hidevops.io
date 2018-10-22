@@ -1,5 +1,4 @@
 baseurl = "https://hiboot.hidevops.io/"
-# languageCode = "en-us"
 DefaultContentLanguage = "en"
 title = "Hiboot Documentation"
 theme = "hugo-material-docs"
@@ -55,29 +54,30 @@ pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # "friendly"
     	text = "Ubuntu"
     	code = "Ubuntu Mono"
 
-[languages]
-  [languages.en]
-	languageName = "English"
-    title = "Hiboot Documentation"
-    weight = 1
-	contentDir = "content/en-US"
-  [languages.cn]
-	languageName = "中文"
-    title = "Hiboot 文档"
-    weight = 2
-	contentDir = "content/zh-CN"
-
-
+# [languages]
+#   [languages.en]
+# 	languageName = "English"
+#     title = "Hiboot Documentation"
+#     weight = 0
+# 	contentDir = "content/en-US"
+#   [languages.cn]
+# 	languageName = "中文"
+#     title = "Hiboot 文档"
+#     weight = 1
+# 	contentDir = "content/zh-CN"
 
 [social]
 	twitter = "johndcn"
 	github  = "hidevopsio"
 	email   = "hi.devops.io@gmail.com"
 
-[[menu.main]]
-	name   = "Introduction"
-	url    = "/"
-	weight = 1
+[languages.en]
+	languageName = "English"
+    title = "Hiboot Documentation"
+    weight = 0
+	contentDir = "content/en-US"
+  	url = "../en"
+	languageCode = "en-us"  
 
 [[languages.en.menu.main]]
 	name   = "Introduction"
@@ -88,7 +88,6 @@ pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # "friendly"
 	name   = "Getting started"
 	url    = "getting-started/"
 	weight = 10
-
 
 [[languages.en.menu.main]]
 	name   = "Applications"
@@ -105,6 +104,39 @@ pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # "friendly"
 	url    = "auto-configure/"
 	weight = 40
 
+[languages.cn]
+	languageName = "中文"
+	title = "Hiboot 文档"
+	weight = 1
+	contentDir = "content/zh-CN"
+  	url = "../cn"
+	languageCode = "zh-cn"
+
+[[languages.cn.menu.main]]
+	name   = "介绍"
+	url    = "/"
+	weight = 1
+
+[[languages.cn.menu.main]]
+	name   = "入门"
+	url    = "getting-started/"
+	weight = 10
+
+[[languages.cn.menu.main]]
+	name   = "应用"
+	url    = "apps/"
+	weight = 20
+
+[[languages.cn.menu.main]]
+	name   = "控制翻转"
+	url    = "inversion-of-control/"
+	weight = 30
+
+[[languages.cn.menu.main]]
+	name   = "自动配置"
+	url    = "auto-configure/"
+	weight = 40
+
 [blackfriday]
 	smartypants	= true
 	fractions = true
@@ -113,3 +145,5 @@ pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # "friendly"
 [outputs]
 	home = [ "HTML", "JSON"]
 	page = [ "HTML", "JSON"]
+
+	
