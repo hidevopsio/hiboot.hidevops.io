@@ -2,6 +2,7 @@
 date: 2018-10-08T21:07:13+01:00
 title: Hiboot Framework
 type: index
+tags: ["hiboot", "framework"]
 weight: 1
 ---
 

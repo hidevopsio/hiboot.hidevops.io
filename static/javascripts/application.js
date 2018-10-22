@@ -760,10 +760,10 @@ if ("document" in self && ("classList" in document.createElement("_") ? ! functi
                     }),
                     s = {};
                 e.map(function(t) {
-                    console.log(t)
-                    t.location = base_url + t.location, s[t.location] = t, o.add(t)
-                    console.log('base_url: ' + base_url)
-                    console.log('t.location: ' + t.location)
+                    // console.log(t)
+                    t.location = t.location, s[t.location] = t, o.add(t)
+                    // console.log('base_url: ' + base_url)
+                    // console.log('t.location: ' + t.location)
                 }), i.addEventListener("keyup", function() {
                     for (var e = document.querySelector(".results .list"); e.firstChild;) e.removeChild(e.firstChild);
                     var n = document.querySelector(".bar.search");
@@ -772,7 +772,7 @@ if ("document" in self && ("classList" in document.createElement("_") ? ! functi
                         return void n.classList.remove("non-empty")
                     }
                     n.classList.add("non-empty");
-                    console.log('search: ' + i.value)
+                    // console.log('search: ' + i.value)
                     var a = o.search(i.value);
                     a.map(function(n) {
                         var o = s[n.ref],
