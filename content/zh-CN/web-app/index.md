@@ -421,8 +421,8 @@ Now listening on: http://localhost:8080
 Application started. Press CMD+C to shut down.
 
 ```
-
-## 调用接口
+
+## 请求接口
 
 最后，让我们用[httpie](https://httpie.org/)来请求接口
 
