@@ -166,7 +166,7 @@ func main() {
 }
 ```
 
-#### mian_test.go
+### mian_test.go
 
 main函数单元测试，`TestRunMain`第一行代码是 `go main()`, 我们起一个go routine来无阻塞的测试main函数，后面代码`time.Sleep(200 * time.Millisecond)`做个简单延时，可以用于main函数代码覆盖测试。
 
@@ -182,4 +182,188 @@ func TestRunMain(t *testing.T) {
 	go main()
 	time.Sleep(200 * time.Millisecond)
 }
+```
+
+### 控制器 - controller/user.go
+
+控制器是RESTful接口的入口，不同于其它Go语言网络应用框架，Hiboot控制器设计思路是尽可能的简单易用，省去路由配置代码，约定方法名即路由配置。如下userController的Post方法。
+
+现针对各个方法作详细说明
+
+|方法|描述|合法值|示例|
+|---|---|---|---|
+|Get|GET请求|Get或以大写开头的驼峰命名法则GetById|`func (c *userController) GetById(id unit64)` |
+|Post|POST请求|Post或以大写开头的驼峰命名法则PostUser|`func (c *userController) Post(request *userRequest)`|
+|Put|PUT请求|Put或以大写开头的驼峰命名法则PutUser|`func (c *userController) Post(request *userRequest)`|
+|Delete|DELETE请求|Delete或以大写开头的驼峰命名法则DeleteById|`func (c *userController) DeleteById(id unit64)` |
+
+```go
+package controller
+
+import (
+	"github.com/hidevopsio/hiboot-data/examples/gorm/entity"
+	"github.com/hidevopsio/hiboot-data/examples/gorm/service"
+	"github.com/hidevopsio/hiboot/pkg/app/web"
+	"github.com/hidevopsio/hiboot/pkg/model"
+	"github.com/hidevopsio/hiboot/pkg/utils/copier"
+	"net/http"
+)
+
+type userRequest struct {
+	model.RequestBody
+	Id       uint64 `json:"id"`
+	Name     string `json:"name" validate:"required"`
+	Username string `json:"username" validate:"required"`
+	Password string `json:"password" validate:"required"`
+	Email    string `json:"email" validate:"required,email"`
+	Age      uint   `json:"age" validate:"gte=0,lte=130"`
+	Gender   uint   `json:"gender" validate:"gte=0,lte=2"`
+}
+
+// RestController
+type userController struct {
+	web.Controller
+	userService service.UserService
+}
+
+func init() {
+	web.RestController(newUserController)
+}
+
+// Init inject userService automatically
+func newUserController(userService service.UserService) *userController {
+	return &userController{
+		userService: userService,
+	}
+}
+
+// Post POST /user
+func (c *userController) Post(request *userRequest) (model.Response, error) {
+	var user entity.User
+	copier.Copy(&user, request)
+	err := c.userService.AddUser(&user)
+	response := new(model.BaseResponse)
+	response.SetData(user)
+	return response, err
+}
+
+// GetById GET /id/{id}
+func (c *userController) GetById(id uint64) (response model.Response, err error) {
+	user, err := c.userService.GetUser(id)
+	response = new(model.BaseResponse)
+	if err != nil {
+		response.SetCode(http.StatusNotFound)
+	} else {
+		response.SetData(user)
+	}
+	return
+}
+
+// GetById GET /id/{id}
+func (c *userController) GetAll() (response model.Response, err error) {
+	users, err := c.userService.GetAll()
+	response = new(model.BaseResponse)
+	response.SetData(users)
+	return
+}
+
+// DeleteById DELETE /id/{id}
+func (c *userController) DeleteById(id uint64) (response model.Response, err error) {
+	err = c.userService.DeleteUser(id)
+	response = new(model.BaseResponse)
+	return
+}
+
+```
+
+### entity/user.go
+
+```go
+
+package entity
+
+type User struct {
+	Id       uint64 `json:"id"`
+	Name     string `json:"name"`
+	Username string `json:"username"`
+	Password string `json:"password"`
+	Email    string `json:"email"`
+	Age      uint   `json:"age"`
+	Gender   uint   `json:"gender"`
+}
+
+func (u *User) TableName() string {
+	return "user"
+}
+
+```
+
+### Model -  service/user.go
+
+```go
+
+package service
+
+import (
+	"errors"
+	"github.com/hidevopsio/hiboot-data/examples/gorm/entity"
+	"github.com/hidevopsio/hiboot-data/starter/gorm"
+	"github.com/hidevopsio/hiboot/pkg/app"
+	"github.com/hidevopsio/hiboot/pkg/utils/idgen"
+)
+
+type UserService interface {
+	AddUser(user *entity.User) (err error)
+	GetUser(id uint64) (user *entity.User, err error)
+	GetAll() (user *[]entity.User, err error)
+	DeleteUser(id uint64) (err error)
+}
+
+type UserServiceImpl struct {
+	// add UserService, it means that the instance of UserServiceImpl can be found by UserService
+	UserService
+	repository gorm.Repository
+}
+
+func init() {
+	// register UserServiceImpl
+	app.Component(newUserService)
+}
+
+// will inject BoltRepository that configured in github.com/hidevopsio/hiboot/pkg/starter/data/bolt
+func newUserService(repository gorm.Repository) UserService {
+	repository.AutoMigrate(&entity.User{})
+	return &UserServiceImpl{
+		repository: repository,
+	}
+}
+
+func (s *UserServiceImpl) AddUser(user *entity.User) (err error) {
+	if user == nil {
+		return errors.New("user is not allowed nil")
+	}
+	if user.Id == 0 {
+		user.Id, _ = idgen.Next()
+	}
+	err = s.repository.Create(user).Error()
+	return
+}
+
+func (s *UserServiceImpl) GetUser(id uint64) (user *entity.User, err error) {
+	user = &entity.User{}
+	err = s.repository.Where("id = ?", id).First(user).Error()
+	return
+}
+
+func (s *UserServiceImpl) GetAll() (users *[]entity.User, err error) {
+	users = &[]entity.User{}
+	err = s.repository.Find(users).Error()
+	return
+}
+
+func (s *UserServiceImpl) DeleteUser(id uint64) (err error) {
+	err = s.repository.Where("id = ?", id).Delete(entity.User{}).Error()
+	return
+}
+
 ```

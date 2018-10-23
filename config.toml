@@ -121,7 +121,7 @@ pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # "friendly"
 	weight = 30
 
 [[languages.cn.menu.main]]
-	name   = "控制翻转"
+	name   = "控制反转"
 	url    = "cn/inversion-of-control/"
 	weight = 40
 
