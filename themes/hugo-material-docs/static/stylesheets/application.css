@@ -1717,6 +1717,9 @@ h1 .article .headerlink {
     .button-twitter {
         display: none
     }
+    .language_btn{
+        display: table-cell;
+    }
 }
 
 @media only screen and (min-width:720px) and (max-width:959px) {
