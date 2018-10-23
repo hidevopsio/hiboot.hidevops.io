@@ -1,5 +1,5 @@
 <nav aria-label="Header">
-    <div class="bar default">
+    <div class="bar default zindex11">
         <div class="button button-menu" role="button" aria-label="Menu">
             <label class="toggle-button icon icon-menu" for="toggle-drawer">
         <span></span>
@@ -10,7 +10,13 @@
                 {{ .Title }}
             </div>
         </div>
-
+        <div class="button button-twitter language_btn" role="button" aria-label="Twitter">
+            <a href="javascript:;" title="@{{ . }} on Twitter" class="toggle-button icons-globe"></a>
+            <div class="layer_box">
+                <a href="/cn">中文</a> 
+                <a href="/">英文</a> 
+            </div>
+        </div>
         {{ with .Site.Social.twitter }}
         <div class="button button-twitter" role="button" aria-label="Twitter">
             <a href="https://twitter.com/{{ . }}" title="@{{ . }} on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
