@@ -186,6 +186,10 @@ func TestRunMain(t *testing.T) {
 
 ### 控制器 - controller/user.go
 
+接下来我们来看看如何正确编写Hiboot的控制器，
+
+控制器 `userController` 内嵌 `web.Controller`, 指明这是个RESTful控制器。
+
 控制器是RESTful接口的入口，不同于其它Go语言网络应用框架，Hiboot控制器设计思路是尽可能的简单易用，省去路由配置代码，约定方法名即路由配置。如下userController的Post方法。
 
 现针对各个方法作详细说明
@@ -196,6 +200,9 @@ func TestRunMain(t *testing.T) {
 |Post|POST请求|Post或以大写开头的驼峰命名法则PostUser|`func (c *userController) Post(request *userRequest)`|
 |Put|PUT请求|Put或以大写开头的驼峰命名法则PutUser|`func (c *userController) Post(request *userRequest)`|
 |Delete|DELETE请求|Delete或以大写开头的驼峰命名法则DeleteById|`func (c *userController) DeleteById(id unit64)` |
+
+
+⚠️ 在函数 `init()` 必须注册 newUserController.
 
 ```go
 package controller
@@ -227,7 +234,7 @@ type userController struct {
 }
 
 func init() {
-	web.RestController(newUserController)
+	app.Register(newUserController)
 }
 
 // Init inject userService automatically
@@ -300,6 +307,16 @@ func (u *User) TableName() string {
 
 ### Model -  service/user.go
 
+service包实现业务逻辑。
+
+我们定义了一个接口`UserService`，包含`AddUser`, `GetUser`, `GetAll` 和 `DeleteUser`方法。
+
+userServiceImpl为接口UserService的具体实现。
+
+通过引人`hiboot-data/starter/gorm`，即可自动注入 `repository gorm.Repository`到`userServiceImpl`
+
+⚠️ 在函数 `init()` 必须注册 newUserService.
+
 ```go
 
 package service
@@ -319,7 +336,7 @@ type UserService interface {
 	DeleteUser(id uint64) (err error)
 }
 
-type UserServiceImpl struct {
+type userServiceImpl struct {
 	// add UserService, it means that the instance of UserServiceImpl can be found by UserService
 	UserService
 	repository gorm.Repository
@@ -327,18 +344,18 @@ type UserServiceImpl struct {
 
 func init() {
 	// register UserServiceImpl
-	app.Component(newUserService)
+	app.Register(newUserService)
 }
 
 // will inject BoltRepository that configured in github.com/hidevopsio/hiboot/pkg/starter/data/bolt
 func newUserService(repository gorm.Repository) UserService {
 	repository.AutoMigrate(&entity.User{})
-	return &UserServiceImpl{
+	return &userServiceImpl{
 		repository: repository,
 	}
 }
 
-func (s *UserServiceImpl) AddUser(user *entity.User) (err error) {
+func (s *userServiceImpl) AddUser(user *entity.User) (err error) {
 	if user == nil {
 		return errors.New("user is not allowed nil")
 	}
@@ -349,21 +366,106 @@ func (s *UserServiceImpl) AddUser(user *entity.User) (err error) {
 	return
 }
 
-func (s *UserServiceImpl) GetUser(id uint64) (user *entity.User, err error) {
+func (s *userServiceImpl) GetUser(id uint64) (user *entity.User, err error) {
 	user = &entity.User{}
 	err = s.repository.Where("id = ?", id).First(user).Error()
 	return
 }
 
-func (s *UserServiceImpl) GetAll() (users *[]entity.User, err error) {
+func (s *userServiceImpl) GetAll() (users *[]entity.User, err error) {
 	users = &[]entity.User{}
 	err = s.repository.Find(users).Error()
 	return
 }
 
-func (s *UserServiceImpl) DeleteUser(id uint64) (err error) {
+func (s *userServiceImpl) DeleteUser(id uint64) (err error) {
 	err = s.repository.Where("id = ?", id).Delete(entity.User{}).Error()
 	return
 }
+
+```
+
+## 运行网络应用程序
+
+```bash
+
+go run main.go
+
+```
+
+输出结果如下：
+
+```bash
+
+______  ____________             _____
+___  / / /__(_)__  /_______________  /_
+__  /_/ /__  /__  __ \  __ \  __ \  __/
+_  __  / _  / _  /_/ / /_/ / /_/ / /_     Hiboot Application Framework
+/_/ /_/  /_/  /_.___/\____/\____/\__/     https://github.com/hidevopsio/hiboot
+
+[INFO] 2018/10/23 23:37 Starting Hiboot web application gorm-demo on localhost with PID 28423
+[INFO] 2018/10/23 23:37 Working directory: /Users/johnd/.gvm/pkgsets/go1.10/hidevops/src/github.com/hidevopsio/hiboot-data/examples/gorm
+[INFO] 2018/10/23 23:37 The following profiles are active: local, [actuator locale logging gorm]
+[INFO] 2018/10/23 23:37 Auto configure gorm starter
+[INFO] 2018/10/23 23:37 Auto configure locale starter
+[INFO] 2018/10/23 23:37 Auto configure logging starter
+[INFO] 2018/10/23 23:37 The dependency graph resolved successfully
+[INFO] 2018/10/23 23:37 connected to dataSource demo@mysql-local:3306/gorm_demo
+[DBUG] 2018/10/23 23:36 GET: /health -> github.com/hidevops	io/hiboot-data/vendor/github.com/hidevopsio/hiboot/pkg/starter/actuator/controller/healthController.Get() and 2 more
+[DBUG] 2018/10/23 23:36 DELETE: /user/id/{id} -> github.com/hidevopsio/hiboot-data/examples/gorm/controller/userController.DeleteById() and 2 more
+[DBUG] 2018/10/23 23:36 GET: /user/id/{id} -> github.com/hidevopsio/hiboot-data/examples/gorm/controller/userController.GetById() and 2 more
+[DBUG] 2018/10/23 23:36 GET: /user/all -> github.com/hidevopsio/hiboot-data/examples/gorm/controller/userController.GetAll() and 2 more
+[DBUG] 2018/10/23 23:36 POST: /user -> github.com/hidevopsio/hiboot-data/examples/gorm/controller/userController.Post() and 2 more
+
+Now listening on: http://localhost:8080
+Application started. Press CMD+C to shut down.
+
+```
+
+## 调用接口
+
+最后，让我们用[httpie](https://httpie.org/)来请求接口
+
+```bash
+
+http GET localhost:8080/user/all?lang=zh-CN
+
+```
+
+输出结果如下：
+
+```bash
+
+HTTP/1.1 200 OK
+Content-Length: 307
+Content-Type: application/json; charset=UTF-8
+Date: Tue, 23 Oct 2018 15:38:41 GMT
+Set-Cookie: app.language=zh-CN; Path=/; Expires=Tue, 23 Oct 2018 17:38:41 GMT; Max-Age=7200; HttpOnly
+
+{
+    "code": 200,
+    "data": [
+        {
+            "age": 18,
+            "email": "john.doe@gmail.com",
+            "gender": 0,
+            "id": 209536579658580081,
+            "name": "John Doe",
+            "password": "poi321",
+            "username": "johnd"
+        },
+        {
+            "age": 25,
+            "email": "mike.phil@gmail.com",
+            "gender": 0,
+            "id": 209536656246571121,
+            "name": "Mike Phil",
+            "password": "iutg039",
+            "username": "mikep"
+        }
+    ],
+    "message": "成功"
+}
+
 
 ```
