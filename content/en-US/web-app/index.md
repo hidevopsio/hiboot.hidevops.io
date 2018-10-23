@@ -1,19 +1,17 @@
 ---
 date: 2018-10-10T00:11:02+01:00
-title: 应用
+title: Web Application
 weight: 20
 tags: ["cli", "web", "application"]
 ---
 
-## 网络应用
+## Features
 
-### 主要功能列表
+* *Web MVC (Model-View-Controller).
+* Auto Configuration, pre-created instance with properties configs for dependency injection.
+* Dependency injection with the struct tag \`inject:""\` or the constructor.
 
-* 网络应用 MVC (Model-View-Controller).
-* 自动配置, 事先配置好的依赖可以注入到任何你指定的构造函数参数中或者结构体变量
-* 依赖注入， 使用标签 \`inject:""\` 后构造函数.
-
-### Go语言实现依赖注入
+## Dependency injection
 
 Dependency injection is a concept valid for any programming language. The general concept behind dependency injection is
 called Inversion of Control. According to this concept a struct should not configure its dependencies statically but
@@ -91,11 +89,3 @@ func (c *loginController) Post(request *userRequest) (response model.Response, e
 }
 
 ```
-
-## 命令行应用
-
-### 功能列表
-
-* Dependency Injection
-* Struct Tag for dependency injection
-* Sub command handler

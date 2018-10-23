@@ -78,8 +78,8 @@ pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # "friendly"
 	weight = 10
 
 [[languages.en.menu.main]]
-	name   = "Applications"
-	url    = "apps/"
+	name   = "Web Application"
+	url    = "web-app/"
 	weight = 20
 
 [[languages.en.menu.main]]
@@ -111,19 +111,24 @@ pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # "friendly"
 	weight = 10
 
 [[languages.cn.menu.main]]
-	name   = "应用"
-	url    = "cn/apps/"
+	name   = "网络应用"
+	url    = "cn/web-app/"
 	weight = 20
+
+[[languages.cn.menu.main]]
+	name   = "命令行应用"
+	url    = "cn/cli-app/"
+	weight = 30
 
 [[languages.cn.menu.main]]
 	name   = "控制翻转"
 	url    = "cn/inversion-of-control/"
-	weight = 30
+	weight = 40
 
 [[languages.cn.menu.main]]
 	name   = "自动配置"
 	url    = "cn/auto-configure/"
-	weight = 40
+	weight = 50
 
 [blackfriday]
 	smartypants	= true
