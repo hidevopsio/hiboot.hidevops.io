@@ -190,6 +190,8 @@ func TestRunMain(t *testing.T) {
 
 控制器 `userController` 内嵌 `web.Controller`, 指明这是个RESTful控制器。
 
+`newUserController`为`userController`的构造函数，实现依赖注入，在应用启动过程中， `userService service.UserService` 将被自动注入到 `newUserController`。
+
 控制器是RESTful接口的入口，不同于其它Go语言网络应用框架，Hiboot控制器设计思路是尽可能的简单易用，省去路由配置代码，约定方法名即路由配置。如下userController的Post方法。
 
 现针对各个方法作详细说明
@@ -205,6 +207,8 @@ func TestRunMain(t *testing.T) {
 ⚠️ 在函数 `init()` 必须注册 newUserController.
 
 ```go
+
+
 package controller
 
 import (
@@ -214,6 +218,7 @@ import (
 	"github.com/hidevopsio/hiboot/pkg/model"
 	"github.com/hidevopsio/hiboot/pkg/utils/copier"
 	"net/http"
+	"github.com/hidevopsio/hiboot/pkg/app"
 )
 
 type userRequest struct {
@@ -237,7 +242,7 @@ func init() {
 	app.Register(newUserController)
 }
 
-// Init inject userService automatically
+// newUserController inject userService automatically
 func newUserController(userService service.UserService) *userController {
 	return &userController{
 		userService: userService,
@@ -280,6 +285,7 @@ func (c *userController) DeleteById(id uint64) (response model.Response, err err
 	response = new(model.BaseResponse)
 	return
 }
+
 
 ```
 
