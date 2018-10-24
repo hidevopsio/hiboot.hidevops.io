@@ -22,29 +22,38 @@ cd $GOPATH/src/github.com/hidevopsio/hiboot/examples/web/helloworld/
 Below is the simplest web application in Go.
 
 ```go
-// Line 1: main package
+
+// Package helloworld provides the quick start web application example
+// main package
 package main
 
-// Line 2: import web starter from hiboot
-import "github.com/hidevopsio/hiboot/pkg/app/web"
+// import web starter from hiboot
+import (
+	"github.com/hidevopsio/hiboot/pkg/app/web"
+	"github.com/hidevopsio/hiboot/pkg/at"
+)
 
-// Line 3-5: RESTful Controller, derived from web.Controller. The context mapping of this controller is '/' by default
+// Controller Rest Controller with path /
+// RESTful Controller, derived from web.Controller. The context mapping of this controller is '/' by default
 type Controller struct {
-	web.Controller
+	// at.RestController or web.Controller must be embedded here
+	at.RestController
 }
 
-// Line 6-8: Get method, the context mapping of this method is '/' by default
+// Get GET /
+// Get method, the context mapping of this method is '/' by default
 // the Method name Get means that the http request method is GET
 func (c *Controller) Get() string {
-	// response data
-	return "Hello world"
+	// response
+	return "hello"
 }
 
-// Line 9-11: main function
+// main function
 func main() {
 	// create new web application and run it
-	web.NewApplication(&Controller{}).Run()
+	web.NewApplication(new(Controller)).Run()
 }
+
 ```
 
 #### 运行应用

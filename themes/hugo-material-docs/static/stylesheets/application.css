@@ -349,6 +349,10 @@ body {
     white-space:nowrap;
     
 }
+.layer_box a:hover{
+    background:#00bcd4;
+    color: #fff;
+}
 .layer_box span:hover{
     color: #00bcd4;
 }

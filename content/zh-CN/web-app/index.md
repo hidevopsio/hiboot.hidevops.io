@@ -5,7 +5,7 @@ weight: 20
 tags: ["web", "application"]
 ---
 
-## 主要功能
+## 主要功能
 
 * MVC架构 (Model-View-Controller).
 * 自动配置, 事先配置好的依赖包可以被注入到任何你指定的构造函数参数中或者结构体变量

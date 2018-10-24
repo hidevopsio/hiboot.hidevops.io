@@ -113,7 +113,7 @@ import (
 	"time"
 )
 
-// This example shows that jwtToken is injected through method Init,
+// This example shows that jwtToken is injected through the constructor,
 // once you imported "github.com/hidevopsio/hiboot/pkg/starter/jwt",
 // jwtToken jwt.Token will be injectable.
 func main() {
@@ -137,7 +137,7 @@ type userRequest struct {
 
 func init() {
 	// Register Rest Controller through constructor newLoginController
-	web.RestController(newLoginController)
+	app.Register(newLoginController)
 }
 
 // newLoginController inject jwtToken through the argument jwtToken jwt.Token on constructor
@@ -180,7 +180,7 @@ import (
 	"time"
 )
 
-// This example shows that jwtToken is injected through method Init,
+// This example shows that jwtToken is injected through the constructor,
 // once you imported "github.com/hidevopsio/hiboot/pkg/starter/jwt",
 // jwtToken jwt.Token will be injectable.
 func main() {
@@ -231,7 +231,7 @@ func (c *loginController) Post(request *userRequest) (response model.Response, e
 
 ```
 
-Hiboot字段注入是通过标签\`inject:""\`来实现到。当在某个字段标注了\`inject:""\`，Hiboot会尝试找到相应的实例并且注入到字段中，如果你尝试让Hiboot注入一个不存在当依赖项，Hiboot会在应用启动时报告错误。
+Hiboot字段注入是通过标签\`inject:""\`来实现到。当在某个字段标注了\`inject:""\`，Hiboot会尝试找到相应的实例并且注入到字段中，如果你尝试让Hiboot注入一个不存在的依赖项，Hiboot会在应用启动时报告错误。
 
 如果需要注入的依赖有多个实现，则可以指定名称，比如\`inject:"buzService"\`， Hiboot会先寻找标签当名字，如果该实例不存在则会寻找是否有以该字段名命名当实例，最后才寻找以该字段数据类型命名当实例。
 
@@ -304,7 +304,7 @@ type configuration struct {
 }
 
 func init() {
-	app.AutoConfiguration(newConfiguration)
+	app.Register(newConfiguration)
 }
 
 func newConfiguration() *configuration {
