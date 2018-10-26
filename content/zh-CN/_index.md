@@ -6,28 +6,9 @@ tags: ["hiboot", "framework"]
 weight: 1
 ---
 
-<p align="center">
-  <a href="https://travis-ci.org/hidevopsio/hiboot?branch=master">
-    <img src="https://travis-ci.org/hidevopsio/hiboot.svg?branch=master" alt="Build Status"/>
-  </a>
-  <a href="https://codecov.io/gh/hidevopsio/hiboot">
-    <img src="https://codecov.io/gh/hidevopsio/hiboot/branch/master/graph/badge.svg" />
-  </a>
-  <a href="https://opensource.org/licenses/Apache-2.0">
-      <img src="https://img.shields.io/badge/License-Apache%202.0-green.svg" />
-  </a>
-  <a href="https://goreportcard.com/report/github.com/hidevopsio/hiboot">
-      <img src="https://goreportcard.com/badge/github.com/hidevopsio/hiboot" />
-  </a>
-  <a href="https://godoc.org/github.com/hidevopsio/hiboot">
-      <img src="https://godoc.org/github.com/golang/gddo?status.svg" />
-  </a>
-  <a href="https://gitter.im/hidevopsio/hiboot">
-      <img src="https://img.shields.io/badge/GITTER-join%20chat-green.svg" />
-  </a>
-</p>
-
 ## 关于 
+
+{{<badges>}}
 
 Hiboot 是一款用Go语言实现的高性能网络及命令行应用框架。Hiboot提供了Web MVC框架，支持控制反转（依赖注入），拦截器，依赖包自动配置（类似Spring Boot的Starter）。
 

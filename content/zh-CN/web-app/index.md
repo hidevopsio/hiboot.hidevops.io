@@ -53,9 +53,27 @@ Hiboot点MVC架构采用约定俗成的原则，尽量隐藏和业务无关的�
 
 Hiboot应用分两部分，外部配置及源代码。
 
-### config
+## config
 
-Hiboot要做可用于生产的应用框架，在设计之初就考虑到了需要适应不同的环境。config文件夹包含了不同环境下的配置文件
+Hiboot要做可用于生产的应用框架，在设计之初就考虑到了需要适应不同的环境。在工作目录下的config文件夹包含了不同环境下的配置文件.
+
+Hiboot允许将配置外部化，这样你就能够在不同的环境下使用相同的代码。
+
+属性值可以通过\`value:""\`标签直接注入到结构体中，
+
+下面是具体的示例，假设你开发一个使用app.name属性的struct, 如下面例子：
+
+```go
+
+type MyService struct {
+	AppName string `value:"${app.name}"`
+}
+
+```
+
+## 通用Application属性文件
+
+Hiboot将从工作路径下的config文件夹中加载application.yml文件.
 
 ### config/application.yml
 
@@ -77,12 +95,13 @@ logging:
 
 ```
 
-#### application.yml字段说明
+### application.yml字段说明
 
 |字段|描述|合法值|示例|
 |---|---|---|---|
 |app.project|项目名称|任意字符串|examples|
 |app.name|应用名称|任意字符串|gorm-demo|
+|app.profiles.active|当前环境配置|local,dev,test,staging,prod|dev|
 |profiles.include|starter的开关功能，⚠️ 如果没有包含进来，则该starter不会被初始化，相关依赖不能被注入|starter包名|actuator, locale, logging, gorm|
 |logging.level|定义日志级别|debug,info,warn,error,fatal|info|
 
@@ -103,7 +122,7 @@ logging:
 
 ```
 
-#### application-local.yml 字段说明
+### application-local.yml 字段说明
 
 |字段|描述|合法值|示例|
 |---|---|---|---|
@@ -115,7 +134,7 @@ logging:
 ```yaml
 gorm:
   type: mysql
-  host: mysql-${app.profiles.active}
+  host: mysql-${app.profiles.active:dev}
   port: 3306
   database: ${app.name:test}
   username: demo
@@ -214,23 +233,11 @@ package controller
 import (
 	"github.com/hidevopsio/hiboot-data/examples/gorm/entity"
 	"github.com/hidevopsio/hiboot-data/examples/gorm/service"
+	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/app/web"
 	"github.com/hidevopsio/hiboot/pkg/model"
-	"github.com/hidevopsio/hiboot/pkg/utils/copier"
 	"net/http"
-	"github.com/hidevopsio/hiboot/pkg/app"
 )
-
-type userRequest struct {
-	model.RequestBody
-	Id       uint64 `json:"id"`
-	Name     string `json:"name" validate:"required"`
-	Username string `json:"username" validate:"required"`
-	Password string `json:"password" validate:"required"`
-	Email    string `json:"email" validate:"required,email"`
-	Age      uint   `json:"age" validate:"gte=0,lte=130"`
-	Gender   uint   `json:"gender" validate:"gte=0,lte=2"`
-}
 
 // RestController
 type userController struct {
@@ -250,12 +257,10 @@ func newUserController(userService service.UserService) *userController {
 }
 
 // Post POST /user
-func (c *userController) Post(request *userRequest) (model.Response, error) {
-	var user entity.User
-	copier.Copy(&user, request)
-	err := c.userService.AddUser(&user)
+func (c *userController) Post(request *entity.User) (model.Response, error) {
+	err := c.userService.AddUser(request)
 	response := new(model.BaseResponse)
-	response.SetData(user)
+	response.SetData(request)
 	return response, err
 }
 
@@ -291,6 +296,7 @@ func (c *userController) DeleteById(id uint64) (response model.Response, err err
 
 ### entity/user.go
 
+这是业务逻辑模型。
 ```go
 
 package entity
@@ -391,7 +397,7 @@ func (s *userServiceImpl) DeleteUser(id uint64) (err error) {
 
 ```
 
-## 运行网络应用程序
+## 运行网络应用程序
 
 ```bash
 
@@ -427,10 +433,10 @@ Now listening on: http://localhost:8080
 Application started. Press CMD+C to shut down.
 
 ```
-
+
 ## 请求接口
 
-最后，让我们用[httpie](https://httpie.org/)来请求接口
+让我们用[httpie](https://httpie.org/)来请求接口
 
 ```bash
 
@@ -438,7 +444,7 @@ http GET localhost:8080/user/all?lang=zh-CN
 
 ```
 
-输出结果如下：
+输出结果如下：
 
 ```bash
 
@@ -475,3 +481,249 @@ Set-Cookie: app.language=zh-CN; Path=/; Expires=Tue, 23 Oct 2018 17:38:41 GMT; M
 
 
 ```
+
+## 单元测试
+
+我说过，Hiboot从一开始就考虑到必须能用于生产环境，我们非常在意代码质量。你可以看我们集成了CI流程，代码必须通过严格的测试之后才会合并到主分支。这是Hiboot实时的代码测试覆盖率 [![codecov](https://codecov.io/gh/hidevopsio/hiboot/branch/master/graph/badge.svg)](https://codecov.io/gh/hidevopsio/hiboot).  那么，我们是怎样来做单元测试的呢?
+
+首先，让我们来看main.go下面最简单的单元测试，
+
+### mian_test.go
+
+为了简单起见, 我们用一个go routine 来跑main函数的测试 `go main()` 在这个单元测试用例 `TestRunMain`。当然这不是真正意义上的测试， 因为里面并没有assert语句，我们并不知道测试结果。
+
+```go
+
+package main
+
+import (
+	"testing"
+	"time"
+)
+
+func TestRunMain(t *testing.T) {
+	go main()
+	time.Sleep(200 * time.Millisecond)
+}
+
+```
+
+### 模拟测试 - controller/user_test.go
+
+我们想测试 `userController`, 但是`userController` 依赖了 `userSerivce`，而`userSerivce` 又会连接真正的数据库，可是我们要做自动化测试，我们要做持续集成怎么办？当然我们可以使用模拟测试法。
+
+我们使用模拟测试代码生成工具[Mockery](https://github.com/vektra/mockery) 来生成部分测试代码，以减轻我们写代码的负担。
+
+首先，我们来安装[Mockery](https://github.com/vektra/mockery)
+
+```bash
+
+go get github.com/vektra/mockery/.../
+
+```
+
+然后，为接口UserService生成模拟测试代码，当然你得到相应的文件夹下面去生成代码，你也可以指定文件夹，具体方法可以看Mockery的帮助文档（运行 mockery -h 查看）
+
+```bash
+# go to the directory where the UserService is.
+cd $GOPATH/src/github.com/hidevopsio/hiboot-data/examples/gorm/service
+
+# generate mocks for the interface UserService
+mockery -name UserService
+
+```
+
+接下来，你将会在项目下面`（$GOPATH/src/github.com/hidevopsio/hiboot-data/examples/gorm/service.)`看到生成好的模拟测试代码。
+
+```go
+
+// Code generated by mockery v1.0.0. DO NOT EDIT.
+
+package mocks
+
+import entity "github.com/hidevopsio/hiboot-data/examples/gorm/entity"
+import mock "github.com/stretchr/testify/mock"
+
+// UserService is an autogenerated mock type for the UserService type
+type UserService struct {
+	mock.Mock
+}
+
+// AddUser provides a mock function with given fields: user
+func (_m *UserService) AddUser(user *entity.User) error {
+	ret := _m.Called(user)
+
+	var r0 error
+	if rf, ok := ret.Get(0).(func(*entity.User) error); ok {
+		r0 = rf(user)
+	} else {
+		r0 = ret.Error(0)
+	}
+
+	return r0
+}
+
+// DeleteUser provides a mock function with given fields: id
+func (_m *UserService) DeleteUser(id uint64) error {
+	ret := _m.Called(id)
+
+	var r0 error
+	if rf, ok := ret.Get(0).(func(uint64) error); ok {
+		r0 = rf(id)
+	} else {
+		r0 = ret.Error(0)
+	}
+
+	return r0
+}
+
+// GetAll provides a mock function with given fields:
+func (_m *UserService) GetAll() (*[]entity.User, error) {
+	ret := _m.Called()
+
+	var r0 *[]entity.User
+	if rf, ok := ret.Get(0).(func() *[]entity.User); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*[]entity.User)
+		}
+	}
+
+	var r1 error
+	if rf, ok := ret.Get(1).(func() error); ok {
+		r1 = rf()
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// GetUser provides a mock function with given fields: id
+func (_m *UserService) GetUser(id uint64) (*entity.User, error) {
+	ret := _m.Called(id)
+
+	var r0 *entity.User
+	if rf, ok := ret.Get(0).(func(uint64) *entity.User); ok {
+		r0 = rf(id)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*entity.User)
+		}
+	}
+
+	var r1 error
+	if rf, ok := ret.Get(1).(func(uint64) error); ok {
+		r1 = rf(id)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+
+```
+
+### Writing the unit test cases
+
+接着我们就要来写相关的测试用例了，下面我们测试了POST, GET, DELETE几个方法，而其中并没有去连接数据库，但是能测试到`userController`的业务逻辑。
+
+```go
+
+package controller
+
+import (
+	"github.com/hidevopsio/hiboot-data/examples/gorm/entity"
+	"github.com/hidevopsio/hiboot/pkg/app/web"
+	"github.com/hidevopsio/hiboot/pkg/log"
+	"github.com/hidevopsio/hiboot/pkg/utils/idgen"
+	"github.com/stretchr/testify/assert"
+	"net/http"
+	"testing"
+	"github.com/hidevopsio/hiboot-data/examples/gorm/service/mocks"
+	"errors"
+)
+
+func init() {
+	log.SetLevel(log.DebugLevel)
+}
+
+func TestCrdRequest(t *testing.T) {
+
+	mockUserService := new(mocks.UserService)
+	userController := newUserController(mockUserService)
+	testApp := web.NewTestApplication(t, userController)
+
+	id, err := idgen.Next()
+	assert.Equal(t, nil, err)
+
+	testUser := &entity.User{
+		Id:       id,
+		Name:     "Bill Gates",
+		Username: "billg",
+		Password: "3948tdaD",
+		Email:    "bill.gates@microsoft.com",
+		Age:      60,
+		Gender:   1,
+	}
+
+	// first, call mocks.UserService.AddUser
+	mockUserService.On("AddUser", testUser).Return(nil)
+	// then run the test that will call UserService.AddUser
+	t.Run("should add user with POST request", func(t *testing.T) {
+		// First, let's Post User
+		testApp.Post("/user").
+			WithJSON(testUser).
+			Expect().Status(http.StatusOK)
+	})
+
+	mockUserService.On("GetUser", id).Return(testUser, nil)
+	t.Run("should get user with GET request", func(t *testing.T) {
+		// Then Get User
+		// e.g. GET /user/id/123456
+		testApp.Get("/user/id/{id}").
+			WithPath("id", id).
+			Expect().Status(http.StatusOK)
+	})
+
+	mockUserService.On("GetAll").Return(&[]entity.User{*testUser}, nil)
+	t.Run("should get user with GET request", func(t *testing.T) {
+		// Then Get User
+		// e.g. GET /user/id/123456
+		testApp.Get("/user/all").
+			Expect().Status(http.StatusOK)
+	})
+
+	// assert that the expectations were met
+	mockUserService.AssertExpectations(t)
+
+	unknownId, err := idgen.Next()
+	assert.Equal(t, nil, err)
+	mockUserService.On("GetUser", unknownId).Return((*entity.User)(nil), errors.New("not found"))
+
+	t.Run("should return 404 if trying to find a record that does not exist", func(t *testing.T) {
+		// Then Get User
+		testApp.Get("/user/id/{id}").
+			WithPath("id", unknownId).
+			Expect().Status(http.StatusNotFound)
+	})
+
+	// assert that the expectations were met
+	mockUserService.AssertExpectations(t)
+
+	mockUserService.On("DeleteUser", id).Return(nil)
+	t.Run("should delete the record with DELETE request", func(t *testing.T) {
+		// Finally Delete User
+		testApp.Delete("/user/id/{id}").
+			WithPath("id", id).
+			Expect().Status(http.StatusOK)
+	})
+}
+
+```
+
+最后，我们来运行测试用例，
+
+![unit-test](/images/web-app/unit-test.png)
