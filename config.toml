@@ -83,14 +83,19 @@ pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # "friendly"
 	weight = 20
 
 [[languages.en.menu.main]]
+	name   = "Cli Application"
+	url    = "cli-app/"
+	weight = 30
+
+[[languages.en.menu.main]]
 	name   = "Inversion of Control"
 	url    = "inversion-of-control/"
-	weight = 30
+	weight = 40
 
 [[languages.en.menu.main]]
 	name   = "Auto Configuration"
 	url    = "auto-configure/"
-	weight = 40
+	weight = 50
 
 [languages.cn]
 	languageName = "中文"

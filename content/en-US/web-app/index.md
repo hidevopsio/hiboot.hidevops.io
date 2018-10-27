@@ -146,7 +146,7 @@ gorm:
 |gorm.port|database port|any port|3306|
 |gorm.database|database name|string or variable|`${app.name:test}`|
 |gorm.username|username for databse connection|valid username in string|dbuser|
-|gorm.password|password for database connnection, if gorm.config.decrypt is true，[crypto](https://github.com/hidevopsio/crypto)加密过的数据库密码|字符串|fafUJ ... O5VfGGvHliE=|
+|gorm.password|password for database connnection, if gorm.config.decrypt is true，then it will be the password that encrypted by [crypto](https://github.com/hidevopsio/crypto) |string|fafUJ ... O5VfGGvHliE=|
 |gorm.charset|character set|utf8,ascii|utf8|
 |gorm.parseTime|parse time or not|true,false|true|
 |gorm.loc|timezone|see [world timezone](https://www.worldtimezone.com/index_cn.php)|Asia/Shanghai|

@@ -39,7 +39,7 @@ Date:   Fri Oct 26 18:36:24 2018 +0800
     step 1: Writing the first Hiboot web application
 ```
 
-## Step 1, writing the first Hiboot web application
+## - Step 1, writing the first Hiboot web application
 
 To write Hiboot application, as we know, the executable commands must always use package main, so we need to create the main package first.
 
@@ -49,7 +49,7 @@ See [Effective GO](https://golang.org/doc/effective_go.html#names) to learn more
 git reset --hard 620631e17d567f96169c32e7cec7a7c9ed3139ce
 ```
 
-## Step 2, adding some starters
+## - Step 2, adding some starters
 
 Here we are going to add starter [actuator](https://github.com/hidevopsio/hiboot/tree/master/pkg/starter/actuator) and [logging](https://github.com/hidevopsio/hiboot/tree/master/pkg/starter/logging).
 
@@ -57,7 +57,7 @@ Here we are going to add starter [actuator](https://github.com/hidevopsio/hiboot
 git reset --hard 346d1546a27ae5755e89f6e9251a9d3a4f1b7f5c
 ```
 
-## Step 3, adding Hiboot controller
+## - Step 3, adding Hiboot controller
 
 ```bash
 git reset --hard 63cfe8eae52046b92dbf2d0bb7290ab0c45bb823

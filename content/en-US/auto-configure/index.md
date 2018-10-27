@@ -32,6 +32,8 @@ AutoConfiguration used to constrain when the auto-configuration should apply. Us
 `after:"fooConfiguration"` or `missing:"fooConfiguration"` tags. This ensures that auto-configuration applies only
 when relevant configuration are found and when you have not declared your own configuration.
 
+## Code Example
+
 This example shows the guide to make customized auto configuration
 for more details, see https://github.com/hidevopsio/hiboot-data/blob/master/starter/bolt/autoconfigure.go
 

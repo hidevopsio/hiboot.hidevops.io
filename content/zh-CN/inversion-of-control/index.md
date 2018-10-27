@@ -95,7 +95,7 @@ func init() {
 
 ```
 
-### 构造器注入
+## 构造器注入
 
 Hiboot建议使用构造器来注入，因为构造器注入能够保证注入的组件不可变，并且确保需要的依赖不为空。并且，构造器注入的依赖总数能够保证组件完全初始化的状态。
 
@@ -164,10 +164,9 @@ func (c *loginController) Post(request *userRequest) (response model.Response, e
 
 ```
 
-### 字段注入
+## 字段注入
 
 我们来将上面这段代码做个些的改动（⚠️ 我们将 token 改成了 Token， 这是因为Go语言定义了标签的字段必须是大写字母开头的，也就是对外公开），不用构造器也是可以注入的。Hiboot通过标签注入实例到字段 `Token` 中, 尽管使用的效果和构造器差不多，但是我们还是建议使用构造器来注入，原因在上面有说明。
-
 
 ```go
 
@@ -279,7 +278,7 @@ type dependencyInjectionTestService struct {
 
 ```
 
-### 方法注入
+## 方法注入
 
 方法注入是Hiboot的一大特点，下面是Hiboot starter jwt的实际代码。在方法`Middleware()`中依赖了`Token`，Hiboot会自动将`Token`实例注入到`Middleware()`方法的参数`jwtToken Token`。
 关于[Hiboot starter](/cn/auto-configure)会在后面章节详细讲解。
