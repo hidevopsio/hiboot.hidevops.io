@@ -184,7 +184,7 @@ func main() {
 
 ```
 
->Alternatively, you can set property `app.PropertyAppProfilesInclude` in main function. In this approach, you don't have to import some packages solely for their side effects.
+>Alternatively, you can set property `app.PropertyAppProfilesInclude` in main function. In this approach, you don't have to import starter packages solely for their side effects.
 
 ```go
 
