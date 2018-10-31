@@ -99,7 +99,7 @@ pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # "friendly"
 
 [languages.cn]
 	languageName = "中文"
-	title = "Hiboot 云原生应用框架"
+	title = "Hiboot云原生应用框架"
 	weight = 1
 	contentDir = "content/zh-CN"
   	url = "../cn"

@@ -1,8 +1,8 @@
 ---
 date: 2018-10-08T21:07:13+01:00
-title: Hiboot 框架
+title: Hiboot云原生应用框架
 type: index
-tags: ["hiboot", "framework"]
+tags: ["hiboot", “cloud-native” "framework"]
 weight: 1
 ---
 
