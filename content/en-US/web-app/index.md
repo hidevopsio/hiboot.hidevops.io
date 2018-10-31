@@ -207,7 +207,7 @@ func main()  {
 
 ```
 
-### 控制器 - controller/user.go
+### Controller - controller/user.go
 
 Now lets see how does the Hiboot controller works, the controller `userController` is embedded a struct `web.Controller`, it tells Hiboot that this is a web controller。
 
