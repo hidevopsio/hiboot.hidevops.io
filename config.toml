@@ -61,7 +61,7 @@ pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # "friendly"
 
 [languages.en]
 	languageName = "English"
-    title = "Hiboot Documentation"
+    title = "Hiboot Cloud Native Application Framework"
     weight = 0
 	contentDir = "content/en-US"
   	url = "../en"
@@ -99,7 +99,7 @@ pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # "friendly"
 
 [languages.cn]
 	languageName = "中文"
-	title = "Hiboot 文档"
+	title = "Hiboot 云原生应用框架"
 	weight = 1
 	contentDir = "content/zh-CN"
   	url = "../cn"
