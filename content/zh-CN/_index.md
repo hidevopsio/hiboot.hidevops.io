@@ -18,7 +18,7 @@ Hiboot并不打算重复造轮子，故使用了自动配置的机制，很轻�
 
 * MVC架构 (Model-View-Controller).
 * 自动配置, 事先配置好的依赖包可以被注入到任何你指定的构造函数参数中或者结构体变量
-* 依赖注入， 使用标签 \`inject:""\` 后构造函数实现.
+* 依赖注入， 使用标签 \`inject:""\` 或者构造函数来实现.
 
 ## 功能列表
 
@@ -31,6 +31,7 @@ Hiboot并不打算重复造轮子，故使用了自动配置的机制，很轻�
     * logging - 日志
     * jwt - JWT 令牌
     * grpc - 服务间通讯gRPC
+    * websocket - websocket 服务端与客户端实时通信
 * Tags - 标签
     * inject - 注入依赖
     * default - 注入默认值

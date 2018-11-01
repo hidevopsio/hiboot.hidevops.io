@@ -18,7 +18,7 @@ Hiboot is not trying to reinvent everything, it integrates the popular libraries
 
 * Web MVC (Model-View-Controller).
 * Auto Configuration, pre-create instance with properties configs for dependency injection.
-* Dependency injection with struct tag name `inject:""` or Constructor func.
+* Dependency injection with struct tag name \`inject:""\` or Constructor func.
 
 ## Features
 
@@ -33,6 +33,7 @@ Hiboot is not trying to reinvent everything, it integrates the popular libraries
     * logging - customized logging settings
     * jwt - jwt starter
     * grpc - grpc application starter
+    * websocket - websocket two-way interactive communication
 
 * **Tags**
     * inject - inject generic instance into object

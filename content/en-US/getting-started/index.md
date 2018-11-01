@@ -6,7 +6,7 @@ weight: 10
 
 ## Quick start web application
 
-This section will show you how to create and run a simple hiboot application in 3 steps. Let’s get started!
+This section will show you how to create and run a simple hiboot web application in 3 steps. Let’s get started!
 
 ### Get the source code
 
@@ -17,7 +17,7 @@ cd $GOPATH/src/github.com/hidevopsio/hiboot-web-app-demo
 
 ```
 
-You can checkout each commit to see the exact stop,
+You can checkout each commit to see the exact step,
 
 ```bash
 commit 63cfe8eae52046b92dbf2d0bb7290ab0c45bb823
