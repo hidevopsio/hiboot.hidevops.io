@@ -6,7 +6,7 @@ weight: 10
 
 ## 前提
 
-我们假设你以及安装了Go语言的开发环境。当然，如果你没安装，请转到这个链接，按教程安装。
+我们假设你以及安装了Go语言的开发环境。当然，如果你没安装，则按照[GO语言环境搭建详解](https://hidevops.io/blog/go-env/)来安装。
 
 ## 网络应用快速入门
 
@@ -45,14 +45,29 @@ Date:   Fri Oct 26 18:36:24 2018 +0800
     step 1: Writing the first Hiboot web application
 ```
 
-## - 第一步, 开始我们第一个Hiboot网络应用程序
+## - 第一步, 快速开始Hiboot应用
 
-To write Hiboot application, as we know, the executable commands must always use package main, so we need to create the main package first.
+编写Hiboot应用，和其它Go语言应用一样，必须有一个main包，里面包含一个main函数。
 
-See [Effective GO](https://golang.org/doc/effective_go.html#names) to learn more about Go's naming conventions.
+如果你对Go语言还不熟悉，建议阅读[Effective GO](https://golang.org/doc/effective_go.html#names)或中文版[实效Go编程](https://go-zh.org/doc/effective_go.html)
 
 ```bash
 git reset --hard 620631e17d567f96169c32e7cec7a7c9ed3139ce
+```
+
+代码展示如下，这个代码已经可以执行的了，只是没有任何业务逻辑。
+
+```go
+
+package main
+
+import (
+	"github.com/hidevopsio/hiboot/pkg/app/web"
+)
+
+func main()  {
+	web.NewApplication().Run()
+}
 ```
 
 ## - 第二步, 添加 Starter
@@ -60,13 +75,85 @@ git reset --hard 620631e17d567f96169c32e7cec7a7c9ed3139ce
 Here we are going to add starter [actuator](https://github.com/hidevopsio/hiboot/tree/master/pkg/starter/actuator) and [logging](https://github.com/hidevopsio/hiboot/tree/master/pkg/starter/logging).
 
 ```bash
-git reset --hard 346d1546a27ae5755e89f6e9251a9d3a4f1b7f5c
+git reset --hard fada94f6019e63433a0d67d894a6610d6f86e797
+```
+
+添加 actuator 和 logging 两个 starter
+
+```go
+package main
+
+import (
+	"github.com/hidevopsio/hiboot/pkg/app/web"
+	"github.com/hidevopsio/hiboot/pkg/app"
+	"github.com/hidevopsio/hiboot/pkg/starter/actuator"
+	"github.com/hidevopsio/hiboot/pkg/starter/logging"
+)
+
+func main()  {
+	web.NewApplication().
+		SetProperty(app.ProfilesInclude, actuator.Profile, logging.Profile).
+		Run()
+}
+```
+
+这时候，我们来运行这段代码
+
+```bash
+go run main.go
+```
+
+输出结果如下，这时你可以看到已经映射了RESTful接口 `/health`, 也就是说，添加actuator starter后，即提供了健康检测接口。
+
+```bash
+______  ____________             _____
+___  / / /__(_)__  /_______________  /_
+__  /_/ /__  /__  __ \  __ \  __ \  __/   
+_  __  / _  / _  /_/ / /_/ / /_/ / /_     Hiboot Application Framework
+/_/ /_/  /_/  /_.___/\____/\____/\__/     https://github.com/hidevopsio/hiboot
+
+[INFO] 2018/11/01 15:51 Starting Hiboot web application hiboot-app on localhost with PID 71924
+[INFO] 2018/11/01 15:51 Working directory: /Users/johnd/.gvm/pkgsets/go1.10/hidevops/src/github.com/hidevopsio/hiboot-web-app-demo
+[INFO] 2018/11/01 15:51 The following profiles are active: local, [actuator logging web]
+[INFO] 2018/11/01 15:51 Initializing Hiboot Application
+[INFO] 2018/11/01 15:51 Auto configure web starter
+[INFO] 2018/11/01 15:51 Auto configure actuator starter
+[INFO] 2018/11/01 15:51 Auto configure logging starter
+[INFO] 2018/11/01 15:51 Resolving dependencies
+[INFO] 2018/11/01 15:51 Injecting dependencies
+[INFO] 2018/11/01 15:51 Injected dependencies
+[INFO] 2018/11/01 15:51 Mapped "/health" onto actuator.healthController.Get()
+[INFO] 2018/11/01 15:51 Hiboot started on port(s) http://localhost:8080
+[INFO] 2018/11/01 15:51 Started hiboot-app in 0.004189 seconds
+```
+
+健康检测对于生产来说非常重要，接下来我们使用[httpie](https://httpie.org/)(当然你用curl、postman或浏览器都可以)来验证健康检测接口。
+
+```bash
+http http://localhost:8080/health
+```
+
+输出健康状态如下：
+
+```bash
+HTTP/1.1 200 OK
+Content-Length: 15
+Content-Type: application/json; charset=UTF-8
+Date: Thu, 01 Nov 2018 07:55:33 GMT
+
+{
+    "status": "UP"
+}
 ```
 
 ## - 第三步, 添加 Controller
 
+在这个步骤，我们来增加一个RestController，名字就叫 `Controller`，这个结构体内嵌了`at.RestController`, 它的类型是`interface`，`at.RestController`在Hiboot中为注解作用，表示这是一个RestController。
+
+你可以编写以下代码，也可以运行以下命令直接获取。
+
 ```bash
-git reset --hard 63cfe8eae52046b92dbf2d0bb7290ab0c45bb823
+git reset --hard de428bdd34ff86a0dc1ebc0b0f3861784250a2c9
 ```
 
 ### 编写代码
@@ -108,79 +195,57 @@ func main()  {
 
 ```
 
-This section will show you how to create and run a simple hiboot application. Let’s get started!
-
-### 获取代码
+### 运行代码：
 
 ```bash
-go get -u github.com/hidevopsio/hiboot
-
-cd $GOPATH/src/github.com/hidevopsio/hiboot/examples/web/helloworld/
-
-```
-
-### 示例
-
-Below is the simplest web application in Go.
-
-```go
-
-// Package helloworld provides the quick start web application example
-// main package
-package main
-
-// import web starter from hiboot
-import (
-	"github.com/hidevopsio/hiboot/pkg/app/web"
-	"github.com/hidevopsio/hiboot/pkg/at"
-)
-
-// Controller Rest Controller with path /
-// RESTful Controller, derived from web.Controller. The context mapping of this controller is '/' by default
-type Controller struct {
-	// at.RestController or web.Controller must be embedded here
-	at.RestController
-}
-
-// Get GET /
-// Get method, the context mapping of this method is '/' by default
-// the Method name Get means that the http request method is GET
-func (c *Controller) Get() string {
-	// response
-	return "hello"
-}
-
-// main function
-func main() {
-	// create new web application and run it
-	web.NewApplication(new(Controller)).Run()
-}
-
-```
-
-#### 运行应用
-
-```bash
-dep ensure
-
 go run main.go
 ```
 
-#### 测试接口
+你可以看到多了一个接口映射：`/` 到 `main.Controller.Get()`
 
-```bash
-curl http://localhost:8080/
+```go
+______  ____________             _____
+___  / / /__(_)__  /_______________  /_
+__  /_/ /__  /__  __ \  __ \  __ \  __/   
+_  __  / _  / _  /_/ / /_/ / /_/ / /_     Hiboot Application Framework
+/_/ /_/  /_/  /_.___/\____/\____/\__/     https://github.com/hidevopsio/hiboot
+
+[INFO] 2018/11/01 16:07 Starting Hiboot web application hiboot-app on localhost with PID 72490
+[INFO] 2018/11/01 16:07 Working directory: /Users/johnd/.gvm/pkgsets/go1.10/hidevops/src/github.com/hidevopsio/hiboot-web-app-demo
+[INFO] 2018/11/01 16:07 The following profiles are active: local, [actuator logging web]
+[INFO] 2018/11/01 16:07 Initializing Hiboot Application
+[INFO] 2018/11/01 16:07 Auto configure web starter
+[INFO] 2018/11/01 16:07 Auto configure actuator starter
+[INFO] 2018/11/01 16:07 Auto configure logging starter
+[INFO] 2018/11/01 16:07 Resolving dependencies
+[INFO] 2018/11/01 16:07 Injecting dependencies
+[INFO] 2018/11/01 16:07 Injected dependencies
+[INFO] 2018/11/01 16:07 Mapped "/health" onto actuator.healthController.Get()
+[INFO] 2018/11/01 16:07 Mapped "/" onto main.Controller.Get()
+[INFO] 2018/11/01 16:07 Hiboot started on port(s) http://localhost:8080
+[INFO] 2018/11/01 16:07 Started hiboot-app in 0.002689 seconds
+
 ```
 
-Output:
+### 验证接口
+
+现在我们来验证刚完成的第一个Hiboot网络应用接口：
 
 ```bash
-Hello, world
+http http://localhost:8080/
+```
+
+输出结果如下:
+
+```bash
+My first Hiboot web application
 ```
 
 ## 命令行应用快速入门
 
-Writing Hiboot cli application is as simple as web application, you can take the advantage of dependency injection introduced by Hiboot.
+编写命令行应用和网络应用一样简单，也可以使用Hiboot的依赖注入和自动配置功能。
+
+以下代码可以在[这里](https://github.com/hidevopsio/hiboot/tree/master/examples/cli/hello)找到.
 
 ```go
 
@@ -274,3 +339,5 @@ Greeting to Hiboot
 ```bash
 Hello, Hiboot
 ```
+
+到目前为止，我们有了一定基础来编写Hiboot的[网络应用](/cn/web-app/)和[命令行应用](/cn/cli-app/)。
