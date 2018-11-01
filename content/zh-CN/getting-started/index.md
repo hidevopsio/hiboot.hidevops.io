@@ -4,11 +4,17 @@ title: 入门
 weight: 10
 ---
 
+## 前提
+
+我们假设你以及安装了Go语言的开发环境。当然，如果你没安装，请转到这个链接，按教程安装。
+
 ## 网络应用快速入门
 
-This section will show you how to create and run a simple hiboot application in 3 steps. Let’s get started!
+我们将在本章节演示如何快速入门Hiboot网络应用，即通过简单三个步骤来创建一个最简单的Hiboot应用。闲话不多说，我们开始吧！
 
 ### 获取代码
+
+首先到github拉取演示代码，在命令行终端运行以下命令即可：
 
 ```bash
 go get -u https://github.com/hidevopsio/hiboot-web-app-demo

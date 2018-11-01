@@ -68,20 +68,20 @@ import (
 	"github.com/hidevopsio/hiboot/pkg/log"
 )
 
-// RootCommand is the root command
-type RootCommand struct {
+// HelloCommand is the root command
+type HelloCommand struct {
 	cli.RootCommand
 
 	profile string
 	timeout int
 }
 
-// NewRootCommand the root command
-func NewRootCommand(second *secondCommand) *RootCommand {
+// HelloCommand the root command
+func NewHelloCommand(second *secondCommand) *HelloCommand {
 	c := new(RootCommand)
-	c.Use = "first"
-	c.Short = "first command"
-	c.Long = "Run first command"
+	c.Use = "hello"
+	c.Short = "hello command"
+	c.Long = "Run hello command"
 	c.ValidArgs = []string{"baz"}
 	pf := c.PersistentFlags()
 	pf.StringVarP(&c.profile, "profile", "p", "dev", "e.g. --profile=test")
@@ -91,10 +91,11 @@ func NewRootCommand(second *secondCommand) *RootCommand {
 }
 
 // Run root command handler
-func (c *RootCommand) Run(args []string) error {
+func (c *HelloCommand) Run(args []string) error {
 	log.Infof("handle first command: profile=%v, timeout=%v", c.profile, c.timeout)
 	return nil
 }
+
 
 ```
 

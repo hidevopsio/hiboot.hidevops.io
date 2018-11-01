@@ -5,16 +5,16 @@ weight: 30
 tags: ["cli", "web", "application"]
 ---
 
-## 关于命令行应用
+## 关于
 
-Hiboot cli application is built based on top of [cobra](https://github.com/spf13/cobra) with Hiboot dependency injection and auto configuration.
+Hiboot命令行应用是在[cobra](https://github.com/spf13/cobra)的基础上构建的。得益于Hiboot提供的依赖注入和自动配置功能，开发者将会更高效的开发出命令行应用。
 
 ## 功能列表
 
-* Dependency Injection
-* Sub command handler
+* 使用依赖注入来注入子命令
+* 子命令处理方法
 
-## 命令行应用项目结构
+## 项目结构
 
 ```bash
 .
@@ -35,7 +35,7 @@ Hiboot cli application is built based on top of [cobra](https://github.com/spf13
 
 ```
 
-Just like web application, Hiboot cli application is designed to be simpler and easier.
+就如Hiboot网络应用，Hiboot命令行应用的宗旨是让开发更简单、更容易。
 
 ```go
 
@@ -59,6 +59,10 @@ func main() {
 
 ## 根命令
 
+每个命令行应用都会有唯一的根命令。通过在根命令的结构体内嵌`cli.RootCommand`来标识。
+
+命令的处理方法为`Run(args []string) error`
+
 ```go
 
 package cmd
@@ -68,20 +72,20 @@ import (
 	"github.com/hidevopsio/hiboot/pkg/log"
 )
 
-// RootCommand is the root command
-type RootCommand struct {
+// HelloCommand is the root command
+type HelloCommand struct {
 	cli.RootCommand
 
 	profile string
 	timeout int
 }
 
-// NewRootCommand the root command
-func NewRootCommand(second *secondCommand) *RootCommand {
+// HelloCommand the root command
+func NewHelloCommand(second *secondCommand) *HelloCommand {
 	c := new(RootCommand)
-	c.Use = "first"
-	c.Short = "first command"
-	c.Long = "Run first command"
+	c.Use = "hello"
+	c.Short = "hello command"
+	c.Long = "Run hello command"
 	c.ValidArgs = []string{"baz"}
 	pf := c.PersistentFlags()
 	pf.StringVarP(&c.profile, "profile", "p", "dev", "e.g. --profile=test")
@@ -91,7 +95,7 @@ func NewRootCommand(second *secondCommand) *RootCommand {
 }
 
 // Run root command handler
-func (c *RootCommand) Run(args []string) error {
+func (c *HelloCommand) Run(args []string) error {
 	log.Infof("handle first command: profile=%v, timeout=%v", c.profile, c.timeout)
 	return nil
 }
@@ -99,6 +103,10 @@ func (c *RootCommand) Run(args []string) error {
 ```
 
 ## 子命令
+
+所有的子命令在使用`app.Register()`注册后即可注入到任何上级命令。这里需要提醒的是注意依赖关系，不要循环依赖。
+
+子命令通过在子命令的结构体内嵌`cli.SubCommand`来标识。
 
 ```go
 
