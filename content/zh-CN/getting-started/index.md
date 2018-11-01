@@ -96,7 +96,7 @@ func (c *Controller) Get() string {
 
 func main()  {
 	web.NewApplication(new(Controller)).
-		SetProperty(app.PropertyAppProfilesInclude, actuator.Profile, logging.Profile).
+		SetProperty(app.ProfilesInclude, actuator.Profile, logging.Profile).
 		Run()
 }
 

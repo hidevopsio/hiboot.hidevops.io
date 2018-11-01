@@ -654,7 +654,7 @@ func TestCrdRequest(t *testing.T) {
 
 	mockUserService := new(mocks.UserService)
 	userController := newUserController(mockUserService)
-	testApp := web.NewTestApplication(t, userController)
+	testApp := web.RunTestApplication(t, userController)
 
 	id, err := idgen.Next()
 	assert.Equal(t, nil, err)

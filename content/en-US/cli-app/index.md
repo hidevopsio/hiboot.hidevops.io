@@ -51,7 +51,7 @@ import (
 func main() {
 	// create new cli application and run it
 	cli.NewApplication(cmd.NewRootCommand).
-		SetProperty(app.PropertyAppProfilesInclude, config.Profile).
+		SetProperty(app.ProfilesInclude, config.Profile).
 		Run()
 }
 

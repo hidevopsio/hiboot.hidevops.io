@@ -184,7 +184,7 @@ func main() {
 
 ```
 
->Alternatively, you can set property `app.PropertyAppProfilesInclude` in main function. In this approach, you don't have to import starter packages solely for their side effects.
+>Alternatively, you can set property `app.ProfilesInclude` in main function. In this approach, you don't have to import starter packages solely for their side effects.
 
 ```go
 
@@ -199,7 +199,7 @@ import (
 
 func main()  {
 	web.NewApplication().
-		SetProperty(app.PropertyAppProfilesInclude,
+		SetProperty(app.ProfilesInclude,
 			actuator.Profile,
 			logging.Profile).
 		Run()
@@ -641,7 +641,7 @@ func TestCrdRequest(t *testing.T) {
 
 	mockUserService := new(mocks.UserService)
 	userController := newUserController(mockUserService)
-	testApp := web.NewTestApplication(t, userController)
+	testApp := web.RunTestApplication(t, userController)
 
 	id, err := idgen.Next()
 	assert.Equal(t, nil, err)
