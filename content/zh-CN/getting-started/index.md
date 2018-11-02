@@ -17,7 +17,7 @@ weight: 10
 首先到github拉取演示代码，在命令行终端运行以下命令即可：
 
 ```bash
-go get -u https://hidevops.io/hiboot-web-app-demo
+go get -u hidevops.io/hiboot-web-app-demo
 
 cd $GOPATH/src/hidevops.io/hiboot-web-app-demo
 
