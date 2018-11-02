@@ -42,10 +42,10 @@ Just like web application, Hiboot cli application is designed to be simpler and 
 package main
 
 import (
-	"github.com/hidevopsio/hiboot/examples/cli/advanced/cmd"
-	"github.com/hidevopsio/hiboot/examples/cli/advanced/config"
-	"github.com/hidevopsio/hiboot/pkg/app"
-	"github.com/hidevopsio/hiboot/pkg/app/cli"
+	"hidevops.io/hiboot/examples/cli/advanced/cmd"
+	"hidevops.io/hiboot/examples/cli/advanced/config"
+	"hidevops.io/hiboot/pkg/app"
+	"hidevops.io/hiboot/pkg/app/cli"
 )
 
 func main() {
@@ -64,8 +64,8 @@ func main() {
 package cmd
 
 import (
-	"github.com/hidevopsio/hiboot/pkg/app/cli"
-	"github.com/hidevopsio/hiboot/pkg/log"
+	"hidevops.io/hiboot/pkg/app/cli"
+	"hidevops.io/hiboot/pkg/log"
 )
 
 // HelloCommand is the root command
@@ -107,9 +107,9 @@ func (c *HelloCommand) Run(args []string) error {
 package cmd
 
 import (
-	"github.com/hidevopsio/hiboot/pkg/app"
-	"github.com/hidevopsio/hiboot/pkg/app/cli"
-	"github.com/hidevopsio/hiboot/pkg/log"
+	"hidevops.io/hiboot/pkg/app"
+	"hidevops.io/hiboot/pkg/app/cli"
+	"hidevops.io/hiboot/pkg/log"
 )
 
 type secondCommand struct {

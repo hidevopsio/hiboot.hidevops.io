@@ -11,9 +11,9 @@ This section will show you how to create and run a simple hiboot web application
 ### Get the source code
 
 ```bash
-go get -u https://github.com/hidevopsio/hiboot-web-app-demo
+go get -u https://hidevops.io/hiboot-web-app-demo
 
-cd $GOPATH/src/github.com/hidevopsio/hiboot-web-app-demo
+cd $GOPATH/src/hidevops.io/hiboot-web-app-demo
 
 ```
 
@@ -51,7 +51,7 @@ git reset --hard 620631e17d567f96169c32e7cec7a7c9ed3139ce
 
 ## - Step 2, adding some starters
 
-Here we are going to add starter [actuator](https://github.com/hidevopsio/hiboot/tree/master/pkg/starter/actuator) and [logging](https://github.com/hidevopsio/hiboot/tree/master/pkg/starter/logging).
+Here we are going to add starter [actuator](https://hidevops.io/hiboot/pkg/starter/actuator) and [logging](https://hidevops.io/hiboot/pkg/starter/logging).
 
 ```bash
 git reset --hard 346d1546a27ae5755e89f6e9251a9d3a4f1b7f5c
@@ -70,11 +70,11 @@ git reset --hard 63cfe8eae52046b92dbf2d0bb7290ab0c45bb823
 package main
 
 import (
-	"github.com/hidevopsio/hiboot/pkg/app/web"
-	"github.com/hidevopsio/hiboot/pkg/app"
-	"github.com/hidevopsio/hiboot/pkg/starter/actuator"
-	"github.com/hidevopsio/hiboot/pkg/starter/logging"
-	"github.com/hidevopsio/hiboot/pkg/at"
+	"hidevops.io/hiboot/pkg/app/web"
+	"hidevops.io/hiboot/pkg/app"
+	"hidevops.io/hiboot/pkg/starter/actuator"
+	"hidevops.io/hiboot/pkg/starter/logging"
+	"hidevops.io/hiboot/pkg/at"
 )
 
 // Controller Rest Controller with path /
@@ -129,8 +129,8 @@ Writing Hiboot cli application is as simple as web application, you can take the
 // import cli starter and fmt
 import (
 	"fmt"
-	"github.com/hidevopsio/hiboot/pkg/app"
-	"github.com/hidevopsio/hiboot/pkg/app/cli"
+	"hidevops.io/hiboot/pkg/app"
+	"hidevops.io/hiboot/pkg/app/cli"
 )
 
 // define the command

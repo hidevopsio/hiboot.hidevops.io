@@ -56,14 +56,14 @@ usually advise people to use constructor injection as it has below advantages,
 package main
 
 import (
-	"github.com/hidevopsio/hiboot/pkg/app/web"
-	"github.com/hidevopsio/hiboot/pkg/model"
-	"github.com/hidevopsio/hiboot/pkg/starter/jwt"
+	"hidevops.io/hiboot/pkg/app/web"
+	"hidevops.io/hiboot/pkg/model"
+	"hidevops.io/hiboot/pkg/starter/jwt"
 	"time"
 )
 
 // This example shows that jwtToken is injected through the constructor,
-// once you imported "github.com/hidevopsio/hiboot/pkg/starter/jwt",
+// once you imported "hidevops.io/hiboot/pkg/starter/jwt",
 // jwtToken jwt.Token will be injectable.
 func main() {
 	// the web application entry
@@ -90,7 +90,7 @@ func init() {
 }
 
 // newLoginController inject jwtToken through the argument jwtToken jwt.Token on constructor
-// the dependency jwtToken is auto configured in jwt starter, see https://github.com/hidevopsio/hiboot/tree/master/pkg/starter/jwt
+// the dependency jwtToken is auto configured in jwt starter, see https://hidevops.io/hiboot/pkg/starter/jwt
 func newLoginController(token jwt.Token) *loginController {
 	return &loginController{
 		token: token,
@@ -149,7 +149,7 @@ package jwt
 
 import (
 	"github.com/dgrijalva/jwt-go"
-	"github.com/hidevopsio/hiboot/pkg/app"
+	"hidevops.io/hiboot/pkg/app"
 	mw "github.com/iris-contrib/middleware/jwt"
 )
 

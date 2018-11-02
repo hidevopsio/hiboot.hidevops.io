@@ -19,7 +19,7 @@ Hiboot点MVC架构采用约定俗成的原则，尽量隐藏和业务无关的�
 * 注册机制
 * 依赖注入
 
-在[入门](/cn/getting-started/)这个章节我们了解到了简单Hiboot网络应用，现在我们以[hiboot-data gorm 示例代码](https://github.com/hidevopsio/hiboot-data/tree/master/examples/gorm)为例，来详细讲解任何有效的基于Hiboot来编程。
+在[入门](/cn/getting-started/)这个章节我们了解到了简单Hiboot网络应用，现在我们以[hiboot-data gorm 示例代码](https://hidevops.io/hiboot-data//examples/gorm)为例，来详细讲解任何有效的基于Hiboot来编程。
 
 ## MVC项目结构详解
 
@@ -165,19 +165,19 @@ gorm:
 
 和任何Go语言应用一样，Hiboot的程序入口为main包，包含两部分：引人用到的依赖包以及一个main函数。
 
-1. 为了解耦包与包之间的依赖关系，hiboot规定，依赖项采用注册，依赖注入的方式来解耦，故在main包里想要匿名引入MVC控制器`github.com/hidevopsio/hiboot-data/examples/gorm/controller`, 如果使用到了其它第三方自动配置包（这里一般是指starter），而代码没有显式使用的，也要匿名引人，如：`github.com/hidevopsio/hiboot/pkg/starter/actuator`, `github.com/hidevopsio/hiboot/pkg/starter/locale`, `github.com/hidevopsio/hiboot/pkg/starter/logging`
+1. 为了解耦包与包之间的依赖关系，hiboot规定，依赖项采用注册，依赖注入的方式来解耦，故在main包里想要匿名引入MVC控制器`hidevops.io/hiboot-data/examples/gorm/controller`, 如果使用到了其它第三方自动配置包（这里一般是指starter），而代码没有显式使用的，也要匿名引人，如：`hidevops.io/hiboot/pkg/starter/actuator`, `hidevops.io/hiboot/pkg/starter/locale`, `hidevops.io/hiboot/pkg/starter/logging`
 
-2. main函数非常简单，只有一行代码 `web.NewApplication().Run()`, `web`包引自`github.com/hidevopsio/hiboot/pkg/app/web`
+2. main函数非常简单，只有一行代码 `web.NewApplication().Run()`, `web`包引自`hidevops.io/hiboot/pkg/app/web`
 
 ```go
 package main
 
 import (
-	_ "github.com/hidevopsio/hiboot-data/examples/gorm/controller"
-	"github.com/hidevopsio/hiboot/pkg/app/web"
-	_ "github.com/hidevopsio/hiboot/pkg/starter/actuator"
-	_ "github.com/hidevopsio/hiboot/pkg/starter/locale"
-	_ "github.com/hidevopsio/hiboot/pkg/starter/logging"
+	_ "hidevops.io/hiboot-data/examples/gorm/controller"
+	"hidevops.io/hiboot/pkg/app/web"
+	_ "hidevops.io/hiboot/pkg/starter/actuator"
+	_ "hidevops.io/hiboot/pkg/starter/locale"
+	_ "hidevops.io/hiboot/pkg/starter/logging"
 )
 
 func main() {
@@ -231,11 +231,11 @@ func TestRunMain(t *testing.T) {
 package controller
 
 import (
-	"github.com/hidevopsio/hiboot-data/examples/gorm/entity"
-	"github.com/hidevopsio/hiboot-data/examples/gorm/service"
-	"github.com/hidevopsio/hiboot/pkg/app"
-	"github.com/hidevopsio/hiboot/pkg/app/web"
-	"github.com/hidevopsio/hiboot/pkg/model"
+	"hidevops.io/hiboot-data/examples/gorm/entity"
+	"hidevops.io/hiboot-data/examples/gorm/service"
+	"hidevops.io/hiboot/pkg/app"
+	"hidevops.io/hiboot/pkg/app/web"
+	"hidevops.io/hiboot/pkg/model"
 	"net/http"
 )
 
@@ -335,10 +335,10 @@ package service
 
 import (
 	"errors"
-	"github.com/hidevopsio/hiboot-data/examples/gorm/entity"
-	"github.com/hidevopsio/hiboot-data/starter/gorm"
-	"github.com/hidevopsio/hiboot/pkg/app"
-	"github.com/hidevopsio/hiboot/pkg/utils/idgen"
+	"hidevops.io/hiboot-data/examples/gorm/entity"
+	"hidevops.io/hiboot-data/starter/gorm"
+	"hidevops.io/hiboot/pkg/app"
+	"hidevops.io/hiboot/pkg/utils/idgen"
 )
 
 type UserService interface {
@@ -359,7 +359,7 @@ func init() {
 	app.Register(newUserService)
 }
 
-// will inject BoltRepository that configured in github.com/hidevopsio/hiboot/pkg/starter/data/bolt
+// will inject BoltRepository that configured in hidevops.io/hiboot/pkg/starter/data/bolt
 func newUserService(repository gorm.Repository) UserService {
 	repository.AutoMigrate(&entity.User{})
 	return &userServiceImpl{
@@ -413,21 +413,21 @@ ______  ____________             _____
 ___  / / /__(_)__  /_______________  /_
 __  /_/ /__  /__  __ \  __ \  __ \  __/
 _  __  / _  / _  /_/ / /_/ / /_/ / /_     Hiboot Application Framework
-/_/ /_/  /_/  /_.___/\____/\____/\__/     https://github.com/hidevopsio/hiboot
+/_/ /_/  /_/  /_.___/\____/\____/\__/     https://hidevops.io/hiboot
 
 [INFO] 2018/10/23 23:37 Starting Hiboot web application gorm-demo on localhost with PID 28423
-[INFO] 2018/10/23 23:37 Working directory: /Users/johnd/.gvm/pkgsets/go1.10/hidevops/src/github.com/hidevopsio/hiboot-data/examples/gorm
+[INFO] 2018/10/23 23:37 Working directory: /Users/johnd/.gvm/pkgsets/go1.10/hidevops/src/hidevops.io/hiboot-data/examples/gorm
 [INFO] 2018/10/23 23:37 The following profiles are active: local, [actuator locale logging gorm]
 [INFO] 2018/10/23 23:37 Auto configure gorm starter
 [INFO] 2018/10/23 23:37 Auto configure locale starter
 [INFO] 2018/10/23 23:37 Auto configure logging starter
 [INFO] 2018/10/23 23:37 The dependency graph resolved successfully
 [INFO] 2018/10/23 23:37 connected to dataSource demo@mysql-local:3306/gorm_demo
-[DBUG] 2018/10/23 23:36 GET: /health -> github.com/hidevops	io/hiboot-data/vendor/github.com/hidevopsio/hiboot/pkg/starter/actuator/controller/healthController.Get() and 2 more
-[DBUG] 2018/10/23 23:36 DELETE: /user/id/{id} -> github.com/hidevopsio/hiboot-data/examples/gorm/controller/userController.DeleteById() and 2 more
-[DBUG] 2018/10/23 23:36 GET: /user/id/{id} -> github.com/hidevopsio/hiboot-data/examples/gorm/controller/userController.GetById() and 2 more
-[DBUG] 2018/10/23 23:36 GET: /user/all -> github.com/hidevopsio/hiboot-data/examples/gorm/controller/userController.GetAll() and 2 more
-[DBUG] 2018/10/23 23:36 POST: /user -> github.com/hidevopsio/hiboot-data/examples/gorm/controller/userController.Post() and 2 more
+[DBUG] 2018/10/23 23:36 GET: /health -> github.com/hidevops	io/hiboot-data/vendor/hidevops.io/hiboot/pkg/starter/actuator/controller/healthController.Get() and 2 more
+[DBUG] 2018/10/23 23:36 DELETE: /user/id/{id} -> hidevops.io/hiboot-data/examples/gorm/controller/userController.DeleteById() and 2 more
+[DBUG] 2018/10/23 23:36 GET: /user/id/{id} -> hidevops.io/hiboot-data/examples/gorm/controller/userController.GetById() and 2 more
+[DBUG] 2018/10/23 23:36 GET: /user/all -> hidevops.io/hiboot-data/examples/gorm/controller/userController.GetAll() and 2 more
+[DBUG] 2018/10/23 23:36 POST: /user -> hidevops.io/hiboot-data/examples/gorm/controller/userController.Post() and 2 more
 
 Now listening on: http://localhost:8080
 Application started. Press CMD+C to shut down.
@@ -526,14 +526,14 @@ go get github.com/vektra/mockery/.../
 
 ```bash
 # go to the directory where the UserService is.
-cd $GOPATH/src/github.com/hidevopsio/hiboot-data/examples/gorm/service
+cd $GOPATH/src/hidevops.io/hiboot-data/examples/gorm/service
 
 # generate mocks for the interface UserService
 mockery -name UserService
 
 ```
 
-接下来，你将会在项目下面`（$GOPATH/src/github.com/hidevopsio/hiboot-data/examples/gorm/service.)`看到生成好的模拟测试代码。
+接下来，你将会在项目下面`（$GOPATH/src/hidevops.io/hiboot-data/examples/gorm/service.)`看到生成好的模拟测试代码。
 
 ```go
 
@@ -541,7 +541,7 @@ mockery -name UserService
 
 package mocks
 
-import entity "github.com/hidevopsio/hiboot-data/examples/gorm/entity"
+import entity "hidevops.io/hiboot-data/examples/gorm/entity"
 import mock "github.com/stretchr/testify/mock"
 
 // UserService is an autogenerated mock type for the UserService type
@@ -635,14 +635,14 @@ func (_m *UserService) GetUser(id uint64) (*entity.User, error) {
 package controller
 
 import (
-	"github.com/hidevopsio/hiboot-data/examples/gorm/entity"
-	"github.com/hidevopsio/hiboot/pkg/app/web"
-	"github.com/hidevopsio/hiboot/pkg/log"
-	"github.com/hidevopsio/hiboot/pkg/utils/idgen"
+	"hidevops.io/hiboot-data/examples/gorm/entity"
+	"hidevops.io/hiboot/pkg/app/web"
+	"hidevops.io/hiboot/pkg/log"
+	"hidevops.io/hiboot/pkg/utils/idgen"
 	"github.com/stretchr/testify/assert"
 	"net/http"
 	"testing"
-	"github.com/hidevopsio/hiboot-data/examples/gorm/service/mocks"
+	"hidevops.io/hiboot-data/examples/gorm/service/mocks"
 	"errors"
 )
 

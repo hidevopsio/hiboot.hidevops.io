@@ -17,9 +17,9 @@ weight: 10
 首先到github拉取演示代码，在命令行终端运行以下命令即可：
 
 ```bash
-go get -u https://github.com/hidevopsio/hiboot-web-app-demo
+go get -u https://hidevops.io/hiboot-web-app-demo
 
-cd $GOPATH/src/github.com/hidevopsio/hiboot-web-app-demo
+cd $GOPATH/src/hidevops.io/hiboot-web-app-demo
 
 ```
 
@@ -62,7 +62,7 @@ git reset --hard 620631e17d567f96169c32e7cec7a7c9ed3139ce
 package main
 
 import (
-	"github.com/hidevopsio/hiboot/pkg/app/web"
+	"hidevops.io/hiboot/pkg/app/web"
 )
 
 func main()  {
@@ -72,7 +72,7 @@ func main()  {
 
 ## - 第二步, 添加 Starter
 
-Here we are going to add starter [actuator](https://github.com/hidevopsio/hiboot/tree/master/pkg/starter/actuator) and [logging](https://github.com/hidevopsio/hiboot/tree/master/pkg/starter/logging).
+Here we are going to add starter [actuator](https://hidevops.io/hiboot/pkg/starter/actuator) and [logging](https://hidevops.io/hiboot/pkg/starter/logging).
 
 ```bash
 git reset --hard fada94f6019e63433a0d67d894a6610d6f86e797
@@ -84,10 +84,10 @@ git reset --hard fada94f6019e63433a0d67d894a6610d6f86e797
 package main
 
 import (
-	"github.com/hidevopsio/hiboot/pkg/app/web"
-	"github.com/hidevopsio/hiboot/pkg/app"
-	"github.com/hidevopsio/hiboot/pkg/starter/actuator"
-	"github.com/hidevopsio/hiboot/pkg/starter/logging"
+	"hidevops.io/hiboot/pkg/app/web"
+	"hidevops.io/hiboot/pkg/app"
+	"hidevops.io/hiboot/pkg/starter/actuator"
+	"hidevops.io/hiboot/pkg/starter/logging"
 )
 
 func main()  {
@@ -110,10 +110,10 @@ ______  ____________             _____
 ___  / / /__(_)__  /_______________  /_
 __  /_/ /__  /__  __ \  __ \  __ \  __/   
 _  __  / _  / _  /_/ / /_/ / /_/ / /_     Hiboot Application Framework
-/_/ /_/  /_/  /_.___/\____/\____/\__/     https://github.com/hidevopsio/hiboot
+/_/ /_/  /_/  /_.___/\____/\____/\__/     https://hidevops.io/hiboot
 
 [INFO] 2018/11/01 15:51 Starting Hiboot web application hiboot-app on localhost with PID 71924
-[INFO] 2018/11/01 15:51 Working directory: /Users/johnd/.gvm/pkgsets/go1.10/hidevops/src/github.com/hidevopsio/hiboot-web-app-demo
+[INFO] 2018/11/01 15:51 Working directory: /Users/johnd/.gvm/pkgsets/go1.10/hidevops/src/hidevops.io/hiboot-web-app-demo
 [INFO] 2018/11/01 15:51 The following profiles are active: local, [actuator logging web]
 [INFO] 2018/11/01 15:51 Initializing Hiboot Application
 [INFO] 2018/11/01 15:51 Auto configure web starter
@@ -165,11 +165,11 @@ git reset --hard de428bdd34ff86a0dc1ebc0b0f3861784250a2c9
 package main
 
 import (
-	"github.com/hidevopsio/hiboot/pkg/app/web"
-	"github.com/hidevopsio/hiboot/pkg/app"
-	"github.com/hidevopsio/hiboot/pkg/starter/actuator"
-	"github.com/hidevopsio/hiboot/pkg/starter/logging"
-	"github.com/hidevopsio/hiboot/pkg/at"
+	"hidevops.io/hiboot/pkg/app/web"
+	"hidevops.io/hiboot/pkg/app"
+	"hidevops.io/hiboot/pkg/starter/actuator"
+	"hidevops.io/hiboot/pkg/starter/logging"
+	"hidevops.io/hiboot/pkg/at"
 )
 
 // Controller Rest Controller with path /
@@ -208,10 +208,10 @@ ______  ____________             _____
 ___  / / /__(_)__  /_______________  /_
 __  /_/ /__  /__  __ \  __ \  __ \  __/   
 _  __  / _  / _  /_/ / /_/ / /_/ / /_     Hiboot Application Framework
-/_/ /_/  /_/  /_.___/\____/\____/\__/     https://github.com/hidevopsio/hiboot
+/_/ /_/  /_/  /_.___/\____/\____/\__/     https://hidevops.io/hiboot
 
 [INFO] 2018/11/01 16:07 Starting Hiboot web application hiboot-app on localhost with PID 72490
-[INFO] 2018/11/01 16:07 Working directory: /Users/johnd/.gvm/pkgsets/go1.10/hidevops/src/github.com/hidevopsio/hiboot-web-app-demo
+[INFO] 2018/11/01 16:07 Working directory: /Users/johnd/.gvm/pkgsets/go1.10/hidevops/src/hidevops.io/hiboot-web-app-demo
 [INFO] 2018/11/01 16:07 The following profiles are active: local, [actuator logging web]
 [INFO] 2018/11/01 16:07 Initializing Hiboot Application
 [INFO] 2018/11/01 16:07 Auto configure web starter
@@ -245,15 +245,15 @@ My first Hiboot web application
 
 编写命令行应用和网络应用一样简单，也可以使用Hiboot的依赖注入和自动配置功能。
 
-以下代码可以在[这里](https://github.com/hidevopsio/hiboot/tree/master/examples/cli/hello)找到.
+以下代码可以在[这里](https://hidevops.io/hiboot/examples/cli/hello)找到.
 
 ```go
 
 // import cli starter and fmt
 import (
 	"fmt"
-	"github.com/hidevopsio/hiboot/pkg/app"
-	"github.com/hidevopsio/hiboot/pkg/app/cli"
+	"hidevops.io/hiboot/pkg/app"
+	"hidevops.io/hiboot/pkg/app/cli"
 )
 
 // define the command

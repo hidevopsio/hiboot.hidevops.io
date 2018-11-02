@@ -12,7 +12,7 @@ weight: 1
 
 Hiboot 是一款用Go语言实现的高性能网络及命令行应用框架。Hiboot提供了Web MVC框架，支持控制反转（依赖注入），拦截器，依赖包自动配置（类似Spring Boot的Starter）。
 
-Hiboot并不打算重复造轮子，故使用了自动配置的机制，很轻松的集成任何第三方依赖包，并使得其更方便使用，例如数据库连接，不需要在业务代码中配置及创建数据库连接，你只要依赖[hiboot-data/starter/gorm](https://github.com/hidevopsio/hiboot-data/tree/master/starter/gorm)即可注入数据库连接实例，直接实现数据库查询。
+Hiboot并不打算重复造轮子，故使用了自动配置的机制，很轻松的集成任何第三方依赖包，并使得其更方便使用，例如数据库连接，不需要在业务代码中配置及创建数据库连接，你只要依赖[hiboot-data/starter/gorm](https://hidevops.io/hiboot-data)即可注入数据库连接实例，直接实现数据库查询。
 
 ## 总览
 
