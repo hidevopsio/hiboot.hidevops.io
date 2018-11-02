@@ -26,21 +26,21 @@ cd $GOPATH/src/hidevops.io/hiboot-web-app-demo
 You can checkout each commit to see the exact stop,
 
 ```bash
-commit 63cfe8eae52046b92dbf2d0bb7290ab0c45bb823
+commit 2be5df8e0101b685579f1dd452059d967017148f
 Author: John Deng <john.deng@qq.com>
-Date:   Fri Oct 26 19:47:46 2018 +0800
+Date:   Sat Nov 3 07:48:46 2018 +0800
 
     Step 3, adding Hiboot controller
 
-commit 346d1546a27ae5755e89f6e9251a9d3a4f1b7f5c
+commit 063c72282edff85db20d4046f5801d7f5fcf4dbb
 Author: John Deng <john.deng@qq.com>
-Date:   Fri Oct 26 18:53:13 2018 +0800
+Date:   Sat Nov 3 07:45:15 2018 +0800
 
     Step 2, adding some starters
 
-commit 620631e17d567f96169c32e7cec7a7c9ed3139ce
+commit d9213107f6692bc22c3d79cd445567730b962477
 Author: John Deng <john.deng@qq.com>
-Date:   Fri Oct 26 18:36:24 2018 +0800
+Date:   Sat Nov 3 07:38:59 2018 +0800
 
     step 1: Writing the first Hiboot web application
 ```
@@ -52,7 +52,7 @@ Date:   Fri Oct 26 18:36:24 2018 +0800
 如果你对Go语言还不熟悉，建议阅读[Effective GO](https://golang.org/doc/effective_go.html#names)或中文版[实效Go编程](https://go-zh.org/doc/effective_go.html)
 
 ```bash
-git reset --hard 620631e17d567f96169c32e7cec7a7c9ed3139ce
+git reset --hard d9213107f6692bc22c3d79cd445567730b962477
 ```
 
 代码展示如下，这个代码已经可以执行的了，只是没有任何业务逻辑。
@@ -75,7 +75,7 @@ func main()  {
 Here we are going to add starter [actuator](https://hidevops.io/hiboot/pkg/starter/actuator) and [logging](https://hidevops.io/hiboot/pkg/starter/logging).
 
 ```bash
-git reset --hard fada94f6019e63433a0d67d894a6610d6f86e797
+git reset --hard 063c72282edff85db20d4046f5801d7f5fcf4dbb
 ```
 
 添加 actuator 和 logging 两个 starter
@@ -153,7 +153,7 @@ Date: Thu, 01 Nov 2018 07:55:33 GMT
 你可以编写以下代码，也可以运行以下命令直接获取。
 
 ```bash
-git reset --hard de428bdd34ff86a0dc1ebc0b0f3861784250a2c9
+git reset --hard 2be5df8e0101b685579f1dd452059d967017148f
 ```
 
 ### 编写代码
