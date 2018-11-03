@@ -11,11 +11,13 @@ This section will show you how to create and run a simple hiboot web application
 ### Get the source code
 
 ```bash
+
 go get -u hidevops.io/hiboot-web-app-demo
 
 cd $GOPATH/src/hidevops.io/hiboot-web-app-demo
 
-```
+git log
+
 commit 2be5df8e0101b685579f1dd452059d967017148f
 Author: John Deng <john.deng@qq.com>
 Date:   Sat Nov 3 07:48:46 2018 +0800

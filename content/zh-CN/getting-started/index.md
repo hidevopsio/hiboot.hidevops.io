@@ -23,7 +23,13 @@ cd $GOPATH/src/hidevops.io/hiboot-web-app-demo
 
 ```
 
-You can checkout each commit to see the exact stop,
+查看历史记录
+
+```bash
+git log
+```
+
+结果如下：
 
 ```bash
 commit 2be5df8e0101b685579f1dd452059d967017148f
@@ -43,6 +49,7 @@ Author: John Deng <john.deng@qq.com>
 Date:   Sat Nov 3 07:38:59 2018 +0800
 
     step 1: Writing the first Hiboot web application
+
 ```
 
 ## - 第一步, 快速开始Hiboot应用
