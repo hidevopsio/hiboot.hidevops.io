@@ -19,7 +19,7 @@ Hiboot点MVC架构采用约定俗成的原则，尽量隐藏和业务无关的�
 * 注册机制
 * 依赖注入
 
-在[入门](/cn/getting-started/)这个章节我们了解到了简单Hiboot网络应用，现在我们以[hiboot-data gorm 示例代码](https://hidevops.io/hiboot-data//examples/gorm)为例，来详细讲解任何有效的基于Hiboot来编程。
+在[入门](/cn/getting-started/)这个章节我们了解到了简单Hiboot网络应用，现在我们以[hiboot-data gorm 示例代码](https://hidevops.io/hiboot-data//examples/gorm)为例，来详细讲解任何有效的基于Hiboot来编程。
 
 ## MVC项目结构详解
 
@@ -163,9 +163,9 @@ gorm:
 
 ### main.go
 
-和任何Go语言应用一样，Hiboot的程序入口为main包，包含两部分：引入用到的依赖包以及一个main函数。
+和任何Go语言应用一样，Hiboot的程序入口为main包，包含两部分：引入用到的依赖包以及一个main函数。
 
-1. 为了解耦包与包之间的依赖关系，hiboot规定，依赖项采用注册，依赖注入的方式来解耦，故在main包里想要匿名引入MVC控制器`hidevops.io/hiboot-data/examples/gorm/controller`, 如果使用到了其它第三方自动配置包（这里一般是指starter），而代码没有显式使用的，也要匿名引人，如：`hidevops.io/hiboot/pkg/starter/actuator`, `hidevops.io/hiboot/pkg/starter/locale`, `hidevops.io/hiboot/pkg/starter/logging`
+1. 为了解耦包与包之间的依赖关系，hiboot规定，依赖项采用注册，依赖注入的方式来解耦，故在main包里想要匿名引入MVC控制器`hidevops.io/hiboot-data/examples/gorm/controller`, 如果使用到了其它第三方自动配置包（这里一般是指starter），而代码没有显式使用的，也要匿名引人，如：`hidevops.io/hiboot/pkg/starter/actuator`, `hidevops.io/hiboot/pkg/starter/locale`, `hidevops.io/hiboot/pkg/starter/logging`
 
 2. main函数非常简单，只有一行代码 `web.NewApplication().Run()`, `web`包引自`hidevops.io/hiboot/pkg/app/web`
 
@@ -187,7 +187,7 @@ func main() {
 
 ### mian_test.go
 
-main函数单元测试，`TestRunMain`第一行代码是 `go main()`, 我们起一个go routine来无阻塞的测试main函数，后面代码`time.Sleep(200 * time.Millisecond)`做个简单延时，可以用于main函数代码覆盖测试。
+main函数单元测试，`TestRunMain`第一行代码是 `go main()`, 我们起一个go routine来无阻塞的测试main函数，后面代码`time.Sleep(200 * time.Millisecond)`做个简单延时，可以用于main函数代码覆盖测试。
 
 ```go
 package main
@@ -209,11 +209,11 @@ func TestRunMain(t *testing.T) {
 
 控制器 `userController` 内嵌 `web.Controller`, 指明这是个RESTful控制器。
 
-`newUserController`为`userController`的构造函数，实现依赖注入，在应用启动过程中， `userService service.UserService` 将被自动注入到 `newUserController`。
+`newUserController`为`userController`的构造函数，实现依赖注入，在应用启动过程中， `userService service.UserService` 将被自动注入到 `newUserController`。
 
-控制器是RESTful接口的入口，不同于其它Go语言网络应用框架，Hiboot控制器设计思路是尽可能的简单易用，省去路由配置代码，约定方法名即路由配置。如下userController的Post方法。
+控制器是RESTful接口的入口，不同于其它Go语言网络应用框架，Hiboot控制器设计思路是尽可能的简单易用，省去路由配置代码，约定方法名即路由配置。如下userController的Post方法。
 
-现针对各个方法作详细说明
+现针对各个方法作详细说明
 
 |方法|描述|合法值|示例|
 |---|---|---|---|
@@ -319,7 +319,7 @@ func (u *User) TableName() string {
 
 ### Model -  service/user.go
 
-service包实现业务逻辑。
+service包实现业务逻辑。
 
 我们定义了一个接口`UserService`，包含`AddUser`, `GetUser`, `GetAll` 和 `DeleteUser`方法。
 
@@ -486,7 +486,7 @@ Set-Cookie: app.language=zh-CN; Path=/; Expires=Tue, 23 Oct 2018 17:38:41 GMT; M
 
 我说过，Hiboot从一开始就考虑到必须能用于生产环境，我们非常在意代码质量。你可以看我们集成了CI流程，代码必须通过严格的测试之后才会合并到主分支。这是Hiboot实时的代码测试覆盖率 [![codecov](https://codecov.io/gh/hidevopsio/hiboot/branch/master/graph/badge.svg)](https://codecov.io/gh/hidevopsio/hiboot).  那么，我们是怎样来做单元测试的呢?
 
-首先，让我们来看main.go下面最简单的单元测试，
+首先，让我们来看main.go下面最简单的单元测试，
 
 ### mian_test.go
 
@@ -512,9 +512,9 @@ func TestRunMain(t *testing.T) {
 
 我们想测试 `userController`, 但是`userController` 依赖了 `userSerivce`，而`userSerivce` 又会连接真正的数据库，可是我们要做自动化测试，我们要做持续集成怎么办？当然我们可以使用模拟测试法。
 
-我们使用模拟测试代码生成工具[Mockery](https://github.com/vektra/mockery) 来生成部分测试代码，以减轻我们写代码的负担。
+我们使用模拟测试代码生成工具[Mockery](https://github.com/vektra/mockery) 来生成部分测试代码，以减轻我们写代码的负担。
 
-首先，我们来安装[Mockery](https://github.com/vektra/mockery)
+首先，我们来安装[Mockery](https://github.com/vektra/mockery)
 
 ```bash
 
