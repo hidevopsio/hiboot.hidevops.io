@@ -17,7 +17,7 @@ Go语言的一个结构体A依赖于另外一个结构体B，如果A用到了B�
 ```go
 
 type userController struct {
-	web.Controller
+	at.RestController
 	userService service.UserService
 }
 
@@ -123,7 +123,7 @@ func main() {
 
 // PATH: /login
 type loginController struct {
-	web.Controller
+	at.RestController
 
 	token jwt.Token
 }
@@ -189,7 +189,7 @@ func main() {
 
 // PATH: /login
 type loginController struct {
-	web.Controller
+	at.RestController
 
     // Inject Token by tag `inject:""`
 	Token jwt.Token `inject:""`

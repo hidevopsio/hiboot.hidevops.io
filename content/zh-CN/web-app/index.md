@@ -207,7 +207,7 @@ func TestRunMain(t *testing.T) {
 
 接下来我们来看看如何正确编写Hiboot的控制器，
 
-控制器 `userController` 内嵌 `web.Controller`, 指明这是个RESTful控制器。
+控制器 `userController` 内嵌 `at.RestController`, 指明这是个RESTful控制器。
 
 `newUserController`为`userController`的构造函数，实现依赖注入，在应用启动过程中， `userService service.UserService` 将被自动注入到 `newUserController`。
 
@@ -241,7 +241,7 @@ import (
 
 // RestController
 type userController struct {
-	web.Controller
+	at.RestController
 	userService service.UserService
 }
 

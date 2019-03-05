@@ -72,7 +72,7 @@ func main() {
 
 // PATH: /login
 type loginController struct {
-	web.Controller
+	at.RestController
 
 	token jwt.Token
 }
@@ -123,7 +123,7 @@ injected. This can be done by naming the field to specific implementation.
 
 ```go
 type userController struct {
-	web.Controller
+	at.RestController
 
 	BasicAuthenticationService AuthenticationService	`inject:""`
 	Oauth2AuthenticationService AuthenticationService	`inject:""`

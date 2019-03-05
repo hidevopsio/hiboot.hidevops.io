@@ -209,7 +209,7 @@ func main()  {
 
 ### Controller - controller/user.go
 
-Now lets see how does the Hiboot controller works, the controller `userController` is embedded a struct `web.Controller`, it tells Hiboot that this is a web controller。
+Now lets see how does the Hiboot controller works, the controller `userController` is embedded a struct `at.RestController`, it tells Hiboot that this is a web controller。
 
 `newUserController` is the constructor of struct `userController`, the dependency `userService service.UserService` is injecting through the argument of the constructor  during the initialization of `newUserController`。
 
@@ -241,7 +241,7 @@ import (
 
 // RestController
 type userController struct {
-	web.Controller
+	at.RestController
 	userService service.UserService
 }
 
