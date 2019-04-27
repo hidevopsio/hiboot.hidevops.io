@@ -29,6 +29,7 @@ Hiboot并不打算重复造轮子，故使用了自动配置的机制，很轻�
     * actuator - 健康检测
     * locale - 国际化
     * logging - 日志
+    * jaeger - 分布式链路追踪
     * jwt - JWT 令牌
     * grpc - 服务间通讯gRPC
     * websocket - websocket 服务端与客户端实时通信

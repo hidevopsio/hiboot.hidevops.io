@@ -31,6 +31,7 @@ Hiboot is not trying to reinvent everything, it integrates the popular libraries
     * actuator - health check
     * locale - locale starter
     * logging - customized logging settings
+    * jaeger - open tracing starter jaeger
     * jwt - jwt starter
     * grpc - grpc application starter
     * websocket - websocket two-way interactive communication
