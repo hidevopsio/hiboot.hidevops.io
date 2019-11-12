@@ -33,6 +33,8 @@ Hiboot并不打算重复造轮子，故使用了自动配置的机制，很轻�
     * jwt - JWT 令牌
     * grpc - 服务间通讯gRPC
     * websocket - websocket 服务端与客户端实时通信
+* **注解**
+    * at - at包包含了Hiboot的所有注解
 * Tags - 标签
     * inject - 注入依赖
     * default - 注入默认值

@@ -1,4 +1,4 @@
-{{ partial "head" . }} {{ if (eq (trim .Site.Params.provider " " | lower) "github") | and (isset .Site.Params "repo_url") }} {{ $repo_id := replace .Site.Params.repo_url "https://github.com/" ""}} {{ .Scratch.Set "repo_id" $repo_id }} {{ end }}
+{{ partial "head" . }}
 
 <div class="backdrop">
     <div class="backdrop-paper"></div>
@@ -19,20 +19,20 @@
 
     <article class="article">
         <div class="wrapper">
-            <h1>{{ .Title }} {{ if .IsDraft }} (Draft){{ end }}</h1>
-            <aside >
-                {{ with .Params.author }} 作者: {{ . }} {{ end }}
-            </aside>
+            <h1>Pages in {{ .Title | singularize }}</h1>
 
-            {{ .Content }}
+            {{ range .Data.Pages }}
+            <a href="{{ .Permalink }}" title="{{ .Title }}">
+                <h2>{{ .Title }}</h2>
+            </a>
+
+            <br> {{ printf "%s" .Summary | markdownify }}
+
+            <hr> {{ end }}
 
             <aside class="copyright" role="note">
                 {{ with .Site.Params.copyright }} &copy; {{ now.Format "2006" }} {{ . }} &ndash; {{ end }} - By John Deng.
             </aside>
-
-            <footer class="footer">
-                {{ partial "footer" . }}
-            </footer>
         </div>
     </article>
 

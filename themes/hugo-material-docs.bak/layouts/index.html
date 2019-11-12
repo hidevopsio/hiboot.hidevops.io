@@ -19,15 +19,13 @@
 
     <article class="article">
         <div class="wrapper">
+            {{ range where .Site.Pages "Type" "index" }}
             <h1>{{ .Title }} {{ if .IsDraft }} (Draft){{ end }}</h1>
-            <aside >
-                {{ with .Params.author }} 作者: {{ . }} {{ end }}
-            </aside>
 
-            {{ .Content }}
+            {{ .Content }} {{ end }}
 
             <aside class="copyright" role="note">
-                {{ with .Site.Params.copyright }} &copy; {{ now.Format "2006" }} {{ . }} &ndash; {{ end }} - By John Deng.
+                {{ with .Site.Params.copyright }} &copy; {{ now.Format "2006" }} {{ . }} &ndash; {{ end }} By John Deng.
             </aside>
 
             <footer class="footer">

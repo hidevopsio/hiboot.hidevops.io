@@ -36,6 +36,9 @@ Hiboot is not trying to reinvent everything, it integrates the popular libraries
     * grpc - grpc application starter
     * websocket - websocket two-way interactive communication
 
+* **Annotations**
+    * at - package at contains all annotations for Hiboot
+
 * **Tags**
     * inject - inject generic instance into object
     * default - inject default value into struct object 
