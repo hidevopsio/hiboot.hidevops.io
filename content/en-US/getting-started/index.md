@@ -2,6 +2,7 @@
 date: 2018-10-10T00:11:02+01:00
 title: Getting started
 weight: 10
+menu: "main"
 ---
 
 ## Quick start web application
