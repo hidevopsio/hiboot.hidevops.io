@@ -1,8 +1,17 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-11-15 15:56:00
+ * @LastEditTime: 2019-11-15 17:41:12
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /hiboot.hidevops.io/content/en-US/auto-configure/index.md
+ -->
 ---
 title: "Auto Configuration"
 date: 2018-10-22T16:22:23+08:00
 weight: 40
 tags: ["auto-configuration", "starter", "go"]
+menu: "main"
 ---
 
 ## Auto-configured Starter
