@@ -71,13 +71,13 @@ pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # "friendly"
 	github  = "hidevopsio"
 	email   = "hi.devops.io@gmail.com"
 
-# [languages.en]
-# 	languageName = "English"
-#     title = "Hiboot Cloud Native Application Framework"
-#     weight = 0
-# 	contentDir = "content/en-US"
-#   	url = "../en"
-# 	languageCode = "en"  
+[languages.en]
+	languageName = "English"
+    title = "Hiboot Cloud Native Application Framework"
+    weight = 0
+	contentDir = "content/en-US"
+  	url = "../en"
+	languageCode = "en"  
 
 [[languages.en.menu.main]]
 	name   = "Hiboot Cloud Native Application Framework"
@@ -109,18 +109,18 @@ pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # "friendly"
 # 	url    = "auto-configure/"
 # 	weight = 50
 
-# [languages.cn]
-# 	languageName = "中文"
-# 	title = "Hiboot云原生应用框架"
-# 	weight = 1
-# 	contentDir = "content/zh-CN"
-#   	url = "../cn"
-# 	languageCode = "cn"
+[languages.cn]
+	languageName = "中文"
+	title = "Hiboot云原生应用框架"
+	weight = 1
+	contentDir = "content/zh-CN"
+  	url = "../cn"
+	languageCode = "cn"
 
-# [[languages.cn.menu.main]]
-# 	name   = "介绍"
-# 	url    = "/cn/"
-# 	weight = 1
+[[languages.cn.menu.main]]
+	name   = "介绍"
+	url    = "/cn/"
+	weight = 1
 
 # [[languages.cn.menu.main]]
 # 	name   = "入门"
@@ -146,6 +146,12 @@ pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # "friendly"
 # 	name   = "自动配置"
 # 	url    = "cn/auto-configure/"
 # 	weight = 50
+
+
+[taxonomies]
+  tag = "tags"
+  series = "series"
+  category = "categories"
 
 [blackfriday]
 	smartypants	= true

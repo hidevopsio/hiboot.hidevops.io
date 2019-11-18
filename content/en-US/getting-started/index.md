@@ -2,7 +2,11 @@
 date: 2018-10-10T00:11:02+01:00
 title: Getting started
 weight: 10
-menu: "main"
+menu:
+  docs:
+    parent: "Hiboot Cloud Native Application Framework "
+    weight: 10
+    title: "Getting started"
 ---
 
 ## Quick start web application

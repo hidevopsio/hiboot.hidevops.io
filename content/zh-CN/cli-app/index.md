@@ -3,6 +3,11 @@ date: 2018-10-10T00:11:02+01:00
 title: 命令行应用
 weight: 30
 tags: ["cli", "web", "application"]
+menu:
+  docs:
+    parent: "Hiboot云原生应用框架"
+    weight: 10
+    title: "命令行应用"
 ---
 
 ## 关于

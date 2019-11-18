@@ -3,6 +3,11 @@ date: 2018-10-10T00:11:02+01:00
 title: Web Application
 weight: 20
 tags: ["web", "application"]
+menu:
+  docs:
+    parent: "Hiboot Cloud Native Application Framework "
+    weight: 10
+    title: "getting-started"
 ---
 
 ## Features
