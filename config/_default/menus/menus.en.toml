@@ -1,20 +1,19 @@
-# [[docs]]
-#   name = "About Hugo"
-#   weight = 1
-#   identifier = "about"
-#   url = "/about/"
+[[docs]]
+  name = "Hiboot Cloud Native Application Framework"
+  weight = 1
+  identifier = "Hiboot Cloud Native Application Framework"
+  url = "/"
 
 # [[docs]]
 #   name = "Getting Started"
-#   weight = 5
+#   weight = 2
 #   identifier = "getting-started"
 #   url = "/getting-started/"
 
 # [[docs]]
 #   name = "Hugo Modules"
-#   weight = 15
+#   weight = 3
 #   identifier = "modules"
-#   post = "break"
 #   url = "/hugo-modules/"
 
 # # Core Menus

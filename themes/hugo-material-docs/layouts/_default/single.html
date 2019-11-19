@@ -22,7 +22,9 @@
             <h1>{{ .Title }} {{ if .IsDraft }} (Draft){{ end }}</h1>
 
             {{ .Content }}
-
+        <div class="order-0 w-20 dn db-l">
+        {{ partial "nav-links-docs.html" . }}
+      </div>
             <aside class="copyright" role="note">
                 {{ with .Site.Params.copyright }} &copy; {{ now.Format "2006" }} {{ . }} &ndash; {{ end }} - By John Deng.
             </aside>

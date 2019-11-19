@@ -280,6 +280,8 @@ a {
     transition: opacity .25s, width 0s .25s, height 0s .25s
 }
 
+.dn {display: none;}
+
 #toggle-drawer:checked~.overlay,
 .toggle-drawer .overlay {
     -webkit-transition: opacity .25s, width 0s, height 0s;

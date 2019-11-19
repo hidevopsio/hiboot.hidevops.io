@@ -5,7 +5,7 @@ weight: 40
 tags: ["auto-configuration", "starter", "go"]
 menu:
   docs:
-    parent: "Hiboot Cloud Native Application Framework "
+    parent: "Hiboot Cloud Native Application Framework"
     weight: 10
     title: "Auto Configuration"
 ---

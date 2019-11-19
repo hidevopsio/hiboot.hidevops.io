@@ -5,7 +5,7 @@ weight: 30
 tags: ["cli", "application"]
 menu:
   docs:
-    parent: "Hiboot Cloud Native Application Framework "
+    parent: "Hiboot Cloud Native Application Framework"
     weight: 10
     title: "Cli Applications"
 ---
