@@ -996,6 +996,8 @@ pre span {
     right: 0;
     padding-top: 75px;
     padding-left: 30px;
+    z-index: 1;
+    box-shadow: 0 1.5px 3px rgba(0, 0, 0, .24), 0 3px 8px rgba(0, 0, 0, .05);
 }
 .sticky a{
     color: #00bcd4;
@@ -1664,7 +1666,11 @@ h1 .article .headerlink {
         margin: 26px 0 0 5px
     }
     .article .wrapper {
-        padding: 128px 24px 96px
+        padding: 128px 24px 96px 
+    }
+    .contentWrapper{
+        width: 60%;
+    } 
     }
     .article .data {
         margin: 1.5em -24px
