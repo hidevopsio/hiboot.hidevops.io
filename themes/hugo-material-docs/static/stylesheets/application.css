@@ -309,7 +309,7 @@ body {
 
 @supports (-webkit-appearance:none) {
     body {
-        background: #e84e40
+        /* background: #e84e40 */
     }
 }
 .zindex11{
@@ -403,7 +403,7 @@ hr {
 
 .header {
     box-shadow: 0 1.5px 3px rgba(0, 0, 0, .24), 0 3px 8px rgba(0, 0, 0, .05);
-    background: #e84e40;
+    /* background: #e84e40; */
     color: #fff
 }
 
@@ -480,7 +480,7 @@ hr {
 }
 
 .backdrop-paper {
-    max-width: 1200px;
+    max-width: 90%;
     height: 100%;
     margin-left: auto;
     margin-right: auto
@@ -490,7 +490,8 @@ hr {
     content: " ";
     display: block;
     height: 100%;
-    margin-left: 262px
+    margin-left: 262px;
+    margin-right: 20%;
 }
 
 .overlay {
@@ -523,7 +524,7 @@ hr {
 
 .bar {
     display: table;
-    max-width: 1184px;
+    max-width: 90%;
     margin-left: auto;
     margin-right: auto
 }
@@ -587,7 +588,6 @@ hr {
 }
 
 .main {
-    max-width: 1200px;
     margin-left: auto;
     margin-right: auto
 }
@@ -644,11 +644,11 @@ pre {
 .drawer .toc a.current,
 .drawer .toc a:focus,
 .drawer .toc a:hover {
-    color: #e84e40
+    /* color: #e84e40 */
 }
 
 .drawer .anchor a {
-    border-left: 2px solid #e84e40
+    /* border-left: 2px solid #e84e40 */
 }
 
 .drawer .section {
@@ -710,6 +710,19 @@ pre {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis
+}
+.js-toggle{
+    display: inline;
+}
+.js-toggle:before {
+    content: "\e602";
+    display: block;
+    float: left;
+    font-family: Icon;
+    font-size: 16px;
+    width: 1.2em;
+    margin-left: -1.2em;
+    vertical-align: -.1em
 }
 
 .drawer .toc li.anchor a {
@@ -865,8 +878,8 @@ pre span {
 }
 
 .ios.standalone .article {
-    background: -webkit-linear-gradient(top, #fff 50%, #e84e40 0);
-    background: linear-gradient(180deg, #fff 50%, #e84e40 0)
+    /* background: -webkit-linear-gradient(top, #fff 50%, #e84e40 0);
+    background: linear-gradient(180deg, #fff 50%, #e84e40 0) */
 }
 
 .ios.standalone .article .wrapper {
@@ -897,12 +910,14 @@ pre span {
     border-bottom: 1px solid rgba(0, 0, 0, .12)
 }
 
-.article a {
+.article a,.sticky a{
     border-bottom: 1px dotted
 }
 
 .article a:focus,
-.article a:hover {
+.sticky a:focus,
+.article a:hover, 
+.sticky a:hover {
     color: #00bfa5
 }
 
@@ -931,7 +946,7 @@ pre span {
 }
 
 .footer {
-    background: #e84e40;
+    /* background: #e84e40; */
     color: #fff
 }
 
@@ -962,7 +977,7 @@ pre span {
 }
 
 .admonition.warning {
-    background: #e84e40
+    /* background: #e84e40 */
 }
 
 .admonition a,
@@ -970,9 +985,29 @@ pre span {
     color: #fff
 }
 
+.sticky {
+    width: 22.96%;
+    position: fixed;
+    top: 0;
+    font-size: 14px;
+    line-height: 1.7em;
+    height: 100%;
+    background: rgb(239,239,239);
+    right: 0;
+    padding-top: 75px;
+    padding-left: 30px;
+}
+.sticky a{
+    color: #00bcd4;
+    font-weight: 400;
+    font-style: normal;
+    margin-top: 1.5em
+}
+
 .article {
     font-size: 14px;
-    line-height: 1.7em
+    line-height: 1.7em;
+    width: 100%;
 }
 
 .article:after {
@@ -982,7 +1017,8 @@ pre span {
 }
 
 .article .wrapper {
-    padding: 116px 16px 92px
+    padding: 116px 16px 92px;
+    width: 100%;
 }
 
 .ios.standalone .article {
@@ -1045,25 +1081,31 @@ h1 .article .headerlink {
 
 .article ol,
 .article p,
-.article ul {
+.article ul,
+.sticky ol,
+.sticky p,
+.sticky ul  {
     margin-top: 1.5em
 }
 
 .article li,
 .article li ol,
-.article li ul {
+.article li ul,
+.sticky li,
+.sticky li ol,
+.sticky li ul  {
     margin-top: .75em
 }
 
-.article li {
+.article li  {
     margin-left: 18px
 }
 
-.article li p {
+.article li p{
     display: inline
 }
 
-.article ul>li:before {
+/* .article ul>li:before, .sticky ul>li:before {
     content: "\e602";
     display: block;
     float: left;
@@ -1072,7 +1114,7 @@ h1 .article .headerlink {
     width: 1.2em;
     margin-left: -1.2em;
     vertical-align: -.1em
-}
+} */
 
 .article p>code {
     white-space: nowrap;
@@ -1157,7 +1199,7 @@ h1 .article .headerlink {
 }
 
 .pagination {
-    max-width: 1184px;
+    max-width: 90%;
     height: 92px;
     padding: 4px 0;
     margin-left: auto;
@@ -1366,7 +1408,7 @@ h1 .article .headerlink {
 }
 
 .results .meta {
-    background: #e84e40;
+    /* background: #e84e40; */
     color: #fff
 }
 
@@ -1497,8 +1539,38 @@ h1 .article .headerlink {
     text-transform: uppercase;
     font-weight: 700
 }
+/* yaaa */
+.primary-color{
+    color: #0594CB;
+}
+.primary-color:before{
+    content: "\e602";
+    display: block;
+    float: left;
+    font-family: Icon;
+    font-size: 16px;
+    width: 1.2em;
+    margin-left: -1.2em;
+    vertical-align: -.1em;
+}
+.primary-parent-color{
+    color: rgb(3, 113, 156);
+}
+.primary-parent-color:before{
+    content: "\e945";
+    display: block;
+    float: left;
+    font-family: 'icomoon';
+    font-size: 16px;
+    width: 1.2em;
+    margin-left: -1.2em;
+    vertical-align: -.1em;
+}
 
 @media only screen and (min-width:960px) {
+    .main{
+        max-width: 90%;
+    }
     .backdrop {
         background: #f2f2f2
     }
@@ -1559,7 +1631,7 @@ h1 .article .headerlink {
     }
     .project {
         box-shadow: 0 1.5px 3px rgba(0, 0, 0, .24), 0 3px 8px rgba(0, 0, 0, .05);
-        background: #e84e40;
+        /* background: #e84e40; */
         color: #fff
     }
     .drawer {
@@ -1570,6 +1642,9 @@ h1 .article .headerlink {
     .drawer,
     .toggle-search .results {
         height: 100%
+    }
+    .sticky{
+        display: none;
     }
 }
 
@@ -1719,6 +1794,9 @@ h1 .article .headerlink {
 }
 
 @media only screen and (max-width:479px) {
+    .article{
+        width: 100%;
+    }
     .button-github,
     .button-twitter {
         display: none
@@ -1735,6 +1813,9 @@ h1 .article .headerlink {
 }
 
 @media only screen and (min-width:480px) {
+    .main{
+        width: 100% !important;
+    }
     .pagination .next,
     .pagination .previous {
         width: 50%
@@ -1769,6 +1850,6 @@ h1 .article .headerlink {
         box-shadow: none
     }
     .article table th {
-        color: #e84e40
+        /* color: #e84e40 */
     }
 }

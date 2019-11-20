@@ -1,5 +1,9 @@
 <nav aria-label="Navigation">
+    {{ if  (eq "cn" $.Site.Language.Lang) }}
+        <a href="{{ with .Site.Params.repo_cn_url }}{{ . }}{{ else }}{{ .Site.BaseURL }}{{ end }}" class="project">
+       {{ else }}
     <a href="{{ with .Site.Params.repo_url }}{{ . }}{{ else }}{{ .Site.BaseURL }}{{ end }}" class="project">
+      {{ end }}  
         <div class="banner">
             {{ with .Site.Params.logo }}
             <div class="logo">
@@ -8,7 +12,7 @@
             {{ end }}
             <div class="name">
                 <strong>{{ .Site.Title }} {{ with .Site.Params.version }}<span class="version">{{ . }}</span>{{ end }}</strong> {{ with .Scratch.Get "repo_id" }}
-                <br> {{ . }} {{ end }}
+                <br> {{ end }}
             </div>
         </div>
     </a>

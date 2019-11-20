@@ -16,15 +16,13 @@
     <div class="drawer">
         {{ partial "drawer" . }}
     </div>
-
     <article class="article">
         <div class="wrapper">
             <h1>{{ .Title }} {{ if .IsDraft }} (Draft){{ end }}</h1>
-
             {{ .Content }}
-        <div class="order-0 w-20 dn db-l">
-        {{ partial "nav-links-docs.html" . }}
-      </div>
+            <div class="order-0 w-20 dn db-l">
+                {{ partial "nav-links-docs.html" . }}
+            </div>
             <aside class="copyright" role="note">
                 {{ with .Site.Params.copyright }} &copy; {{ now.Format "2006" }} {{ . }} &ndash; {{ end }} - By John Deng.
             </aside>
@@ -34,7 +32,9 @@
             </footer>
         </div>
     </article>
-
+    <div class="sticky">
+        {{- partial "toc.html" . -}}
+    </div>
     <div class="results" role="status" aria-live="polite">
         <div class="scrollable">
             <div class="wrapper">

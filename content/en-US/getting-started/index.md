@@ -4,7 +4,7 @@ title: Getting started
 weight: 10
 menu:
   docs:
-    parent: "Hiboot Cloud Native Application Framework"
+    parent: "getting-started"
     weight: 10
 ---
 

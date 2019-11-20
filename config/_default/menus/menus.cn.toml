@@ -4,4 +4,4 @@
   name = "Hiboot云原生应用框架"
   weight = 1
   identifier = "Hiboot云原生应用框架"
-  url = "/cn/"
+  # url = "/cn/"
