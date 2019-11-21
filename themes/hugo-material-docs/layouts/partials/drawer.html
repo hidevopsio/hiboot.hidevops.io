@@ -1,9 +1,5 @@
 <nav aria-label="Navigation">
-    {{ if  (eq "cn" $.Site.Language.Lang) }}
-        <a href="{{ with .Site.Params.repo_cn_url }}{{ . }}{{ else }}{{ .Site.BaseURL }}{{ end }}" class="project">
-       {{ else }}
-    <a href="{{ with .Site.Params.repo_url }}{{ . }}{{ else }}{{ .Site.BaseURL }}{{ end }}" class="project">
-      {{ end }}  
+    <a href="/{{ .Lang }}" class="project">
         <div class="banner">
             {{ with .Site.Params.logo }}
             <div class="logo">
