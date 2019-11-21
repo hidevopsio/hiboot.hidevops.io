@@ -148,7 +148,10 @@ pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # "friendly"
 # 	url    = "cn/auto-configure/"
 # 	weight = 50
 
-
+[indexes]
+  tag = "tags"
+  topic = "topics"
+	
 [taxonomies]
   tag = "tags"
   series = "series"

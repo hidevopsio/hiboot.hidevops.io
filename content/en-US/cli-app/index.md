@@ -3,6 +3,7 @@ date: 2018-10-10T00:11:02+01:00
 title: Cli Applications
 weight: 30
 tags: ["cli", "application"]
+toc: true
 menu:
   docs:
     parent: "Hiboot Cloud Native Application Framework"
