@@ -7,8 +7,7 @@
 		{{ $re := (cond (eq $h1_n 0) "<h[2-4]" "<h[1-4]") }}
 		{{ $renum := (cond (eq $h1_n 0) "[2-4]" "[1-4]") }}
 	
-		<!--Grid column-->
-		<div class="col-md-2 pl-0">
+
 			<!--Scrollspy-->
 			<div id="page-scrollspy" class="toc-nav">
 				
@@ -26,7 +25,7 @@
 									<ul class="nav">
 								{{end}}
 								{{ $anchorId :=  (replaceRE ".* id=\"(.*?)\".*" "$1" $header ) }}
-										<li class="nav-item">
+										<li class="nav-item" >
 						 					<a class="nav-link" href="#{{ $anchorId }}">
 												 {{ $header | plainify | htmlUnescape }}
 											</a>
@@ -42,7 +41,5 @@
 				</ul>
 			</div>
 			<!--Scrollspy-->
-		</div>
-		<!--Grid column-->
 	{{ end }}
 {{- end -}}
