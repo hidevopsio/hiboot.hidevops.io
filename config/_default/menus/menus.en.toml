@@ -5,10 +5,10 @@
   tocTitle = "Table of contents"
   # url = "/"
 
-[[docs]]
-  name = "Getting Started"
-  weight = 2
-  identifier = "getting-started"
+# [[docs]]
+#   name = "Getting Started"
+#   weight = 2
+#   identifier = "getting-started"
   # url = "/getting-started/"
 
 # [[docs]]

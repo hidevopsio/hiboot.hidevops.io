@@ -1,12 +1,11 @@
 ---
 date: 2018-10-10T00:11:02+01:00
 title: 网络应用
-weight: 20
 tags: ["web", "application"]
 menu:
   docs:
     parent: "Hiboot云原生应用框架"
-    weight: 10
+    weight: 2
     title: "网络应用"
 ---
 
