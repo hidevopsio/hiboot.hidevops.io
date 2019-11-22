@@ -1,7 +1,11 @@
 ---
 date: 2018-10-10T00:11:02+01:00
 title: 入门
-weight: 10
+menu:
+  docs:
+    parent: "Hiboot云原生应用框架"
+    weight: 1
+    title: "入门"
 ---
 
 ## 前提

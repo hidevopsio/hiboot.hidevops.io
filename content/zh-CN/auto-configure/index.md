@@ -1,8 +1,12 @@
 ---
 title: "自动配置"
 date: 2018-10-22T16:22:23+08:00
-weight: 50
 tags: ["auto-configuration", "starter", "go"]
+menu:
+  docs:
+    parent: "Hiboot云原生应用框架"
+    weight: 5
+    title: "自动配置"
 ---
 
 ## 自动配置 Starter
