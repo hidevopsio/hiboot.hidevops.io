@@ -2,7 +2,6 @@
 date: 2018-10-10T00:11:02+01:00
 title: Getting started
 weight: 10
-toc: true
 menu:
   docs:
     parent: "getting-started"

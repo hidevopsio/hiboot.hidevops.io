@@ -3,6 +3,7 @@ baseurl = "https://hiboot.hidevops.io/"
 languageCode = "en-us"
 DefaultContentLanguage = "en"
 title = "Hiboot Documentation"
+tocTitle = "Table of contents"
 theme = "hugo-material-docs"
 
 hasCJKLanguage = true
@@ -44,7 +45,6 @@ pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # "friendly"
 	provider = "GitHub"
 	repo_url = "/"
 	repo_cn_url = "/cn/"
-
 	version = "v1.2.1"
 	logo = "images/logo.png"
 	favicon = ""
@@ -74,8 +74,9 @@ pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # "friendly"
 
 [languages.en]
 	languageName = "English"
-    title = "Hiboot Cloud Native Application Framework"
-    weight = 0
+  title = "Hiboot Cloud Native Application Framework"
+	TocTitle = "Table of contents"
+  weight = 0
 	contentDir = "content/en-US"
   	url = "../en"
 	languageCode = "en"  
@@ -114,6 +115,7 @@ pygmentsStyle = "tango" # "emacs" # "autumn" # "manni" # "friendly"
 	languageName = "中文"
 	title = "Hiboot云原生应用框架"
 	weight = 1
+	TocTitle = "目录"
 	contentDir = "content/zh-CN"
   	url = "../cn"
 	languageCode = "cn"

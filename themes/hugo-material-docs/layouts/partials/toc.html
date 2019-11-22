@@ -1,4 +1,4 @@
-{{ if .Params.toc }}
+{{ if not .Params.notoc }}
 	<!-- ignore empty links with + -->
 	{{ $headers := findRE "<h[1-4].*?>(.|\n])+?</h[1-4]>" .Content }}
 	<!-- at least one header to link to -->
@@ -14,7 +14,7 @@
 				<ul class="nav nav-pills ml-0">
 					<!-- TOC header -->
 					<li class="nav-item pb-3 text-center">
-						<span class="font-weight-bold mb-2">- What's on this Page - </span>
+						<span class="font-weight-bold mb-2">{{.Site.Params.tocTitle}}</span>
 					</li>
 					{{ range $headers }}
 						{{ $header := . }}

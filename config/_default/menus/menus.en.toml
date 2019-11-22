@@ -2,6 +2,7 @@
   name = "Hiboot Cloud Native Application Framework"
   weight = 1
   identifier = "Hiboot Cloud Native Application Framework"
+  tocTitle = "Table of contents"
   # url = "/"
 
 [[docs]]

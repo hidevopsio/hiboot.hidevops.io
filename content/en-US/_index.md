@@ -4,7 +4,6 @@ title: Hiboot Cloud Native Application Framework
 type: index
 tags: ["hiboot", "framework"]
 weight: 1
-toc: true
 ---
 
 {{<badges>}}
