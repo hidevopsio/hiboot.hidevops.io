@@ -1,11 +1,7 @@
 ---
 date: 2018-10-10T00:11:02+01:00
 title: 控制反转
-menu:
-  docs:
-    parent: "Hiboot云原生应用框架"
-    weight: 4
-    title: "入门"
+weight: 40
 ---
 
 ## 简述

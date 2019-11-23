@@ -1,10 +1,8 @@
 ---
 date: 2018-10-10T00:11:02+01:00
 title: Web Application
-menu:
-  docs:
-    parent: "Hiboot Cloud Native Application Framework"
-    weight: 2
+weight: 20
+tags: ["web", "application"]
 ---
 
 ## Features
