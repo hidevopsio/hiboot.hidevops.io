@@ -691,11 +691,17 @@ pre {
     border-style: solid
 }
 
-.drawer {
-    width: 262px;
-    font-size: 13px;
-    line-height: 1em
+
+@media only screen and (min-width:1000px) {
+    .drawer {
+        width: 18%;
+        font-size: 13px;
+        line-height: 1em;
+        margin-left: 1%;
+        position: fixed !important;
+    }
 }
+
 
 .ios .drawer {
     overflow: scroll;
@@ -1061,7 +1067,49 @@ h1 .article .headerlink {
     display: inline
 }
 
-.article ul>li:before {
+
+    order: 2;
+    font-size: .875rem; 
+  }
+  
+  .toc-nav ul {
+    list-style: none;
+    padding-left: 1rem;
+  }
+  
+  .toc-nav li, .toc-nav ul {
+    width: 95%;
+    margin: 2px 0;
+  }
+  
+  .toc-nav .nav-item, .toc-nav .nav-link {
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 26px;
+    padding: 0 5px;
+    color: #0086b3;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+  }
+
+  .toc-nav a.nav-link:hover {
+    background-color: transparent;
+    border-left: .025rem solid #38849e;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    color: #38849e; 
+  }
+  
+  .toc-nav a.nav-link.active, .toc-nav a.nav-link:active {
+    background-color: transparent;
+    color: black; 
+    border-left: .125rem solid #38849e;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-weight: 500;
+  } 
+
+.article ul>li:before, .sticky ul>li:before {
     content: "\e602";
     display: block;
     float: left;
@@ -1547,7 +1595,9 @@ h1 .article .headerlink {
         -webkit-transition: -webkit-transform .25s cubic-bezier(.4, 0, .2, 1);
         transition: -webkit-transform .25s cubic-bezier(.4, 0, .2, 1);
         transition: transform .25s cubic-bezier(.4, 0, .2, 1);
-        transition: transform .25s cubic-bezier(.4, 0, .2, 1), -webkit-transform .25s cubic-bezier(.4, 0, .2, 1)
+        transition: transform .25s cubic-bezier(.4, 0, .2, 1), -webkit-transform .25s cubic-bezier(.4, 0, .2, 1);
+        position: fixed;
+        z-index: 4
     }
     .no-csstransforms3d .drawer {
         display: none
@@ -1560,14 +1610,11 @@ h1 .article .headerlink {
         background: #e84e40;
         color: #fff
     }
-    .drawer {
-        position: fixed;
-        z-index: 4
-    }
     #toggle-search:checked~.main .results,
     .drawer,
     .toggle-search .results {
-        height: 100%
+        height: 100%;
+        width: 34%;
     }
 }
 
@@ -1657,6 +1704,18 @@ h1 .article .headerlink {
     .drawer .scrollable .wrapper hr {
         width: 48px
     }
+    .backdrop-paper{
+        max-width: 100%;
+    }
+    .main{
+        max-width: 100%;
+    }
+      .repo li {
+        display: block;
+        padding-bottom: 12px;
+        padding-right: 0;
+    }
+
 }
 
 @media only screen and (orientation:portrait) {
@@ -1723,6 +1782,12 @@ h1 .article .headerlink {
     }
     .language_btn{
         display: table-cell;
+    }
+    #toggle-search:checked~.main .results,
+    .drawer,
+    .toggle-search .results {
+        height: 100%;
+        width: 63%;
     }
 }
 
