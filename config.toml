@@ -1,4 +1,5 @@
 baseurl = "https://hiboot.hidevops.io/"
+
 languageCode = "en-us"
 DefaultContentLanguage = "en"
 title = "Hiboot Documentation"

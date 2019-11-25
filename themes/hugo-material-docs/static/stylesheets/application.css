@@ -701,7 +701,7 @@ pre {
         font-size: 13px;
         line-height: 1em;
         margin-left: 1%;
-        position: fixed;
+        position: fixed !important;
     }
 }
 
