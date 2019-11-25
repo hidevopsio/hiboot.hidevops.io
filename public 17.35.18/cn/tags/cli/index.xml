@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cli on Hiboot云原生应用框架</title>
+    <link>https://hiboot.hidevops.io/cn/tags/cli/</link>
+    <description>Recent content in cli on Hiboot云原生应用框架</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>cn</language>
+    <lastBuildDate>Wed, 10 Oct 2018 00:11:02 +0100</lastBuildDate>
+    
+	<atom:link href="https://hiboot.hidevops.io/cn/tags/cli/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>命令行应用</title>
+      <link>https://hiboot.hidevops.io/cn/cli-app/</link>
+      <pubDate>Wed, 10 Oct 2018 00:11:02 +0100</pubDate>
+      
+      <guid>https://hiboot.hidevops.io/cn/cli-app/</guid>
+      <description>关于 Hiboot命令行应用是在cobra的基础上构建的。得益于Hiboot提供的依赖注入和自动配置功能，开发者将会更高效的开发出命令行应用。</description>
+    </item>
+    
+  </channel>
+</rss>

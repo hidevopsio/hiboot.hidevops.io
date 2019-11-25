@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+  
+  
+  
+  
+   
+  <html class="no-js" lang="en"> 
+  
+
+  <head lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>Cli Applications - Hiboot Cloud Native Application Framework</title>
+    <meta name="generator" content="Hugo 0.59.1" />
+
+    
+    <meta name="description" content="Official site hidevops.io">
+    
+    <link rel="canonical" href="https://hiboot.hidevops.io/cli-app/">
+    
+    <meta name="author" content="John Deng">
+    
+
+    <meta property="og:url" content="https://hiboot.hidevops.io/cli-app/">
+    <meta property="og:title" content="Hiboot Cloud Native Application Framework">
+    <meta property="og:image" content="https://hiboot.hidevops.io/images/logo.png">
+    <meta name="apple-mobile-web-app-title" content="Hiboot Cloud Native Application Framework">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://hiboot.hidevops.io/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="https://hiboot.hidevops.io/images/favicon.ico">
+
+    <style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('https://hiboot.hidevops.io/fonts/icon.eot');
+        src: url('https://hiboot.hidevops.io/fonts/icon.eot')
+               format('embedded-opentype'),
+             url('https://hiboot.hidevops.io/fonts/icon.woff')
+               format('woff'),
+             url('https://hiboot.hidevops.io/fonts/icon.ttf')
+               format('truetype'),
+             url('https://hiboot.hidevops.io/fonts/icon.svg')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+
+    <link rel="stylesheet" href="https://hiboot.hidevops.io/stylesheets/application.css">
+    <link rel="stylesheet" href="https://hiboot.hidevops.io/stylesheets/_animation.css">
+    <link rel="stylesheet" href="https://hiboot.hidevops.io/stylesheets/temporary.css">
+    <link rel="stylesheet" href="https://hiboot.hidevops.io/stylesheets/palettes.css">
+    <link rel="stylesheet" href="https://hiboot.hidevops.io/icons/style.css">
+
+    
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu&#43;Mono">
+    <style>
+      body, input {
+        font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+
+    
+    <script src="https://hiboot.hidevops.io/javascripts/modernizr.js"></script>
+    <script src="https://hiboot.hidevops.io/javascripts/growingio.js"></script>
+
+    
+
+  </head>
+  <body class="palette-primary-cyan palette-accent-deep-purple">
+    
+
+<div class="backdrop">
+    <div class="backdrop-paper"></div>
+</div>
+
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+
+<header class="header">
+    <nav aria-label="Header">
+    <div class="bar default zindex11">
+        <div class="button button-menu" role="button" aria-label="Menu">
+            <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+        </div>
+        <div class="stretch">
+            <div class="title">
+                Cli Applications
+            </div>
+        </div>
+
+        <div class="button button-home" role="button" aria-label="Home">
+            <a href="https://hidevops.io" title="Home" target="_blank"  class="toggle-button icon icons-home"></a>
+        </div>
+        <div class="button button-twitter language_btn" role="button" aria-label="Twitter">
+            <a href="javascript:;" title="Switch languages" class="toggle-button icons-globe"></a>
+            <div class="layer_box">
+                
+                  
+                  <a href="https://hiboot.hidevops.io/cn" lang="cn">中文</a>
+                  
+                
+                  
+                
+            </div>
+        </div>
+        
+        <div class="button button-twitter" role="button" aria-label="Twitter">
+            <a href="https://twitter.com/johndcn" title="@johndcn on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
+        </div>
+         
+        <div class="button button-github" role="button" aria-label="GitHub">
+            <a href="https://github.com/hidevopsio" title="@hidevopsio on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+        </div>
+        
+
+        <div class="button button-search" role="button" aria-label="Search">
+            <label class="toggle-button icon icon-search" title="Search" for="toggle-search"></label>
+        </div>
+    </div>
+    <div class="bar search">
+        <div class="button button-close" role="button" aria-label="Close">
+            <label class="toggle-button icon icon-back" for="toggle-search"></label>
+        </div>
+        <div class="stretch">
+            <div class="field">
+                <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+            </div>
+        </div>
+        <div class="button button-reset" role="button" aria-label="Search">
+            <button class="toggle-button icon icon-close" id="reset-search"></button>
+        </div>
+    </div>
+</nav>
+</header>
+
+<main class="main">
+    <div class="drawer">
+        <nav aria-label="Navigation">
+    <a href="https://hiboot.hidevops.io/en" class="project">
+        <div class="banner">
+            
+            <div class="logo">
+                <img src="https://hiboot.hidevops.io/images/logo.png">
+            </div>
+            
+            <div class="name">
+                <strong>Hiboot Cloud Native Application Framework <span class="version">v1.2.1</span></strong> 
+                <br> 
+            </div>
+        </div>
+    </a>
+
+    <div class="scrollable">
+        <div class="wrapper">
+            
+            <ul class="repo">
+                <li class="repo-download">
+                    <a href="//archive/master.zip" target="_blank" title="Download" data-action="download">
+                        <i class="icon icon-download"></i> Download
+                    </a>
+                </li>
+                <li class="repo-stars">
+                    <a href="//stargazers" target="_blank" title="Stargazers" data-action="star">
+                        <i class="icon icon-star"></i> Stars
+                        <span class="count">&ndash;</span>
+                    </a>
+                </li>
+            </ul>
+            <hr> 
+
+            <div class="toc">
+                
+                <ul>
+                    
+<nav role="navigation">
+  <ul class="list pa0 nl2">
+    
+      
+      <li class="f5 w-100 hover-bg-light-gray hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2  primary-parent-color" data-target=".Hiboot Cloud Native Application Framework">Hiboot Cloud Native Application Framework</a>
+        <ul class="Hiboot Cloud Native Application Framework desktopmenu animated fadeIn list pl0 bg-light-gray db">
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/auto-configure/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              Auto Configuration
+            </a>
+          </li>
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/cli-app/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 primary-color ">
+              Cli Applications
+            </a>
+          </li>
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/web-app/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              Web Application
+            </a>
+          </li>
+        </ul>
+      </li>
+      
+      <li class="f5 w-100 hover-bg-light-gray hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".getting-started">Getting Started</a>
+        <ul class="getting-started desktopmenu animated fadeIn list pl0 bg-light-gray dn">
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/getting-started/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              Getting started
+            </a>
+          </li>
+        </ul>
+      </li>
+  </ul>
+</nav>
+
+                </ul>
+                 
+                <hr>
+                <span class="section">The author</span>
+
+                <ul>
+                    
+                    <li>
+                        <a href="https://twitter.com/johndcn" target="_blank" title="@johndcn on Twitter">
+              @johndcn on Twitter
+            </a>
+                    </li>
+                     
+                    <li>
+                        <a href="https://github.com/hidevopsio" target="_blank" title="@hidevopsio on GitHub">
+              @hidevopsio on GitHub
+            </a>
+                    </li>
+                     
+                    <li>
+                        <a href="mailto:hi.devops.io@gmail.com" title="Email of hi.devops.io@gmail.com">
+              Contact via email
+            </a>
+                    </li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    </div>
+    <article class="article">
+        <div class="wrapper">
+            <div class="contentWrapper">
+                <h1>Cli Applications </h1>
+                
+
+<h2 id="about-hiboot-cli-application">About Hiboot cli application</h2>
+
+<p>Hiboot cli application is built based on top of <a href="https://github.com/spf13/cobra">cobra</a> with Hiboot dependency injection and auto configuration.</p>
+
+<h2 id="features">Features</h2>
+
+<ul>
+<li>Dependency Injection</li>
+<li>Sub command handler</li>
+</ul>
+
+<h2 id="cli-application-structure">Cli application structure</h2>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">.
+├── cmd
+│   ├── bar.go
+│   ├── foo.go
+│   ├── root.go
+│   ├── root_test.go
+│   └── second.go
+├── config
+│   ├── autoconfigure.go
+│   └── autoconfigure_test.go
+├── main.go
+├── main_test.go
+└── model
+    ├── foo.go
+    └── foo_test.go</code></pre></div>
+<p>Just like web application, Hiboot cli application is designed to be simpler and easier.</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;hidevops.io/hiboot/examples/cli/advanced/cmd&#34;</span>
+	<span class="s">&#34;hidevops.io/hiboot/examples/cli/advanced/config&#34;</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/app&#34;</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/app/cli&#34;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="c1">// create new cli application and run it
+</span><span class="c1"></span>	<span class="nx">cli</span><span class="p">.</span><span class="nf">NewApplication</span><span class="p">(</span><span class="nx">cmd</span><span class="p">.</span><span class="nx">NewRootCommand</span><span class="p">).</span>
+		<span class="nf">SetProperty</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">ProfilesInclude</span><span class="p">,</span> <span class="nx">config</span><span class="p">.</span><span class="nx">Profile</span><span class="p">).</span>
+		<span class="nf">Run</span><span class="p">()</span>
+<span class="p">}</span></code></pre></div>
+<h2 id="root-command">Root Command</h2>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">cmd</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/app/cli&#34;</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/log&#34;</span>
+<span class="p">)</span>
+
+<span class="c1">// HelloCommand is the root command
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">HelloCommand</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">cli</span><span class="p">.</span><span class="nx">RootCommand</span>
+
+	<span class="nx">profile</span> <span class="kt">string</span>
+	<span class="nx">timeout</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="c1">// HelloCommand the root command
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">NewHelloCommand</span><span class="p">(</span><span class="nx">second</span> <span class="o">*</span><span class="nx">secondCommand</span><span class="p">)</span> <span class="o">*</span><span class="nx">HelloCommand</span> <span class="p">{</span>
+	<span class="nx">c</span> <span class="o">:=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">RootCommand</span><span class="p">)</span>
+	<span class="nx">c</span><span class="p">.</span><span class="nx">Use</span> <span class="p">=</span> <span class="s">&#34;hello&#34;</span>
+	<span class="nx">c</span><span class="p">.</span><span class="nx">Short</span> <span class="p">=</span> <span class="s">&#34;hello command&#34;</span>
+	<span class="nx">c</span><span class="p">.</span><span class="nx">Long</span> <span class="p">=</span> <span class="s">&#34;Run hello command&#34;</span>
+	<span class="nx">c</span><span class="p">.</span><span class="nx">ValidArgs</span> <span class="p">=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;baz&#34;</span><span class="p">}</span>
+	<span class="nx">pf</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nf">PersistentFlags</span><span class="p">()</span>
+	<span class="nx">pf</span><span class="p">.</span><span class="nf">StringVarP</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">c</span><span class="p">.</span><span class="nx">profile</span><span class="p">,</span> <span class="s">&#34;profile&#34;</span><span class="p">,</span> <span class="s">&#34;p&#34;</span><span class="p">,</span> <span class="s">&#34;dev&#34;</span><span class="p">,</span> <span class="s">&#34;e.g. --profile=test&#34;</span><span class="p">)</span>
+	<span class="nx">pf</span><span class="p">.</span><span class="nf">IntVarP</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">c</span><span class="p">.</span><span class="nx">timeout</span><span class="p">,</span> <span class="s">&#34;timeout&#34;</span><span class="p">,</span> <span class="s">&#34;t&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#34;e.g. --timeout=1&#34;</span><span class="p">)</span>
+	<span class="nx">c</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="nx">second</span><span class="p">)</span>
+	<span class="k">return</span> <span class="nx">c</span>
+<span class="p">}</span>
+
+<span class="c1">// Run root command handler
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">HelloCommand</span><span class="p">)</span> <span class="nf">Run</span><span class="p">(</span><span class="nx">args</span> <span class="p">[]</span><span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+	<span class="nx">log</span><span class="p">.</span><span class="nf">Infof</span><span class="p">(</span><span class="s">&#34;handle first command: profile=%v, timeout=%v&#34;</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">profile</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">timeout</span><span class="p">)</span>
+	<span class="k">return</span> <span class="kc">nil</span>
+<span class="p">}</span></code></pre></div>
+<h2 id="sub-command">Sub Command</h2>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">cmd</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/app&#34;</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/app/cli&#34;</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/log&#34;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">secondCommand</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">cli</span><span class="p">.</span><span class="nx">SubCommand</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">app</span><span class="p">.</span><span class="nf">Register</span><span class="p">(</span><span class="nx">newSecondCommand</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">newSecondCommand</span><span class="p">(</span><span class="nx">foo</span> <span class="o">*</span><span class="nx">fooCommand</span><span class="p">,</span> <span class="nx">bar</span> <span class="o">*</span><span class="nx">barCommand</span><span class="p">)</span> <span class="o">*</span><span class="nx">secondCommand</span> <span class="p">{</span>
+	<span class="nx">c</span> <span class="o">:=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">secondCommand</span><span class="p">)</span>
+	<span class="nx">c</span><span class="p">.</span><span class="nx">Use</span> <span class="p">=</span> <span class="s">&#34;second&#34;</span>
+	<span class="nx">c</span><span class="p">.</span><span class="nx">Short</span> <span class="p">=</span> <span class="s">&#34;second command&#34;</span>
+	<span class="nx">c</span><span class="p">.</span><span class="nx">Long</span> <span class="p">=</span> <span class="s">&#34;Run second command&#34;</span>
+	<span class="nx">c</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="nx">foo</span><span class="p">,</span> <span class="nx">bar</span><span class="p">)</span>
+	<span class="k">return</span> <span class="nx">c</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">secondCommand</span><span class="p">)</span> <span class="nf">Run</span><span class="p">(</span><span class="nx">args</span> <span class="p">[]</span><span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+	<span class="nx">log</span><span class="p">.</span><span class="nf">Info</span><span class="p">(</span><span class="s">&#34;handle second command&#34;</span><span class="p">)</span>
+	<span class="k">return</span> <span class="kc">nil</span>
+<span class="p">}</span></code></pre></div>
+                <div class="order-0 w-20 dn db-l">
+                    
+<nav role="navigation">
+  <ul class="list pa0 nl2">
+    
+      
+      <li class="f5 w-100 hover-bg-light-gray hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2  primary-color" data-target=".Hiboot Cloud Native Application Framework">Hiboot Cloud Native Application Framework</a>
+        <ul class="Hiboot Cloud Native Application Framework desktopmenu animated fadeIn list pl0 bg-light-gray db">
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/auto-configure/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              Auto Configuration
+            </a>
+          </li>
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/cli-app/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 primary-color ">
+              Cli Applications
+            </a>
+          </li>
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/web-app/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              Web Application
+            </a>
+          </li>
+        </ul>
+      </li>
+      
+      <li class="f5 w-100 hover-bg-light-gray hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".getting-started">Getting Started</a>
+        <ul class="getting-started desktopmenu animated fadeIn list pl0 bg-light-gray dn">
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/getting-started/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              Getting started
+            </a>
+          </li>
+        </ul>
+      </li>
+  </ul>
+</nav>
+
+                </div>
+                <aside class="copyright" role="note">
+                     &copy; 2019 Released under the Apache 2.0 license &ndash;  - By John Deng.
+                </aside>
+            </div>
+
+            <footer class="footer">
+                
+
+<nav class="pagination" aria-label="Footer">
+  <div class="previous">
+  
+      <a href="https://hiboot.hidevops.io/inversion-of-control/" title="Inversion of Control">
+        <span class="direction">
+          Previous
+        </span>
+        <div class="page">
+          <div class="button button-previous" role="button" aria-label="Previous">
+            <i class="icon icon-back"></i>
+          </div>
+          <div class="stretch">
+            <div class="title">
+              Inversion of Control
+            </div>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+
+  <div class="next">
+  
+      <a href="https://hiboot.hidevops.io/web-app/" title="Web Application">
+        <span class="direction">
+          Next
+        </span>
+        <div class="page">
+          <div class="stretch">
+            <div class="title">
+              Web Application
+            </div>
+          </div>
+          <div class="button button-next" role="button" aria-label="Next">
+            <i class="icon icon-forward"></i>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+</nav>
+
+
+
+
+
+            </footer>
+        </div>
+    </article>
+    <div class="sticky">
+	
+	
+	
+	
+		
+		
+		
+	
+		
+		<div class="col-md-2 pl-0">
+			
+			<div id="page-scrollspy" class="toc-nav">
+				
+				<ul class="nav nav-pills ml-0">
+					
+					<li class="nav-item pb-3 text-center">
+						<span class="font-weight-bold mb-2">- What's on this Page - </span>
+					</li>
+					
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+										<li class="nav-item">
+						 					<a class="nav-link" href="#about-hiboot-cli-application">
+												 About Hiboot cli application
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+										<li class="nav-item">
+						 					<a class="nav-link" href="#features">
+												 Features
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+										<li class="nav-item">
+						 					<a class="nav-link" href="#cli-application-structure">
+												 Cli application structure
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+										<li class="nav-item">
+						 					<a class="nav-link" href="#root-command">
+												 Root Command
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+										<li class="nav-item">
+						 					<a class="nav-link" href="#sub-command">
+												 Sub Command
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+				</ul>
+			</div>
+			
+		</div>
+		
+	</div>
+    <div class="results" role="status" aria-live="polite">
+        <div class="scrollable">
+            <div class="wrapper">
+                <div class="meta"></div>
+                <div class="list"></div>
+            </div>
+        </div>
+    </div>
+</main>
+
+    <script>
+    
+      var base_url = 'https:\/\/hiboot.hidevops.io\/';
+      var repo_id  = '\/';
+    
+    </script>
+
+    <script src="https://hiboot.hidevops.io/javascripts/application.js"></script>
+    <script src="https://hiboot.hidevops.io/javascripts/menutoggle.js"></script>
+    <script src="https://hiboot.hidevops.io/javascripts/bootstrap.js"></script>
+    
+
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
+
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
+
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+
+
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = " ";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
+
+    
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>

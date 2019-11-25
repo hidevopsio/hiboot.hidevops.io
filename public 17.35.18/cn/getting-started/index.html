@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+  
+  
+  
+  
+   
+  <html class="no-js" lang="cn"> 
+  
+
+  <head lang="cn">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>入门 - Hiboot云原生应用框架</title>
+    <meta name="generator" content="Hugo 0.59.1" />
+
+    
+    <meta name="description" content="Official site hidevops.io">
+    
+    <link rel="canonical" href="https://hiboot.hidevops.io/cn/getting-started/">
+    
+    <meta name="author" content="John Deng">
+    
+
+    <meta property="og:url" content="https://hiboot.hidevops.io/cn/getting-started/">
+    <meta property="og:title" content="Hiboot云原生应用框架">
+    <meta property="og:image" content="https://hiboot.hidevops.io/images/logo.png">
+    <meta name="apple-mobile-web-app-title" content="Hiboot云原生应用框架">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://hiboot.hidevops.io/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="https://hiboot.hidevops.io/images/favicon.ico">
+
+    <style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('https://hiboot.hidevops.io/fonts/icon.eot');
+        src: url('https://hiboot.hidevops.io/fonts/icon.eot')
+               format('embedded-opentype'),
+             url('https://hiboot.hidevops.io/fonts/icon.woff')
+               format('woff'),
+             url('https://hiboot.hidevops.io/fonts/icon.ttf')
+               format('truetype'),
+             url('https://hiboot.hidevops.io/fonts/icon.svg')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+
+    <link rel="stylesheet" href="https://hiboot.hidevops.io/stylesheets/application.css">
+    <link rel="stylesheet" href="https://hiboot.hidevops.io/stylesheets/_animation.css">
+    <link rel="stylesheet" href="https://hiboot.hidevops.io/stylesheets/temporary.css">
+    <link rel="stylesheet" href="https://hiboot.hidevops.io/stylesheets/palettes.css">
+    <link rel="stylesheet" href="https://hiboot.hidevops.io/icons/style.css">
+
+    
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu&#43;Mono">
+    <style>
+      body, input {
+        font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+
+    
+    <script src="https://hiboot.hidevops.io/javascripts/modernizr.js"></script>
+    <script src="https://hiboot.hidevops.io/javascripts/growingio.js"></script>
+
+    
+
+  </head>
+  <body class="palette-primary-cyan palette-accent-deep-purple">
+    
+
+<div class="backdrop">
+    <div class="backdrop-paper"></div>
+</div>
+
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+
+<header class="header">
+    <nav aria-label="Header">
+    <div class="bar default zindex11">
+        <div class="button button-menu" role="button" aria-label="Menu">
+            <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+        </div>
+        <div class="stretch">
+            <div class="title">
+                入门
+            </div>
+        </div>
+
+        <div class="button button-home" role="button" aria-label="Home">
+            <a href="https://hidevops.io" title="Home" target="_blank"  class="toggle-button icon icons-home"></a>
+        </div>
+        <div class="button button-twitter language_btn" role="button" aria-label="Twitter">
+            <a href="javascript:;" title="Switch languages" class="toggle-button icons-globe"></a>
+            <div class="layer_box">
+                
+                  
+                
+                  
+                  <a href="https://hiboot.hidevops.io/en" lang="en">English</a>
+                  
+                
+            </div>
+        </div>
+        
+        <div class="button button-twitter" role="button" aria-label="Twitter">
+            <a href="https://twitter.com/johndcn" title="@johndcn on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
+        </div>
+         
+        <div class="button button-github" role="button" aria-label="GitHub">
+            <a href="https://github.com/hidevopsio" title="@hidevopsio on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+        </div>
+        
+
+        <div class="button button-search" role="button" aria-label="Search">
+            <label class="toggle-button icon icon-search" title="Search" for="toggle-search"></label>
+        </div>
+    </div>
+    <div class="bar search">
+        <div class="button button-close" role="button" aria-label="Close">
+            <label class="toggle-button icon icon-back" for="toggle-search"></label>
+        </div>
+        <div class="stretch">
+            <div class="field">
+                <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+            </div>
+        </div>
+        <div class="button button-reset" role="button" aria-label="Search">
+            <button class="toggle-button icon icon-close" id="reset-search"></button>
+        </div>
+    </div>
+</nav>
+</header>
+
+<main class="main">
+    <div class="drawer">
+        <nav aria-label="Navigation">
+    <a href="https://hiboot.hidevops.io/cn" class="project">
+        <div class="banner">
+            
+            <div class="logo">
+                <img src="https://hiboot.hidevops.io/images/logo.png">
+            </div>
+            
+            <div class="name">
+                <strong>Hiboot云原生应用框架 <span class="version">v1.2.1</span></strong> 
+                <br> 
+            </div>
+        </div>
+    </a>
+
+    <div class="scrollable">
+        <div class="wrapper">
+            
+            <ul class="repo">
+                <li class="repo-download">
+                    <a href="//archive/master.zip" target="_blank" title="Download" data-action="download">
+                        <i class="icon icon-download"></i> Download
+                    </a>
+                </li>
+                <li class="repo-stars">
+                    <a href="//stargazers" target="_blank" title="Stargazers" data-action="star">
+                        <i class="icon icon-star"></i> Stars
+                        <span class="count">&ndash;</span>
+                    </a>
+                </li>
+            </ul>
+            <hr> 
+
+            <div class="toc">
+                
+                <ul>
+                    
+<nav role="navigation">
+  <ul class="list pa0 nl2">
+    
+      
+      <li class="f5 w-100 hover-bg-light-gray hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2  primary-parent-color" data-target=".Hiboot云原生应用框架">Hiboot云原生应用框架</a>
+        <ul class="Hiboot云原生应用框架 desktopmenu animated fadeIn list pl0 bg-light-gray db">
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/cn/getting-started/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 primary-color ">
+              入门
+            </a>
+          </li>
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/cn/cli-app/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              命令行应用
+            </a>
+          </li>
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/cn/web-app/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              网络应用
+            </a>
+          </li>
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/cn/auto-configure/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              自动配置
+            </a>
+          </li>
+        </ul>
+      </li>
+  </ul>
+</nav>
+
+                </ul>
+                 
+                <hr>
+                <span class="section">The author</span>
+
+                <ul>
+                    
+                    <li>
+                        <a href="https://twitter.com/johndcn" target="_blank" title="@johndcn on Twitter">
+              @johndcn on Twitter
+            </a>
+                    </li>
+                     
+                    <li>
+                        <a href="https://github.com/hidevopsio" target="_blank" title="@hidevopsio on GitHub">
+              @hidevopsio on GitHub
+            </a>
+                    </li>
+                     
+                    <li>
+                        <a href="mailto:hi.devops.io@gmail.com" title="Email of hi.devops.io@gmail.com">
+              Contact via email
+            </a>
+                    </li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    </div>
+    <article class="article">
+        <div class="wrapper">
+            <div class="contentWrapper">
+                <h1>入门 </h1>
+                
+
+<h2 id="前提">前提</h2>
+
+<p>我们假设你以及安装了Go语言的开发环境。当然，如果你没安装，则按照<a href="https://hidevops.io/blog/go-env/">GO语言环境搭建详解</a>来安装。</p>
+
+<h2 id="网络应用快速入门">网络应用快速入门</h2>
+
+<p>我们将在本章节演示如何快速入门Hiboot网络应用，即通过简单三个步骤来创建一个最简单的Hiboot应用。闲话不多说，我们开始吧！</p>
+
+<h3 id="获取代码">获取代码</h3>
+
+<p>首先到github拉取演示代码，在命令行终端运行以下命令即可：</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">go get -u hidevops.io/hiboot-web-app-demo
+
+<span class="nb">cd</span> <span class="nv">$GOPATH</span>/src/hidevops.io/hiboot-web-app-demo</code></pre></div>
+<p>查看历史记录</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git log</code></pre></div>
+<p>结果如下：</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">commit 2be5df8e0101b685579f1dd452059d967017148f
+Author: John Deng &lt;john.deng@qq.com&gt;
+Date:   Sat Nov <span class="m">3</span> <span class="m">07</span>:48:46 <span class="m">2018</span> +0800
+
+    Step <span class="m">3</span>, adding Hiboot controller
+
+commit 063c72282edff85db20d4046f5801d7f5fcf4dbb
+Author: John Deng &lt;john.deng@qq.com&gt;
+Date:   Sat Nov <span class="m">3</span> <span class="m">07</span>:45:15 <span class="m">2018</span> +0800
+
+    Step <span class="m">2</span>, adding some starters
+
+commit d9213107f6692bc22c3d79cd445567730b962477
+Author: John Deng &lt;john.deng@qq.com&gt;
+Date:   Sat Nov <span class="m">3</span> <span class="m">07</span>:38:59 <span class="m">2018</span> +0800
+
+    step <span class="m">1</span>: Writing the first Hiboot web application</code></pre></div>
+<h2 id="第一步-快速开始hiboot应用">- 第一步, 快速开始Hiboot应用</h2>
+
+<p>编写Hiboot应用，和其它Go语言应用一样，必须有一个main包，里面包含一个main函数。</p>
+
+<p>如果你对Go语言还不熟悉，建议阅读<a href="https://golang.org/doc/effective_go.html#names">Effective GO</a>或中文版<a href="https://go-zh.org/doc/effective_go.html">实效Go编程</a></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git reset --hard d9213107f6692bc22c3d79cd445567730b962477</code></pre></div>
+<p>代码展示如下，这个代码已经可以执行的了，只是没有任何业务逻辑。</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/app/web&#34;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span>  <span class="p">{</span>
+	<span class="nx">web</span><span class="p">.</span><span class="nf">NewApplication</span><span class="p">().</span><span class="nf">Run</span><span class="p">()</span>
+<span class="p">}</span></code></pre></div>
+<h2 id="第二步-添加-starter">- 第二步, 添加 Starter</h2>
+
+<p>Here we are going to add starter <a href="https://hidevops.io/hiboot/pkg/starter/actuator">actuator</a> and <a href="https://hidevops.io/hiboot/pkg/starter/logging">logging</a>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git reset --hard 063c72282edff85db20d4046f5801d7f5fcf4dbb</code></pre></div>
+<p>添加 actuator 和 logging 两个 starter</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/app/web&#34;</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/app&#34;</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/starter/actuator&#34;</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/starter/logging&#34;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span>  <span class="p">{</span>
+	<span class="nx">web</span><span class="p">.</span><span class="nf">NewApplication</span><span class="p">().</span>
+		<span class="nf">SetProperty</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">ProfilesInclude</span><span class="p">,</span> <span class="nx">actuator</span><span class="p">.</span><span class="nx">Profile</span><span class="p">,</span> <span class="nx">logging</span><span class="p">.</span><span class="nx">Profile</span><span class="p">).</span>
+		<span class="nf">Run</span><span class="p">()</span>
+<span class="p">}</span></code></pre></div>
+<p>这时候，我们来运行这段代码</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">go run main.go</code></pre></div>
+<p>输出结果如下，这时你可以看到已经映射了RESTful接口 <code>/health</code>, 也就是说，添加actuator starter后，即提供了健康检测接口。</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">______  ____________             _____
+___  / / /__<span class="o">(</span>_<span class="o">)</span>__  /_______________  /_
+__  /_/ /__  /__  __ <span class="se">\ </span> __ <span class="se">\ </span> __ <span class="se">\ </span> __/   
+_  __  / _  / _  /_/ / /_/ / /_/ / /_     Hiboot Application Framework
+/_/ /_/  /_/  /_.___/<span class="se">\_</span>___/<span class="se">\_</span>___/<span class="se">\_</span>_/     https://hidevops.io/hiboot
+
+<span class="o">[</span>INFO<span class="o">]</span> <span class="m">2018</span>/11/01 <span class="m">15</span>:51 Starting Hiboot web application hiboot-app on localhost with PID <span class="m">71924</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="m">2018</span>/11/01 <span class="m">15</span>:51 Working directory: /Users/johnd/.gvm/pkgsets/go1.10/hidevops/src/hidevops.io/hiboot-web-app-demo
+<span class="o">[</span>INFO<span class="o">]</span> <span class="m">2018</span>/11/01 <span class="m">15</span>:51 The following profiles are active: local, <span class="o">[</span>actuator logging web<span class="o">]</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="m">2018</span>/11/01 <span class="m">15</span>:51 Initializing Hiboot Application
+<span class="o">[</span>INFO<span class="o">]</span> <span class="m">2018</span>/11/01 <span class="m">15</span>:51 Auto configure web starter
+<span class="o">[</span>INFO<span class="o">]</span> <span class="m">2018</span>/11/01 <span class="m">15</span>:51 Auto configure actuator starter
+<span class="o">[</span>INFO<span class="o">]</span> <span class="m">2018</span>/11/01 <span class="m">15</span>:51 Auto configure logging starter
+<span class="o">[</span>INFO<span class="o">]</span> <span class="m">2018</span>/11/01 <span class="m">15</span>:51 Resolving dependencies
+<span class="o">[</span>INFO<span class="o">]</span> <span class="m">2018</span>/11/01 <span class="m">15</span>:51 Injecting dependencies
+<span class="o">[</span>INFO<span class="o">]</span> <span class="m">2018</span>/11/01 <span class="m">15</span>:51 Injected dependencies
+<span class="o">[</span>INFO<span class="o">]</span> <span class="m">2018</span>/11/01 <span class="m">15</span>:51 Mapped <span class="s2">&#34;/health&#34;</span> onto actuator.healthController.Get<span class="o">()</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="m">2018</span>/11/01 <span class="m">15</span>:51 Hiboot started on port<span class="o">(</span>s<span class="o">)</span> http://localhost:8080
+<span class="o">[</span>INFO<span class="o">]</span> <span class="m">2018</span>/11/01 <span class="m">15</span>:51 Started hiboot-app in <span class="m">0</span>.004189 seconds</code></pre></div>
+<p>健康检测对于生产来说非常重要，接下来我们使用<a href="https://httpie.org/">httpie</a>(当然你用curl、postman或浏览器都可以)来验证健康检测接口。</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">http http://localhost:8080/health</code></pre></div>
+<p>输出健康状态如下：</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">HTTP/1.1 <span class="m">200</span> OK
+Content-Length: <span class="m">15</span>
+Content-Type: application/json<span class="p">;</span> <span class="nv">charset</span><span class="o">=</span>UTF-8
+Date: Thu, <span class="m">01</span> Nov <span class="m">2018</span> <span class="m">07</span>:55:33 GMT
+
+<span class="o">{</span>
+    <span class="s2">&#34;status&#34;</span>: <span class="s2">&#34;UP&#34;</span>
+<span class="o">}</span></code></pre></div>
+<h2 id="第三步-添加-controller">- 第三步, 添加 Controller</h2>
+
+<p>在这个步骤，我们来增加一个RestController，名字就叫 <code>Controller</code>，这个结构体内嵌了<code>at.RestController</code>, 它的类型是<code>interface</code>，<code>at.RestController</code>在Hiboot中为注解作用，表示这是一个RestController。</p>
+
+<p>你可以编写以下代码，也可以运行以下命令直接获取。</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git reset --hard 2be5df8e0101b685579f1dd452059d967017148f</code></pre></div>
+<h3 id="编写代码">编写代码</h3>
+
+<p>通过以上三步，你可以看到如何快速来编写第一个Hiboot网络应用程序</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/app/web&#34;</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/app&#34;</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/starter/actuator&#34;</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/starter/logging&#34;</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/at&#34;</span>
+<span class="p">)</span>
+
+<span class="c1">// Controller Rest Controller with path /
+</span><span class="c1">// RESTful Controller, derived from at.RestController. The context mapping of this controller is &#39;/&#39; by default
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">Controller</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">// at.RestController or at.RestController must be embedded here
+</span><span class="c1"></span>	<span class="nx">at</span><span class="p">.</span><span class="nx">RestController</span>
+<span class="p">}</span>
+
+<span class="c1">// Get GET /
+</span><span class="c1">// Get method, the context mapping of this method is &#39;/&#39; by default
+</span><span class="c1">// the Method name Get means that the http request method is GET
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Controller</span><span class="p">)</span> <span class="nf">Get</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+	<span class="c1">// response
+</span><span class="c1"></span>	<span class="k">return</span> <span class="s">&#34;My first Hiboot web application&#34;</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span>  <span class="p">{</span>
+	<span class="nx">web</span><span class="p">.</span><span class="nf">NewApplication</span><span class="p">(</span><span class="nb">new</span><span class="p">(</span><span class="nx">Controller</span><span class="p">)).</span>
+		<span class="nf">SetProperty</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">ProfilesInclude</span><span class="p">,</span> <span class="nx">actuator</span><span class="p">.</span><span class="nx">Profile</span><span class="p">,</span> <span class="nx">logging</span><span class="p">.</span><span class="nx">Profile</span><span class="p">).</span>
+		<span class="nf">Run</span><span class="p">()</span>
+<span class="p">}</span></code></pre></div>
+<h3 id="运行代码">运行代码：</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">go run main.go</code></pre></div>
+<p>你可以看到多了一个接口映射：<code>/</code> 到 <code>main.Controller.Get()</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">______</span>  <span class="nx">____________</span>             <span class="nx">_____</span>
+<span class="nx">___</span>  <span class="o">/</span> <span class="o">/</span> <span class="o">/</span><span class="nf">__</span><span class="p">(</span><span class="nx">_</span><span class="p">)</span><span class="nx">__</span>  <span class="o">/</span><span class="nx">_______________</span>  <span class="o">/</span><span class="nx">_</span>
+<span class="nx">__</span>  <span class="o">/</span><span class="nx">_</span><span class="o">/</span> <span class="o">/</span><span class="nx">__</span>  <span class="o">/</span><span class="nx">__</span>  <span class="nx">__</span> <span class="err">\</span>  <span class="nx">__</span> <span class="err">\</span>  <span class="nx">__</span> <span class="err">\</span>  <span class="nx">__</span><span class="o">/</span>   
+<span class="nx">_</span>  <span class="nx">__</span>  <span class="o">/</span> <span class="nx">_</span>  <span class="o">/</span> <span class="nx">_</span>  <span class="o">/</span><span class="nx">_</span><span class="o">/</span> <span class="o">/</span> <span class="o">/</span><span class="nx">_</span><span class="o">/</span> <span class="o">/</span> <span class="o">/</span><span class="nx">_</span><span class="o">/</span> <span class="o">/</span> <span class="o">/</span><span class="nx">_</span>     <span class="nx">Hiboot</span> <span class="nx">Application</span> <span class="nx">Framework</span>
+<span class="o">/</span><span class="nx">_</span><span class="o">/</span> <span class="o">/</span><span class="nx">_</span><span class="o">/</span>  <span class="o">/</span><span class="nx">_</span><span class="o">/</span>  <span class="o">/</span><span class="nx">_</span><span class="p">.</span><span class="nx">___</span><span class="o">/</span><span class="err">\</span><span class="nx">____</span><span class="o">/</span><span class="err">\</span><span class="nx">____</span><span class="o">/</span><span class="err">\</span><span class="nx">__</span><span class="o">/</span>     <span class="nx">https</span><span class="p">:</span><span class="c1">//hidevops.io/hiboot
+</span><span class="c1"></span>
+<span class="p">[</span><span class="nx">INFO</span><span class="p">]</span> <span class="mi">2018</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mo">01</span> <span class="mi">16</span><span class="p">:</span><span class="mo">07</span> <span class="nx">Starting</span> <span class="nx">Hiboot</span> <span class="nx">web</span> <span class="nx">application</span> <span class="nx">hiboot</span><span class="o">-</span><span class="nx">app</span> <span class="nx">on</span> <span class="nx">localhost</span> <span class="nx">with</span> <span class="nx">PID</span> <span class="mi">72490</span>
+<span class="p">[</span><span class="nx">INFO</span><span class="p">]</span> <span class="mi">2018</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mo">01</span> <span class="mi">16</span><span class="p">:</span><span class="mo">07</span> <span class="nx">Working</span> <span class="nx">directory</span><span class="p">:</span> <span class="o">/</span><span class="nx">Users</span><span class="o">/</span><span class="nx">johnd</span><span class="o">/</span><span class="p">.</span><span class="nx">gvm</span><span class="o">/</span><span class="nx">pkgsets</span><span class="o">/</span><span class="nx">go1</span><span class="mf">.10</span><span class="o">/</span><span class="nx">hidevops</span><span class="o">/</span><span class="nx">src</span><span class="o">/</span><span class="nx">hidevops</span><span class="p">.</span><span class="nx">io</span><span class="o">/</span><span class="nx">hiboot</span><span class="o">-</span><span class="nx">web</span><span class="o">-</span><span class="nx">app</span><span class="o">-</span><span class="nx">demo</span>
+<span class="p">[</span><span class="nx">INFO</span><span class="p">]</span> <span class="mi">2018</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mo">01</span> <span class="mi">16</span><span class="p">:</span><span class="mo">07</span> <span class="nx">The</span> <span class="nx">following</span> <span class="nx">profiles</span> <span class="nx">are</span> <span class="nx">active</span><span class="p">:</span> <span class="nx">local</span><span class="p">,</span> <span class="p">[</span><span class="nx">actuator</span> <span class="nx">logging</span> <span class="nx">web</span><span class="p">]</span>
+<span class="p">[</span><span class="nx">INFO</span><span class="p">]</span> <span class="mi">2018</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mo">01</span> <span class="mi">16</span><span class="p">:</span><span class="mo">07</span> <span class="nx">Initializing</span> <span class="nx">Hiboot</span> <span class="nx">Application</span>
+<span class="p">[</span><span class="nx">INFO</span><span class="p">]</span> <span class="mi">2018</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mo">01</span> <span class="mi">16</span><span class="p">:</span><span class="mo">07</span> <span class="nx">Auto</span> <span class="nx">configure</span> <span class="nx">web</span> <span class="nx">starter</span>
+<span class="p">[</span><span class="nx">INFO</span><span class="p">]</span> <span class="mi">2018</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mo">01</span> <span class="mi">16</span><span class="p">:</span><span class="mo">07</span> <span class="nx">Auto</span> <span class="nx">configure</span> <span class="nx">actuator</span> <span class="nx">starter</span>
+<span class="p">[</span><span class="nx">INFO</span><span class="p">]</span> <span class="mi">2018</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mo">01</span> <span class="mi">16</span><span class="p">:</span><span class="mo">07</span> <span class="nx">Auto</span> <span class="nx">configure</span> <span class="nx">logging</span> <span class="nx">starter</span>
+<span class="p">[</span><span class="nx">INFO</span><span class="p">]</span> <span class="mi">2018</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mo">01</span> <span class="mi">16</span><span class="p">:</span><span class="mo">07</span> <span class="nx">Resolving</span> <span class="nx">dependencies</span>
+<span class="p">[</span><span class="nx">INFO</span><span class="p">]</span> <span class="mi">2018</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mo">01</span> <span class="mi">16</span><span class="p">:</span><span class="mo">07</span> <span class="nx">Injecting</span> <span class="nx">dependencies</span>
+<span class="p">[</span><span class="nx">INFO</span><span class="p">]</span> <span class="mi">2018</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mo">01</span> <span class="mi">16</span><span class="p">:</span><span class="mo">07</span> <span class="nx">Injected</span> <span class="nx">dependencies</span>
+<span class="p">[</span><span class="nx">INFO</span><span class="p">]</span> <span class="mi">2018</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mo">01</span> <span class="mi">16</span><span class="p">:</span><span class="mo">07</span> <span class="nx">Mapped</span> <span class="s">&#34;/health&#34;</span> <span class="nx">onto</span> <span class="nx">actuator</span><span class="p">.</span><span class="nx">healthController</span><span class="p">.</span><span class="nf">Get</span><span class="p">()</span>
+<span class="p">[</span><span class="nx">INFO</span><span class="p">]</span> <span class="mi">2018</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mo">01</span> <span class="mi">16</span><span class="p">:</span><span class="mo">07</span> <span class="nx">Mapped</span> <span class="s">&#34;/&#34;</span> <span class="nx">onto</span> <span class="nx">main</span><span class="p">.</span><span class="nx">Controller</span><span class="p">.</span><span class="nf">Get</span><span class="p">()</span>
+<span class="p">[</span><span class="nx">INFO</span><span class="p">]</span> <span class="mi">2018</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mo">01</span> <span class="mi">16</span><span class="p">:</span><span class="mo">07</span> <span class="nx">Hiboot</span> <span class="nx">started</span> <span class="nx">on</span> <span class="nf">port</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:8080
+</span><span class="c1"></span><span class="p">[</span><span class="nx">INFO</span><span class="p">]</span> <span class="mi">2018</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mo">01</span> <span class="mi">16</span><span class="p">:</span><span class="mo">07</span> <span class="nx">Started</span> <span class="nx">hiboot</span><span class="o">-</span><span class="nx">app</span> <span class="nx">in</span> <span class="mf">0.002689</span> <span class="nx">seconds</span></code></pre></div>
+<h3 id="验证接口">验证接口</h3>
+
+<p>现在我们来验证刚完成的第一个Hiboot网络应用接口：</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">http http://localhost:8080/</code></pre></div>
+<p>输出结果如下:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">My first Hiboot web application</code></pre></div>
+<h2 id="命令行应用快速入门">命令行应用快速入门</h2>
+
+<p>编写命令行应用和网络应用一样简单，也可以使用Hiboot的依赖注入和自动配置功能。</p>
+
+<p>以下代码可以在<a href="https://hidevops.io/hiboot/examples/cli/hello">这里</a>找到.</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// import cli starter and fmt
+</span><span class="c1"></span><span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;fmt&#34;</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/app&#34;</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/app/cli&#34;</span>
+<span class="p">)</span>
+
+<span class="c1">// define the command
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">rootCommand</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">// embedding cli.RootCommand in each command
+</span><span class="c1"></span>	<span class="nx">cli</span><span class="p">.</span><span class="nx">RootCommand</span>
+
+	<span class="c1">// persistant flag to
+</span><span class="c1"></span>	<span class="nx">to</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">newRootCommand</span><span class="p">()</span> <span class="o">*</span><span class="nx">rootCommand</span> <span class="p">{</span>
+	<span class="nx">c</span> <span class="o">:=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">rootCommand</span><span class="p">)</span>
+	<span class="nx">c</span><span class="p">.</span><span class="nx">Use</span> <span class="p">=</span> <span class="s">&#34;hello&#34;</span>
+	<span class="nx">c</span><span class="p">.</span><span class="nx">Short</span> <span class="p">=</span> <span class="s">&#34;hello command&#34;</span>
+	<span class="nx">c</span><span class="p">.</span><span class="nx">Long</span> <span class="p">=</span> <span class="s">&#34;run hello command for getting started&#34;</span>
+	<span class="nx">c</span><span class="p">.</span><span class="nx">Example</span> <span class="p">=</span> <span class="s">`
+</span><span class="s">hello -h : help
+</span><span class="s">hello -t John : say hello to John
+</span><span class="s">`</span>
+	<span class="nx">c</span><span class="p">.</span><span class="nf">PersistentFlags</span><span class="p">().</span><span class="nf">StringVarP</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">c</span><span class="p">.</span><span class="nx">to</span><span class="p">,</span> <span class="s">&#34;to&#34;</span><span class="p">,</span> <span class="s">&#34;t&#34;</span><span class="p">,</span> <span class="s">&#34;world&#34;</span><span class="p">,</span> <span class="s">&#34;e.g. --to=world or -t world&#34;</span><span class="p">)</span>
+	<span class="k">return</span> <span class="nx">c</span>
+<span class="p">}</span>
+
+<span class="c1">// Run run the command
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">rootCommand</span><span class="p">)</span> <span class="nf">Run</span><span class="p">(</span><span class="nx">args</span> <span class="p">[]</span><span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Hello, %v\n&#34;</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">to</span><span class="p">)</span>
+	<span class="k">return</span> <span class="kc">nil</span>
+<span class="p">}</span>
+
+<span class="c1">// main function
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="c1">// create new cli application and run it
+</span><span class="c1"></span>	<span class="nx">cli</span><span class="p">.</span><span class="nf">NewApplication</span><span class="p">(</span><span class="nx">newRootCommand</span><span class="p">).</span>
+		<span class="nf">SetProperty</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">PropertyBannerDisabled</span><span class="p">,</span> <span class="kc">true</span><span class="p">).</span>
+		<span class="nf">Run</span><span class="p">()</span>
+<span class="p">}</span></code></pre></div>
+<h3 id="运行命令行应用">运行命令行应用</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">dep ensure
+
+go run main.go</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Hello, world</code></pre></div>
+<h3 id="编译及运行">编译及运行</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">go build</code></pre></div>
+<p>Let&rsquo;s get help</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">./hello --help</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">run hello <span class="nb">command</span> <span class="k">for</span> getting started
+
+Usage:
+  hello <span class="o">[</span>flags<span class="o">]</span>
+
+Flags:
+  -h, --help        <span class="nb">help</span> <span class="k">for</span> hello
+  -t, --to string   e.g. --to<span class="o">=</span>world or -t world <span class="o">(</span>default <span class="s2">&#34;world&#34;</span><span class="o">)</span></code></pre></div>
+<p>Greeting to Hiboot</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">./hello --to Hiboot</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Hello, Hiboot</code></pre></div>
+<p>到目前为止，我们有了一定基础来编写Hiboot的<a href="https://hiboot.hidevops.io/cn/web-app/">网络应用</a>和<a href="https://hiboot.hidevops.io/cn/cli-app/">命令行应用</a>。</p>
+
+                <div class="order-0 w-20 dn db-l">
+                    
+<nav role="navigation">
+  <ul class="list pa0 nl2">
+    
+      
+      <li class="f5 w-100 hover-bg-light-gray hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2  primary-color" data-target=".Hiboot云原生应用框架">Hiboot云原生应用框架</a>
+        <ul class="Hiboot云原生应用框架 desktopmenu animated fadeIn list pl0 bg-light-gray db">
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/cn/getting-started/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 primary-color ">
+              入门
+            </a>
+          </li>
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/cn/cli-app/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              命令行应用
+            </a>
+          </li>
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/cn/web-app/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              网络应用
+            </a>
+          </li>
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/cn/auto-configure/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              自动配置
+            </a>
+          </li>
+        </ul>
+      </li>
+  </ul>
+</nav>
+
+                </div>
+                <aside class="copyright" role="note">
+                     &copy; 2019 Released under the Apache 2.0 license &ndash;  - By John Deng.
+                </aside>
+            </div>
+
+            <footer class="footer">
+                
+
+<nav class="pagination" aria-label="Footer">
+  <div class="previous">
+  
+      <a href="https://hiboot.hidevops.io/cn/web-app/" title="网络应用">
+        <span class="direction">
+          Previous
+        </span>
+        <div class="page">
+          <div class="button button-previous" role="button" aria-label="Previous">
+            <i class="icon icon-back"></i>
+          </div>
+          <div class="stretch">
+            <div class="title">
+              网络应用
+            </div>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+
+  <div class="next">
+  
+  </div>
+</nav>
+
+
+
+
+
+            </footer>
+        </div>
+    </article>
+    <div class="sticky">
+	
+	
+	
+	
+		
+		
+		
+	
+		
+		<div class="col-md-2 pl-0">
+			
+			<div id="page-scrollspy" class="toc-nav">
+				
+				<ul class="nav nav-pills ml-0">
+					
+					<li class="nav-item pb-3 text-center">
+						<span class="font-weight-bold mb-2">- What's on this Page - </span>
+					</li>
+					
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%89%8d%e6%8f%90">
+												 前提
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%bd%91%e7%bb%9c%e5%ba%94%e7%94%a8%e5%bf%ab%e9%80%9f%e5%85%a5%e9%97%a8">
+												 网络应用快速入门
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e8%8e%b7%e5%8f%96%e4%bb%a3%e7%a0%81">
+												 获取代码
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%ac%ac%e4%b8%80%e6%ad%a5-%e5%bf%ab%e9%80%9f%e5%bc%80%e5%a7%8bhiboot%e5%ba%94%e7%94%a8">
+												 - 第一步, 快速开始Hiboot应用
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%ac%ac%e4%ba%8c%e6%ad%a5-%e6%b7%bb%e5%8a%a0-starter">
+												 - 第二步, 添加 Starter
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%ac%ac%e4%b8%89%e6%ad%a5-%e6%b7%bb%e5%8a%a0-controller">
+												 - 第三步, 添加 Controller
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%bc%96%e5%86%99%e4%bb%a3%e7%a0%81">
+												 编写代码
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e8%bf%90%e8%a1%8c%e4%bb%a3%e7%a0%81">
+												 运行代码：
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e9%aa%8c%e8%af%81%e6%8e%a5%e5%8f%a3">
+												 验证接口
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%91%bd%e4%bb%a4%e8%a1%8c%e5%ba%94%e7%94%a8%e5%bf%ab%e9%80%9f%e5%85%a5%e9%97%a8">
+												 命令行应用快速入门
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e8%bf%90%e8%a1%8c%e5%91%bd%e4%bb%a4%e8%a1%8c%e5%ba%94%e7%94%a8">
+												 运行命令行应用
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%bc%96%e8%af%91%e5%8f%8a%e8%bf%90%e8%a1%8c">
+												 编译及运行
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+				</ul>
+			</div>
+			
+		</div>
+		
+	</div>
+    <div class="results" role="status" aria-live="polite">
+        <div class="scrollable">
+            <div class="wrapper">
+                <div class="meta"></div>
+                <div class="list"></div>
+            </div>
+        </div>
+    </div>
+</main>
+
+    <script>
+    
+      var base_url = 'https:\/\/hiboot.hidevops.io\/';
+      var repo_id  = '\/';
+    
+    </script>
+
+    <script src="https://hiboot.hidevops.io/javascripts/application.js"></script>
+    <script src="https://hiboot.hidevops.io/javascripts/menutoggle.js"></script>
+    <script src="https://hiboot.hidevops.io/javascripts/bootstrap.js"></script>
+    
+
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
+
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
+
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+
+
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = " ";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
+
+    
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>

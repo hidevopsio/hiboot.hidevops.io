@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+  
+  
+  
+  
+   
+  <html class="no-js" lang="en"> 
+  
+
+  <head lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>Inversion of Control - Hiboot Cloud Native Application Framework</title>
+    <meta name="generator" content="Hugo 0.59.1" />
+
+    
+    <meta name="description" content="Official site hidevops.io">
+    
+    <link rel="canonical" href="https://hiboot.hidevops.io/inversion-of-control/">
+    
+    <meta name="author" content="John Deng">
+    
+
+    <meta property="og:url" content="https://hiboot.hidevops.io/inversion-of-control/">
+    <meta property="og:title" content="Hiboot Cloud Native Application Framework">
+    <meta property="og:image" content="https://hiboot.hidevops.io/images/logo.png">
+    <meta name="apple-mobile-web-app-title" content="Hiboot Cloud Native Application Framework">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://hiboot.hidevops.io/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="https://hiboot.hidevops.io/images/favicon.ico">
+
+    <style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('https://hiboot.hidevops.io/fonts/icon.eot');
+        src: url('https://hiboot.hidevops.io/fonts/icon.eot')
+               format('embedded-opentype'),
+             url('https://hiboot.hidevops.io/fonts/icon.woff')
+               format('woff'),
+             url('https://hiboot.hidevops.io/fonts/icon.ttf')
+               format('truetype'),
+             url('https://hiboot.hidevops.io/fonts/icon.svg')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+
+    <link rel="stylesheet" href="https://hiboot.hidevops.io/stylesheets/application.css">
+    <link rel="stylesheet" href="https://hiboot.hidevops.io/stylesheets/_animation.css">
+    <link rel="stylesheet" href="https://hiboot.hidevops.io/stylesheets/temporary.css">
+    <link rel="stylesheet" href="https://hiboot.hidevops.io/stylesheets/palettes.css">
+    <link rel="stylesheet" href="https://hiboot.hidevops.io/icons/style.css">
+
+    
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu&#43;Mono">
+    <style>
+      body, input {
+        font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+
+    
+    <script src="https://hiboot.hidevops.io/javascripts/modernizr.js"></script>
+    <script src="https://hiboot.hidevops.io/javascripts/growingio.js"></script>
+
+    
+
+  </head>
+  <body class="palette-primary-cyan palette-accent-deep-purple">
+    
+
+<div class="backdrop">
+    <div class="backdrop-paper"></div>
+</div>
+
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+
+<header class="header">
+    <nav aria-label="Header">
+    <div class="bar default zindex11">
+        <div class="button button-menu" role="button" aria-label="Menu">
+            <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+        </div>
+        <div class="stretch">
+            <div class="title">
+                Inversion of Control
+            </div>
+        </div>
+
+        <div class="button button-home" role="button" aria-label="Home">
+            <a href="https://hidevops.io" title="Home" target="_blank"  class="toggle-button icon icons-home"></a>
+        </div>
+        <div class="button button-twitter language_btn" role="button" aria-label="Twitter">
+            <a href="javascript:;" title="Switch languages" class="toggle-button icons-globe"></a>
+            <div class="layer_box">
+                
+                  
+                  <a href="https://hiboot.hidevops.io/cn" lang="cn">中文</a>
+                  
+                
+                  
+                
+            </div>
+        </div>
+        
+        <div class="button button-twitter" role="button" aria-label="Twitter">
+            <a href="https://twitter.com/johndcn" title="@johndcn on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
+        </div>
+         
+        <div class="button button-github" role="button" aria-label="GitHub">
+            <a href="https://github.com/hidevopsio" title="@hidevopsio on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+        </div>
+        
+
+        <div class="button button-search" role="button" aria-label="Search">
+            <label class="toggle-button icon icon-search" title="Search" for="toggle-search"></label>
+        </div>
+    </div>
+    <div class="bar search">
+        <div class="button button-close" role="button" aria-label="Close">
+            <label class="toggle-button icon icon-back" for="toggle-search"></label>
+        </div>
+        <div class="stretch">
+            <div class="field">
+                <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+            </div>
+        </div>
+        <div class="button button-reset" role="button" aria-label="Search">
+            <button class="toggle-button icon icon-close" id="reset-search"></button>
+        </div>
+    </div>
+</nav>
+</header>
+
+<main class="main">
+    <div class="drawer">
+        <nav aria-label="Navigation">
+    <a href="https://hiboot.hidevops.io/en" class="project">
+        <div class="banner">
+            
+            <div class="logo">
+                <img src="https://hiboot.hidevops.io/images/logo.png">
+            </div>
+            
+            <div class="name">
+                <strong>Hiboot Cloud Native Application Framework <span class="version">v1.2.1</span></strong> 
+                <br> 
+            </div>
+        </div>
+    </a>
+
+    <div class="scrollable">
+        <div class="wrapper">
+            
+            <ul class="repo">
+                <li class="repo-download">
+                    <a href="//archive/master.zip" target="_blank" title="Download" data-action="download">
+                        <i class="icon icon-download"></i> Download
+                    </a>
+                </li>
+                <li class="repo-stars">
+                    <a href="//stargazers" target="_blank" title="Stargazers" data-action="star">
+                        <i class="icon icon-star"></i> Stars
+                        <span class="count">&ndash;</span>
+                    </a>
+                </li>
+            </ul>
+            <hr> 
+
+            <div class="toc">
+                
+                <ul>
+                    
+<nav role="navigation">
+  <ul class="list pa0 nl2">
+    
+      
+      <li class="f5 w-100 hover-bg-light-gray hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".Hiboot Cloud Native Application Framework">Hiboot Cloud Native Application Framework</a>
+        <ul class="Hiboot Cloud Native Application Framework desktopmenu animated fadeIn list pl0 bg-light-gray dn">
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/auto-configure/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              Auto Configuration
+            </a>
+          </li>
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/cli-app/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              Cli Applications
+            </a>
+          </li>
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/web-app/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              Web Application
+            </a>
+          </li>
+        </ul>
+      </li>
+      
+      <li class="f5 w-100 hover-bg-light-gray hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".getting-started">Getting Started</a>
+        <ul class="getting-started desktopmenu animated fadeIn list pl0 bg-light-gray dn">
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/getting-started/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              Getting started
+            </a>
+          </li>
+        </ul>
+      </li>
+  </ul>
+</nav>
+
+                </ul>
+                 
+                <hr>
+                <span class="section">The author</span>
+
+                <ul>
+                    
+                    <li>
+                        <a href="https://twitter.com/johndcn" target="_blank" title="@johndcn on Twitter">
+              @johndcn on Twitter
+            </a>
+                    </li>
+                     
+                    <li>
+                        <a href="https://github.com/hidevopsio" target="_blank" title="@hidevopsio on GitHub">
+              @hidevopsio on GitHub
+            </a>
+                    </li>
+                     
+                    <li>
+                        <a href="mailto:hi.devops.io@gmail.com" title="Email of hi.devops.io@gmail.com">
+              Contact via email
+            </a>
+                    </li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    </div>
+    <article class="article">
+        <div class="wrapper">
+            <div class="contentWrapper">
+                <h1>Inversion of Control </h1>
+                
+
+<h2 id="intruduction-to-ioc">Intruduction to IoC</h2>
+
+<p>The main goal of Inversion of control and Dependency Injection is to remove dependencies of an application. This makes the system more decoupled and maintainable.</p>
+
+<p><img src="images/ioc.png" alt="" /></p>
+
+<p>Dependency injection is a concept valid for any programming language. The general concept behind dependency injection is called Inversion of Control. According to this concept a struct should not configure its dependencies statically but should be configured from the outside.</p>
+
+<p>Dependency Injection design pattern allows us to remove the hard-coded dependencies and make our application loosely coupled, extendable and maintainable.</p>
+
+<p>A Go struct has a dependency on another struct, if it uses an instance of this struct. We call this a struct dependency. For example, a struct which accesses a user controller has a dependency on user service struct.</p>
+
+<p>Ideally Go struct should be as independent as possible from other Go struct. This increases the possibility of reusing these struct and to be able to test them independently from other struct.</p>
+
+<p>The following example shows a struct which has no hard dependencies.</p>
+
+<h2 id="dependency-injection">Dependency Injection</h2>
+
+<p>One of the most significant feature of Hiboot is Dependency Injection. Hiboot implements JSR-330 standard.</p>
+
+<p>Dependency Injection provides objects that an object needs. So rather than the dependencies construct themselves they are injected by some external means. For instance let’s say we have the following below struct <code>userService</code> who uses a <code>gorm.Repository</code> interface to query record from database. So rather than connect the database and creating an instance <code>gorm.Repository</code> from within the constructor, we can inject the same by importing  via a constructor as shown in the below code snippet.</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">userService</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">repository</span> <span class="nx">gorm</span><span class="p">.</span><span class="nx">Repository</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">newUserService</span><span class="p">(</span><span class="nx">repository</span> <span class="nx">gorm</span><span class="p">.</span><span class="nx">Repository</span><span class="p">)</span> <span class="o">*</span><span class="nx">userService</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&amp;</span><span class="nx">userService</span><span class="p">{</span>
+        <span class="nx">repository</span><span class="p">:</span> <span class="nx">repository</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+<h3 id="constructor-injection">Constructor Injection</h3>
+
+<p>Although Field Injection is pretty convenient, but the Constructor Injection is the first-class citizen, we
+usually advise people to use constructor injection as it has below advantages,</p>
+
+<ul>
+<li>It&rsquo;s testable, easy to implement unit test.</li>
+<li>Syntax validation, with syntax validation on most of the IDEs to avoid typo.</li>
+
+<li><p>No need to use a dedicated mechanism to ensure required properties are set.</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/app/web&#34;</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/model&#34;</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/starter/jwt&#34;</span>
+	<span class="s">&#34;time&#34;</span>
+<span class="p">)</span>
+
+<span class="c1">// This example shows that jwtToken is injected through the constructor,
+</span><span class="c1">// once you imported &#34;hidevops.io/hiboot/pkg/starter/jwt&#34;,
+</span><span class="c1">// jwtToken jwt.Token will be injectable.
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="c1">// the web application entry
+</span><span class="c1"></span>	<span class="nx">web</span><span class="p">.</span><span class="nf">NewApplication</span><span class="p">().</span><span class="nf">Run</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="c1">// PATH: /login
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">loginController</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">at</span><span class="p">.</span><span class="nx">RestController</span>
+
+	<span class="nx">token</span> <span class="nx">jwt</span><span class="p">.</span><span class="nx">Token</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">userRequest</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">// embedded field model.RequestBody mark that userRequest is request body
+</span><span class="c1"></span>	<span class="nx">model</span><span class="p">.</span><span class="nx">RequestBody</span>
+	<span class="nx">Username</span> <span class="kt">string</span> <span class="s">`json:&#34;username&#34; validate:&#34;required&#34;`</span>
+	<span class="nx">Password</span> <span class="kt">string</span> <span class="s">`json:&#34;password&#34; validate:&#34;required&#34;`</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+	<span class="c1">// Register Rest Controller through constructor newLoginController
+</span><span class="c1"></span>	<span class="nx">app</span><span class="p">.</span><span class="nf">Register</span><span class="p">(</span><span class="nx">newLoginController</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// newLoginController inject jwtToken through the argument jwtToken jwt.Token on constructor
+</span><span class="c1">// the dependency jwtToken is auto configured in jwt starter, see https://hidevops.io/hiboot/pkg/starter/jwt
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">newLoginController</span><span class="p">(</span><span class="nx">token</span> <span class="nx">jwt</span><span class="p">.</span><span class="nx">Token</span><span class="p">)</span> <span class="o">*</span><span class="nx">loginController</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="o">&amp;</span><span class="nx">loginController</span><span class="p">{</span>
+		<span class="nx">token</span><span class="p">:</span> <span class="nx">token</span><span class="p">,</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Post /
+</span><span class="c1">// The first word of method is the http method POST, the rest is the context mapping
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">loginController</span><span class="p">)</span> <span class="nf">Post</span><span class="p">(</span><span class="nx">request</span> <span class="o">*</span><span class="nx">userRequest</span><span class="p">)</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">model</span><span class="p">.</span><span class="nx">Response</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">jwtToken</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">token</span><span class="p">.</span><span class="nf">Generate</span><span class="p">(</span><span class="nx">jwt</span><span class="p">.</span><span class="nx">Map</span><span class="p">{</span>
+		<span class="s">&#34;username&#34;</span><span class="p">:</span> <span class="nx">request</span><span class="p">.</span><span class="nx">Username</span><span class="p">,</span>
+		<span class="s">&#34;password&#34;</span><span class="p">:</span> <span class="nx">request</span><span class="p">.</span><span class="nx">Password</span><span class="p">,</span>
+	<span class="p">},</span> <span class="mi">30</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">)</span>
+
+	<span class="nx">response</span> <span class="p">=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">model</span><span class="p">.</span><span class="nx">BaseResponse</span><span class="p">)</span>
+	<span class="nx">response</span><span class="p">.</span><span class="nf">SetData</span><span class="p">(</span><span class="nx">jwtToken</span><span class="p">)</span>
+
+	<span class="k">return</span>
+<span class="p">}</span></code></pre></div></li>
+</ul>
+
+<h3 id="field-injection">Field Injection</h3>
+
+<p>In Hiboot the injection into fields is triggered by <strong>`inject:&ldquo;&rdquo;`</strong> struct tag. when inject tag is present
+on a field, Hiboot tries to resolve the object to inject by the type of the field. If several implementations
+of the same service interface are available, you have to disambiguate which implementation you want to be
+injected. This can be done by naming the field to specific implementation.</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">userController</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">at</span><span class="p">.</span><span class="nx">RestController</span>
+
+	<span class="nx">BasicAuthenticationService</span> <span class="nx">AuthenticationService</span>	<span class="s">`inject:&#34;&#34;`</span>
+	<span class="nx">Oauth2AuthenticationService</span> <span class="nx">AuthenticationService</span>	<span class="s">`inject:&#34;&#34;`</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">newUserController</span><span class="p">()</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="o">&amp;</span><span class="nx">userController</span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">app</span><span class="p">.</span><span class="nf">Register</span><span class="p">(</span><span class="nx">newUserController</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
+<h3 id="method-injection">Method Injection</h3>
+
+<p>Method Injection one of the most significant features of Hiboot. Below is the source code of Hiboot starter jwt. <code>Middleware()</code> is depends on <code>Token</code>, Hiboot will inject the instance of <code>Token</code> through the argument of the method. For more details, please see <a href="https://hiboot.hidevops.io/auto-configure">Hiboot starter</a></p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// Package jwt provides the hiboot starter for injectable jwt dependency
+</span><span class="c1"></span><span class="kn">package</span> <span class="nx">jwt</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;github.com/dgrijalva/jwt-go&#34;</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/app&#34;</span>
+	<span class="nx">mw</span> <span class="s">&#34;github.com/iris-contrib/middleware/jwt&#34;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">configuration</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">app</span><span class="p">.</span><span class="nx">Configuration</span>
+
+	<span class="nx">Properties</span> <span class="nx">Properties</span> <span class="s">`mapstructure:&#34;jwt&#34;`</span>
+	<span class="nx">middleware</span> <span class="o">*</span><span class="nx">Middleware</span>
+	<span class="nx">token</span>      <span class="nx">Token</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">app</span><span class="p">.</span><span class="nf">Register</span><span class="p">(</span><span class="nx">newConfiguration</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">newConfiguration</span><span class="p">()</span> <span class="o">*</span><span class="nx">configuration</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="o">&amp;</span><span class="nx">configuration</span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="c1">// Middleware is the jwt handler
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">configuration</span><span class="p">)</span> <span class="nf">Middleware</span><span class="p">(</span><span class="nx">jwtToken</span> <span class="nx">Token</span><span class="p">)</span> <span class="o">*</span><span class="nx">Middleware</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nf">NewJwtMiddleware</span><span class="p">(</span><span class="nx">mw</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
+		<span class="nx">ValidationKeyGetter</span><span class="p">:</span> <span class="kd">func</span><span class="p">(</span><span class="nx">token</span> <span class="o">*</span><span class="nx">jwt</span><span class="p">.</span><span class="nx">Token</span><span class="p">)</span> <span class="p">(</span><span class="kd">interface</span><span class="p">{},</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+			<span class="c1">//log.Debug(token)
+</span><span class="c1"></span>			<span class="k">return</span> <span class="nx">jwtToken</span><span class="p">.</span><span class="nf">VerifyKey</span><span class="p">(),</span> <span class="kc">nil</span>
+		<span class="p">},</span>
+		<span class="c1">// When set, the middleware verifies that tokens are signed with the specific signing algorithm
+</span><span class="c1"></span>		<span class="c1">// If the signing method is not constant the ValidationKeyGetter callback can be used to implement additional checks
+</span><span class="c1"></span>		<span class="c1">// Important to avoid security issues described here: https://auth0.com/blog/2015/03/31/critical-vulnerabilities-in-json-web-token-libraries/
+</span><span class="c1"></span>		<span class="nx">SigningMethod</span><span class="p">:</span> <span class="nx">jwt</span><span class="p">.</span><span class="nx">SigningMethodRS256</span><span class="p">,</span>
+	<span class="p">})</span>
+<span class="p">}</span>
+
+<span class="c1">// Token
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">configuration</span><span class="p">)</span> <span class="nf">Token</span><span class="p">()</span> <span class="nx">Token</span> <span class="p">{</span>
+	<span class="nx">t</span> <span class="o">:=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">jwtToken</span><span class="p">)</span>
+	<span class="nx">t</span><span class="p">.</span><span class="nf">Initialize</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">c</span><span class="p">.</span><span class="nx">Properties</span><span class="p">)</span>
+	<span class="k">return</span> <span class="nx">t</span>
+<span class="p">}</span></code></pre></div>
+                <div class="order-0 w-20 dn db-l">
+                    
+<nav role="navigation">
+  <ul class="list pa0 nl2">
+    
+      
+      <li class="f5 w-100 hover-bg-light-gray hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".Hiboot Cloud Native Application Framework">Hiboot Cloud Native Application Framework</a>
+        <ul class="Hiboot Cloud Native Application Framework desktopmenu animated fadeIn list pl0 bg-light-gray dn">
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/auto-configure/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              Auto Configuration
+            </a>
+          </li>
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/cli-app/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              Cli Applications
+            </a>
+          </li>
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/web-app/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              Web Application
+            </a>
+          </li>
+        </ul>
+      </li>
+      
+      <li class="f5 w-100 hover-bg-light-gray hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".getting-started">Getting Started</a>
+        <ul class="getting-started desktopmenu animated fadeIn list pl0 bg-light-gray dn">
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/getting-started/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              Getting started
+            </a>
+          </li>
+        </ul>
+      </li>
+  </ul>
+</nav>
+
+                </div>
+                <aside class="copyright" role="note">
+                     &copy; 2019 Released under the Apache 2.0 license &ndash;  - By John Deng.
+                </aside>
+            </div>
+
+            <footer class="footer">
+                
+
+<nav class="pagination" aria-label="Footer">
+  <div class="previous">
+  
+      <a href="https://hiboot.hidevops.io/auto-configure/" title="Auto Configuration">
+        <span class="direction">
+          Previous
+        </span>
+        <div class="page">
+          <div class="button button-previous" role="button" aria-label="Previous">
+            <i class="icon icon-back"></i>
+          </div>
+          <div class="stretch">
+            <div class="title">
+              Auto Configuration
+            </div>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+
+  <div class="next">
+  
+      <a href="https://hiboot.hidevops.io/cli-app/" title="Cli Applications">
+        <span class="direction">
+          Next
+        </span>
+        <div class="page">
+          <div class="stretch">
+            <div class="title">
+              Cli Applications
+            </div>
+          </div>
+          <div class="button button-next" role="button" aria-label="Next">
+            <i class="icon icon-forward"></i>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+</nav>
+
+
+
+
+
+            </footer>
+        </div>
+    </article>
+    <div class="sticky">
+	
+	
+	
+	
+		
+		
+		
+	
+		
+		<div class="col-md-2 pl-0">
+			
+			<div id="page-scrollspy" class="toc-nav">
+				
+				<ul class="nav nav-pills ml-0">
+					
+					<li class="nav-item pb-3 text-center">
+						<span class="font-weight-bold mb-2">- What's on this Page - </span>
+					</li>
+					
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+										<li class="nav-item">
+						 					<a class="nav-link" href="#intruduction-to-ioc">
+												 Intruduction to IoC
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+										<li class="nav-item">
+						 					<a class="nav-link" href="#dependency-injection">
+												 Dependency Injection
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+										<li class="nav-item">
+						 					<a class="nav-link" href="#constructor-injection">
+												 Constructor Injection
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+										<li class="nav-item">
+						 					<a class="nav-link" href="#field-injection">
+												 Field Injection
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+										<li class="nav-item">
+						 					<a class="nav-link" href="#method-injection">
+												 Method Injection
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+				</ul>
+			</div>
+			
+		</div>
+		
+	</div>
+    <div class="results" role="status" aria-live="polite">
+        <div class="scrollable">
+            <div class="wrapper">
+                <div class="meta"></div>
+                <div class="list"></div>
+            </div>
+        </div>
+    </div>
+</main>
+
+    <script>
+    
+      var base_url = 'https:\/\/hiboot.hidevops.io\/';
+      var repo_id  = '\/';
+    
+    </script>
+
+    <script src="https://hiboot.hidevops.io/javascripts/application.js"></script>
+    <script src="https://hiboot.hidevops.io/javascripts/menutoggle.js"></script>
+    <script src="https://hiboot.hidevops.io/javascripts/bootstrap.js"></script>
+    
+
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
+
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
+
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+
+
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = " ";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
+
+    
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>

@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+  
+  
+  
+  
+   
+  <html class="no-js" lang="cn"> 
+  
+
+  <head lang="cn">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>控制反转 - Hiboot云原生应用框架</title>
+    <meta name="generator" content="Hugo 0.59.1" />
+
+    
+    <meta name="description" content="Official site hidevops.io">
+    
+    <link rel="canonical" href="https://hiboot.hidevops.io/cn/inversion-of-control/">
+    
+    <meta name="author" content="John Deng">
+    
+
+    <meta property="og:url" content="https://hiboot.hidevops.io/cn/inversion-of-control/">
+    <meta property="og:title" content="Hiboot云原生应用框架">
+    <meta property="og:image" content="https://hiboot.hidevops.io/images/logo.png">
+    <meta name="apple-mobile-web-app-title" content="Hiboot云原生应用框架">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://hiboot.hidevops.io/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="https://hiboot.hidevops.io/images/favicon.ico">
+
+    <style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('https://hiboot.hidevops.io/fonts/icon.eot');
+        src: url('https://hiboot.hidevops.io/fonts/icon.eot')
+               format('embedded-opentype'),
+             url('https://hiboot.hidevops.io/fonts/icon.woff')
+               format('woff'),
+             url('https://hiboot.hidevops.io/fonts/icon.ttf')
+               format('truetype'),
+             url('https://hiboot.hidevops.io/fonts/icon.svg')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+
+    <link rel="stylesheet" href="https://hiboot.hidevops.io/stylesheets/application.css">
+    <link rel="stylesheet" href="https://hiboot.hidevops.io/stylesheets/_animation.css">
+    <link rel="stylesheet" href="https://hiboot.hidevops.io/stylesheets/temporary.css">
+    <link rel="stylesheet" href="https://hiboot.hidevops.io/stylesheets/palettes.css">
+    <link rel="stylesheet" href="https://hiboot.hidevops.io/icons/style.css">
+
+    
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu&#43;Mono">
+    <style>
+      body, input {
+        font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+
+    
+    <script src="https://hiboot.hidevops.io/javascripts/modernizr.js"></script>
+    <script src="https://hiboot.hidevops.io/javascripts/growingio.js"></script>
+
+    
+
+  </head>
+  <body class="palette-primary-cyan palette-accent-deep-purple">
+    
+
+<div class="backdrop">
+    <div class="backdrop-paper"></div>
+</div>
+
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+
+<header class="header">
+    <nav aria-label="Header">
+    <div class="bar default zindex11">
+        <div class="button button-menu" role="button" aria-label="Menu">
+            <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+        </div>
+        <div class="stretch">
+            <div class="title">
+                控制反转
+            </div>
+        </div>
+
+        <div class="button button-home" role="button" aria-label="Home">
+            <a href="https://hidevops.io" title="Home" target="_blank"  class="toggle-button icon icons-home"></a>
+        </div>
+        <div class="button button-twitter language_btn" role="button" aria-label="Twitter">
+            <a href="javascript:;" title="Switch languages" class="toggle-button icons-globe"></a>
+            <div class="layer_box">
+                
+                  
+                
+                  
+                  <a href="https://hiboot.hidevops.io/en" lang="en">English</a>
+                  
+                
+            </div>
+        </div>
+        
+        <div class="button button-twitter" role="button" aria-label="Twitter">
+            <a href="https://twitter.com/johndcn" title="@johndcn on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
+        </div>
+         
+        <div class="button button-github" role="button" aria-label="GitHub">
+            <a href="https://github.com/hidevopsio" title="@hidevopsio on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+        </div>
+        
+
+        <div class="button button-search" role="button" aria-label="Search">
+            <label class="toggle-button icon icon-search" title="Search" for="toggle-search"></label>
+        </div>
+    </div>
+    <div class="bar search">
+        <div class="button button-close" role="button" aria-label="Close">
+            <label class="toggle-button icon icon-back" for="toggle-search"></label>
+        </div>
+        <div class="stretch">
+            <div class="field">
+                <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+            </div>
+        </div>
+        <div class="button button-reset" role="button" aria-label="Search">
+            <button class="toggle-button icon icon-close" id="reset-search"></button>
+        </div>
+    </div>
+</nav>
+</header>
+
+<main class="main">
+    <div class="drawer">
+        <nav aria-label="Navigation">
+    <a href="https://hiboot.hidevops.io/cn" class="project">
+        <div class="banner">
+            
+            <div class="logo">
+                <img src="https://hiboot.hidevops.io/images/logo.png">
+            </div>
+            
+            <div class="name">
+                <strong>Hiboot云原生应用框架 <span class="version">v1.2.1</span></strong> 
+                <br> 
+            </div>
+        </div>
+    </a>
+
+    <div class="scrollable">
+        <div class="wrapper">
+            
+            <ul class="repo">
+                <li class="repo-download">
+                    <a href="//archive/master.zip" target="_blank" title="Download" data-action="download">
+                        <i class="icon icon-download"></i> Download
+                    </a>
+                </li>
+                <li class="repo-stars">
+                    <a href="//stargazers" target="_blank" title="Stargazers" data-action="star">
+                        <i class="icon icon-star"></i> Stars
+                        <span class="count">&ndash;</span>
+                    </a>
+                </li>
+            </ul>
+            <hr> 
+
+            <div class="toc">
+                
+                <ul>
+                    
+<nav role="navigation">
+  <ul class="list pa0 nl2">
+    
+      
+      <li class="f5 w-100 hover-bg-light-gray hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".Hiboot云原生应用框架">Hiboot云原生应用框架</a>
+        <ul class="Hiboot云原生应用框架 desktopmenu animated fadeIn list pl0 bg-light-gray dn">
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/cn/getting-started/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              入门
+            </a>
+          </li>
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/cn/cli-app/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              命令行应用
+            </a>
+          </li>
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/cn/web-app/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              网络应用
+            </a>
+          </li>
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/cn/auto-configure/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              自动配置
+            </a>
+          </li>
+        </ul>
+      </li>
+  </ul>
+</nav>
+
+                </ul>
+                 
+                <hr>
+                <span class="section">The author</span>
+
+                <ul>
+                    
+                    <li>
+                        <a href="https://twitter.com/johndcn" target="_blank" title="@johndcn on Twitter">
+              @johndcn on Twitter
+            </a>
+                    </li>
+                     
+                    <li>
+                        <a href="https://github.com/hidevopsio" target="_blank" title="@hidevopsio on GitHub">
+              @hidevopsio on GitHub
+            </a>
+                    </li>
+                     
+                    <li>
+                        <a href="mailto:hi.devops.io@gmail.com" title="Email of hi.devops.io@gmail.com">
+              Contact via email
+            </a>
+                    </li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    </div>
+    <article class="article">
+        <div class="wrapper">
+            <div class="contentWrapper">
+                <h1>控制反转 </h1>
+                
+
+<h2 id="简述">简述</h2>
+
+<p>控制反转是一种设计思想，适用于任何编程语言。包含了服务定位器(Service Locator)，事件(Events)，委托(Delegates)和依赖注入(Dependency Injection)。到目前为止，Hiboot实现了依赖注入部分，所以我们主要来讲解依赖注入部分。如何编写出松耦合，易维护的应用是Hiboot框架的设计初衷。根据这个设计思想，我们不应该在结构体，函数或方法中静态的配置其依赖，而应该将依赖配置在外部。</p>
+
+<p><img src="images/ioc.png" alt="" /></p>
+
+<p>依赖注入设计模式允许我们解除应用组件间的强依赖关系，是应用程序松耦合，可扩展和可维护。</p>
+
+<p>Go语言的一个结构体A依赖于另外一个结构体B，如果A用到了B的实例，我们说A依赖B。例如，userController 依赖 userService.</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">userController</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">at</span><span class="p">.</span><span class="nx">RestController</span>
+	<span class="nx">userService</span> <span class="nx">service</span><span class="p">.</span><span class="nx">UserService</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">newUserController</span><span class="p">(</span><span class="nx">userService</span> <span class="nx">service</span><span class="p">.</span><span class="nx">UserService</span><span class="p">)</span> <span class="o">*</span><span class="nx">userController</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="o">&amp;</span><span class="nx">userController</span><span class="p">{</span>
+		<span class="nx">userService</span><span class="p">:</span> <span class="nx">userService</span><span class="p">,</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+<p>理想的状况是一个Go语言的结构体应该尽量独立以其它结构体。这样可增加结构体的复用性以及可测试性。</p>
+
+<h2 id="依赖注入">依赖注入</h2>
+
+<p>和前面章节一样，我们还是通过示例来说明Hiboot的依赖注入是如何工作的。</p>
+
+<p>⚠️ 注意：</p>
+
+<ul>
+<li>如果你想要注入当是一个实例，依赖注入定义的相关字段或参数，其数据类型必须是结构体指针或interface{}. 如果你尝试定义其它类型将不会成功。</li>
+<li>依赖注入实例的来源主要有两个，一个是通过app.Register()注册结构体构造器，另外一个是通过<a href="https://hiboot.hidevops.io/cn/auto-configure">自动配置</a>的方法注册。</li>
+</ul>
+
+<p><strong>正例：</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">Foo</span> <span class="kd">struct</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">newFoo</span><span class="p">()</span> <span class="o">*</span><span class="nx">Foo</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&amp;</span><span class="nx">Foo</span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Bar</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">foo</span> <span class="o">*</span><span class="nx">Foo</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">newBar</span><span class="p">(</span><span class="nx">foo</span> <span class="o">*</span><span class="nx">Foo</span><span class="p">)</span> <span class="o">*</span><span class="nx">Bar</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&amp;</span><span class="nx">Bar</span><span class="p">{</span>
+        <span class="nx">foo</span><span class="p">:</span> <span class="nx">foo</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">app</span><span class="p">.</span><span class="nf">Register</span><span class="p">(</span><span class="nx">newFoo</span><span class="p">,</span> <span class="nx">newBar</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
+<p><strong>反例：</strong></p>
+
+<p>在这个反例中，<code>foo</code>不是一个指针，将不会被注入。</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">Foo</span> <span class="kd">struct</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">newFoo</span><span class="p">()</span> <span class="o">*</span><span class="nx">Foo</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&amp;</span><span class="nx">Foo</span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Bar</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">foo</span> <span class="nx">Foo</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">newBar</span><span class="p">(</span><span class="nx">foo</span> <span class="nx">Foo</span><span class="p">)</span> <span class="o">*</span><span class="nx">Bar</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&amp;</span><span class="nx">Bar</span><span class="p">{</span>
+        <span class="nx">foo</span><span class="p">:</span> <span class="nx">foo</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">app</span><span class="p">.</span><span class="nf">Register</span><span class="p">(</span><span class="nx">newFoo</span><span class="p">,</span> <span class="nx">newBar</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
+<h2 id="构造器注入">构造器注入</h2>
+
+<p>Hiboot建议使用构造器来注入，因为构造器注入能够保证注入的组件不可变，并且确保需要的依赖不为空。并且，构造器注入的依赖总数能够保证组件完全初始化的状态。</p>
+
+<ul>
+<li>使用构造器注入的字段可以是私有的，不像字段注入，Go语言要求使用标签时，字段必须大写开头，这样就暴露了该字段，这就有被更改的风险。</li>
+
+<li><p>通过构造器注入Hiboot可以保证依赖不会为空。</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/app/web&#34;</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/model&#34;</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/starter/jwt&#34;</span>
+	<span class="s">&#34;time&#34;</span>
+<span class="p">)</span>
+
+<span class="c1">// This example shows that jwtToken is injected through the constructor,
+</span><span class="c1">// once you imported &#34;hidevops.io/hiboot/pkg/starter/jwt&#34;,
+</span><span class="c1">// jwtToken jwt.Token will be injectable.
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="c1">// the web application entry
+</span><span class="c1"></span>	<span class="nx">web</span><span class="p">.</span><span class="nf">NewApplication</span><span class="p">().</span><span class="nf">Run</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="c1">// PATH: /login
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">loginController</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">at</span><span class="p">.</span><span class="nx">RestController</span>
+
+	<span class="nx">token</span> <span class="nx">jwt</span><span class="p">.</span><span class="nx">Token</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">userRequest</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">// embedded field model.RequestBody mark that userRequest is request body
+</span><span class="c1"></span>	<span class="nx">model</span><span class="p">.</span><span class="nx">RequestBody</span>
+	<span class="nx">Username</span> <span class="kt">string</span> <span class="s">`json:&#34;username&#34; validate:&#34;required&#34;`</span>
+	<span class="nx">Password</span> <span class="kt">string</span> <span class="s">`json:&#34;password&#34; validate:&#34;required&#34;`</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+	<span class="c1">// Register Rest Controller through constructor newLoginController
+</span><span class="c1"></span>	<span class="nx">app</span><span class="p">.</span><span class="nf">Register</span><span class="p">(</span><span class="nx">newLoginController</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// newLoginController inject jwtToken through the argument jwtToken jwt.Token on constructor
+</span><span class="c1">// the dependency jwtToken is auto configured in jwt starter, see https://hidevops.io/hiboot/pkg/starter/jwt
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">newLoginController</span><span class="p">(</span><span class="nx">token</span> <span class="nx">jwt</span><span class="p">.</span><span class="nx">Token</span><span class="p">)</span> <span class="o">*</span><span class="nx">loginController</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="o">&amp;</span><span class="nx">loginController</span><span class="p">{</span>
+		<span class="nx">token</span><span class="p">:</span> <span class="nx">token</span><span class="p">,</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Post /
+</span><span class="c1">// The first word of method is the http method POST, the rest is the context mapping
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">loginController</span><span class="p">)</span> <span class="nf">Post</span><span class="p">(</span><span class="nx">request</span> <span class="o">*</span><span class="nx">userRequest</span><span class="p">)</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">model</span><span class="p">.</span><span class="nx">Response</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">jwtToken</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">token</span><span class="p">.</span><span class="nf">Generate</span><span class="p">(</span><span class="nx">jwt</span><span class="p">.</span><span class="nx">Map</span><span class="p">{</span>
+		<span class="s">&#34;username&#34;</span><span class="p">:</span> <span class="nx">request</span><span class="p">.</span><span class="nx">Username</span><span class="p">,</span>
+		<span class="s">&#34;password&#34;</span><span class="p">:</span> <span class="nx">request</span><span class="p">.</span><span class="nx">Password</span><span class="p">,</span>
+	<span class="p">},</span> <span class="mi">30</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">)</span>
+
+	<span class="nx">response</span> <span class="p">=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">model</span><span class="p">.</span><span class="nx">BaseResponse</span><span class="p">)</span>
+	<span class="nx">response</span><span class="p">.</span><span class="nf">SetData</span><span class="p">(</span><span class="nx">jwtToken</span><span class="p">)</span>
+
+	<span class="k">return</span>
+<span class="p">}</span></code></pre></div></li>
+</ul>
+
+<h2 id="字段注入">字段注入</h2>
+
+<p>我们来将上面这段代码做个些的改动（⚠️ 我们将 token 改成了 Token， 这是因为Go语言定义了标签的字段必须是大写字母开头的，也就是对外公开），不用构造器也是可以注入的。Hiboot通过标签注入实例到字段 <code>Token</code> 中, 尽管使用的效果和构造器差不多，但是我们还是建议使用构造器来注入，原因在上面有说明。</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/app/web&#34;</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/model&#34;</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/starter/jwt&#34;</span>
+	<span class="s">&#34;time&#34;</span>
+<span class="p">)</span>
+
+<span class="c1">// This example shows that jwtToken is injected through the constructor,
+</span><span class="c1">// once you imported &#34;hidevops.io/hiboot/pkg/starter/jwt&#34;,
+</span><span class="c1">// jwtToken jwt.Token will be injectable.
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="c1">// the web application entry
+</span><span class="c1"></span>	<span class="nx">web</span><span class="p">.</span><span class="nf">NewApplication</span><span class="p">().</span><span class="nf">Run</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="c1">// PATH: /login
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">loginController</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">at</span><span class="p">.</span><span class="nx">RestController</span>
+
+    <span class="c1">// Inject Token by tag `inject:&#34;&#34;`
+</span><span class="c1"></span>	<span class="nx">Token</span> <span class="nx">jwt</span><span class="p">.</span><span class="nx">Token</span> <span class="s">`inject:&#34;&#34;`</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">userRequest</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">// embedded field model.RequestBody mark that userRequest is request body
+</span><span class="c1"></span>	<span class="nx">model</span><span class="p">.</span><span class="nx">RequestBody</span>
+	<span class="nx">Username</span> <span class="kt">string</span> <span class="s">`json:&#34;username&#34; validate:&#34;required&#34;`</span>
+	<span class="nx">Password</span> <span class="kt">string</span> <span class="s">`json:&#34;password&#34; validate:&#34;required&#34;`</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+	<span class="c1">// Register Rest Controller through constructor newLoginController
+</span><span class="c1"></span>	<span class="nx">app</span><span class="p">.</span><span class="nf">Register</span><span class="p">(</span><span class="nx">newLoginController</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// newLoginController inject jwtToken through the argument jwtToken jwt.Token on constructor
+</span><span class="c1">// the dependency jwtToken is auto configured in jwt starter, see https://hidevops.io/hiboot/pkg/starter/jwt
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">newLoginController</span><span class="p">()</span> <span class="o">*</span><span class="nx">loginController</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="o">&amp;</span><span class="nx">loginController</span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="c1">// Post /
+</span><span class="c1">// The first word of method is the http method POST, the rest is the context mapping
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">loginController</span><span class="p">)</span> <span class="nf">Post</span><span class="p">(</span><span class="nx">request</span> <span class="o">*</span><span class="nx">userRequest</span><span class="p">)</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">model</span><span class="p">.</span><span class="nx">Response</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// c.Token 是通过 inject 标签注入的，可以直接使用
+</span><span class="c1"></span>	<span class="nx">jwtToken</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">Token</span><span class="p">.</span><span class="nf">Generate</span><span class="p">(</span><span class="nx">jwt</span><span class="p">.</span><span class="nx">Map</span><span class="p">{</span>
+		<span class="s">&#34;username&#34;</span><span class="p">:</span> <span class="nx">request</span><span class="p">.</span><span class="nx">Username</span><span class="p">,</span>
+		<span class="s">&#34;password&#34;</span><span class="p">:</span> <span class="nx">request</span><span class="p">.</span><span class="nx">Password</span><span class="p">,</span>
+	<span class="p">},</span> <span class="mi">30</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">)</span>
+
+	<span class="nx">response</span> <span class="p">=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">model</span><span class="p">.</span><span class="nx">BaseResponse</span><span class="p">)</span>
+	<span class="nx">response</span><span class="p">.</span><span class="nf">SetData</span><span class="p">(</span><span class="nx">jwtToken</span><span class="p">)</span>
+
+	<span class="k">return</span>
+<span class="p">}</span></code></pre></div>
+<p>Hiboot字段注入是通过标签`inject:&ldquo;&rdquo;`来实现到。当在某个字段标注了`inject:&ldquo;&rdquo;`，Hiboot会尝试找到相应的实例并且注入到字段中，如果你尝试让Hiboot注入一个不存在的依赖项，Hiboot会在应用启动时报告错误。</p>
+
+<p>如果需要注入的依赖有多个实现，则可以指定名称，比如`inject:&ldquo;buzService&rdquo;`， Hiboot会先寻找标签当名字，如果该实例不存在则会寻找是否有以该字段名命名当实例，最后才寻找以该字段数据类型命名当实例。</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">BxzService</span> <span class="kd">interface</span> <span class="p">{</span>
+	<span class="nf">GetNickname</span><span class="p">()</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">bazService</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">Name</span>     <span class="kt">string</span>
+	<span class="nx">nickname</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">bazService</span><span class="p">)</span> <span class="nf">GetNickname</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nx">s</span><span class="p">.</span><span class="nx">nickname</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">buzService</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">Name</span>     <span class="kt">string</span>
+	<span class="nx">nickname</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">buzService</span><span class="p">)</span> <span class="nf">GetNickname</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nx">s</span><span class="p">.</span><span class="nx">nickname</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">bxzServiceImpl</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">BxzService</span>
+	<span class="nx">Name</span>     <span class="kt">string</span>
+	<span class="nx">nickname</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">bxzServiceImpl</span><span class="p">)</span> <span class="nf">GetNickname</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nx">s</span><span class="p">.</span><span class="nx">nickname</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">dependencyInjectionTestService</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">BxzSvc</span>     <span class="nx">BxzService</span> <span class="s">`inject:&#34;&#34;`</span>
+	<span class="nx">BazService</span> <span class="nx">BxzService</span> <span class="s">`inject:&#34;&#34;`</span>
+	<span class="nx">BuzService</span> <span class="nx">BxzService</span> <span class="s">`inject:&#34;&#34;`</span>
+	<span class="nx">BozService</span> <span class="nx">BxzService</span> <span class="s">`inject:&#34;buzService&#34;`</span>
+	<span class="nx">name</span>       <span class="kt">string</span>
+<span class="p">}</span></code></pre></div>
+<h2 id="方法注入">方法注入</h2>
+
+<p>方法注入是Hiboot的一大特点，下面是Hiboot starter jwt的实际代码。在方法<code>Middleware()</code>中依赖了<code>Token</code>，Hiboot会自动将<code>Token</code>实例注入到<code>Middleware()</code>方法的参数<code>jwtToken Token</code>。
+关于<a href="https://hiboot.hidevops.io/cn/auto-configure">Hiboot starter</a>会在后面章节详细讲解。</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// Package jwt provides the hiboot starter for injectable jwt dependency
+</span><span class="c1"></span><span class="kn">package</span> <span class="nx">jwt</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;github.com/dgrijalva/jwt-go&#34;</span>
+	<span class="s">&#34;hidevops.io/hiboot/pkg/app&#34;</span>
+	<span class="nx">mw</span> <span class="s">&#34;github.com/iris-contrib/middleware/jwt&#34;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">configuration</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">app</span><span class="p">.</span><span class="nx">Configuration</span>
+
+	<span class="nx">Properties</span> <span class="nx">Properties</span> <span class="s">`mapstructure:&#34;jwt&#34;`</span>
+	<span class="nx">middleware</span> <span class="o">*</span><span class="nx">Middleware</span>
+	<span class="nx">token</span>      <span class="nx">Token</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">app</span><span class="p">.</span><span class="nf">Register</span><span class="p">(</span><span class="nx">newConfiguration</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">newConfiguration</span><span class="p">()</span> <span class="o">*</span><span class="nx">configuration</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="o">&amp;</span><span class="nx">configuration</span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="c1">// Middleware is the jwt handler
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">configuration</span><span class="p">)</span> <span class="nf">Middleware</span><span class="p">(</span><span class="nx">jwtToken</span> <span class="nx">Token</span><span class="p">)</span> <span class="o">*</span><span class="nx">Middleware</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nf">NewJwtMiddleware</span><span class="p">(</span><span class="nx">mw</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
+		<span class="nx">ValidationKeyGetter</span><span class="p">:</span> <span class="kd">func</span><span class="p">(</span><span class="nx">token</span> <span class="o">*</span><span class="nx">jwt</span><span class="p">.</span><span class="nx">Token</span><span class="p">)</span> <span class="p">(</span><span class="kd">interface</span><span class="p">{},</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+			<span class="c1">//log.Debug(token)
+</span><span class="c1"></span>			<span class="k">return</span> <span class="nx">jwtToken</span><span class="p">.</span><span class="nf">VerifyKey</span><span class="p">(),</span> <span class="kc">nil</span>
+		<span class="p">},</span>
+		<span class="c1">// When set, the middleware verifies that tokens are signed with the specific signing algorithm
+</span><span class="c1"></span>		<span class="c1">// If the signing method is not constant the ValidationKeyGetter callback can be used to implement additional checks
+</span><span class="c1"></span>		<span class="c1">// Important to avoid security issues described here: https://auth0.com/blog/2015/03/31/critical-vulnerabilities-in-json-web-token-libraries/
+</span><span class="c1"></span>		<span class="nx">SigningMethod</span><span class="p">:</span> <span class="nx">jwt</span><span class="p">.</span><span class="nx">SigningMethodRS256</span><span class="p">,</span>
+	<span class="p">})</span>
+<span class="p">}</span>
+
+<span class="c1">// Token
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">configuration</span><span class="p">)</span> <span class="nf">Token</span><span class="p">()</span> <span class="nx">Token</span> <span class="p">{</span>
+	<span class="nx">t</span> <span class="o">:=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">jwtToken</span><span class="p">)</span>
+	<span class="nx">t</span><span class="p">.</span><span class="nf">Initialize</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">c</span><span class="p">.</span><span class="nx">Properties</span><span class="p">)</span>
+	<span class="k">return</span> <span class="nx">t</span>
+<span class="p">}</span></code></pre></div>
+                <div class="order-0 w-20 dn db-l">
+                    
+<nav role="navigation">
+  <ul class="list pa0 nl2">
+    
+      
+      <li class="f5 w-100 hover-bg-light-gray hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".Hiboot云原生应用框架">Hiboot云原生应用框架</a>
+        <ul class="Hiboot云原生应用框架 desktopmenu animated fadeIn list pl0 bg-light-gray dn">
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/cn/getting-started/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              入门
+            </a>
+          </li>
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/cn/cli-app/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              命令行应用
+            </a>
+          </li>
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/cn/web-app/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              网络应用
+            </a>
+          </li>
+          <li class="f6 fw4">
+            <a href="https://hiboot.hidevops.io/cn/auto-configure/" class="db link hover-bg-gray hover-white pl3 pr2 pv2 black ">
+              自动配置
+            </a>
+          </li>
+        </ul>
+      </li>
+  </ul>
+</nav>
+
+                </div>
+                <aside class="copyright" role="note">
+                     &copy; 2019 Released under the Apache 2.0 license &ndash;  - By John Deng.
+                </aside>
+            </div>
+
+            <footer class="footer">
+                
+
+<nav class="pagination" aria-label="Footer">
+  <div class="previous">
+  
+      <a href="https://hiboot.hidevops.io/cn/auto-configure/" title="自动配置">
+        <span class="direction">
+          Previous
+        </span>
+        <div class="page">
+          <div class="button button-previous" role="button" aria-label="Previous">
+            <i class="icon icon-back"></i>
+          </div>
+          <div class="stretch">
+            <div class="title">
+              自动配置
+            </div>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+
+  <div class="next">
+  
+      <a href="https://hiboot.hidevops.io/cn/cli-app/" title="命令行应用">
+        <span class="direction">
+          Next
+        </span>
+        <div class="page">
+          <div class="stretch">
+            <div class="title">
+              命令行应用
+            </div>
+          </div>
+          <div class="button button-next" role="button" aria-label="Next">
+            <i class="icon icon-forward"></i>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+</nav>
+
+
+
+
+
+            </footer>
+        </div>
+    </article>
+    <div class="sticky">
+	
+	
+	
+	
+		
+		
+		
+	
+		
+		<div class="col-md-2 pl-0">
+			
+			<div id="page-scrollspy" class="toc-nav">
+				
+				<ul class="nav nav-pills ml-0">
+					
+					<li class="nav-item pb-3 text-center">
+						<span class="font-weight-bold mb-2">- What's on this Page - </span>
+					</li>
+					
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%ae%80%e8%bf%b0">
+												 简述
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e4%be%9d%e8%b5%96%e6%b3%a8%e5%85%a5">
+												 依赖注入
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e6%9e%84%e9%80%a0%e5%99%a8%e6%b3%a8%e5%85%a5">
+												 构造器注入
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%ad%97%e6%ae%b5%e6%b3%a8%e5%85%a5">
+												 字段注入
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e6%96%b9%e6%b3%95%e6%b3%a8%e5%85%a5">
+												 方法注入
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+				</ul>
+			</div>
+			
+		</div>
+		
+	</div>
+    <div class="results" role="status" aria-live="polite">
+        <div class="scrollable">
+            <div class="wrapper">
+                <div class="meta"></div>
+                <div class="list"></div>
+            </div>
+        </div>
+    </div>
+</main>
+
+    <script>
+    
+      var base_url = 'https:\/\/hiboot.hidevops.io\/';
+      var repo_id  = '\/';
+    
+    </script>
+
+    <script src="https://hiboot.hidevops.io/javascripts/application.js"></script>
+    <script src="https://hiboot.hidevops.io/javascripts/menutoggle.js"></script>
+    <script src="https://hiboot.hidevops.io/javascripts/bootstrap.js"></script>
+    
+
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
+
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
+
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+
+
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = " ";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
+
+    
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
