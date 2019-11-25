@@ -3,9 +3,6 @@ html {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box
 }
-body {
-   overflow-x: hidden;
-}
 
 *,
 :after,
@@ -283,8 +280,6 @@ a {
     transition: opacity .25s, width 0s .25s, height 0s .25s
 }
 
-.dn {display: none;}
-
 #toggle-drawer:checked~.overlay,
 .toggle-drawer .overlay {
     -webkit-transition: opacity .25s, width 0s, height 0s;
@@ -312,7 +307,7 @@ body {
 
 @supports (-webkit-appearance:none) {
     body {
-        /* background: #e84e40 */
+        background: #e84e40
     }
 }
 .zindex11{
@@ -406,7 +401,7 @@ hr {
 
 .header {
     box-shadow: 0 1.5px 3px rgba(0, 0, 0, .24), 0 3px 8px rgba(0, 0, 0, .05);
-    /* background: #e84e40; */
+    background: #e84e40;
     color: #fff
 }
 
@@ -483,6 +478,7 @@ hr {
 }
 
 .backdrop-paper {
+    max-width: 1200px;
     height: 100%;
     margin-left: auto;
     margin-right: auto
@@ -492,8 +488,7 @@ hr {
     content: " ";
     display: block;
     height: 100%;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 262px
 }
 
 .overlay {
@@ -526,7 +521,7 @@ hr {
 
 .bar {
     display: table;
-    max-width: 90%;
+    max-width: 1184px;
     margin-left: auto;
     margin-right: auto
 }
@@ -590,6 +585,7 @@ hr {
 }
 
 .main {
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto
 }
@@ -646,11 +642,11 @@ pre {
 .drawer .toc a.current,
 .drawer .toc a:focus,
 .drawer .toc a:hover {
-    /* color: #e84e40 */
+    color: #e84e40
 }
 
 .drawer .anchor a {
-    /* border-left: 2px solid #e84e40 */
+    border-left: 2px solid #e84e40
 }
 
 .drawer .section {
@@ -695,6 +691,7 @@ pre {
     border-style: solid
 }
 
+
 @media only screen and (min-width:1000px) {
     .drawer {
         width: 18%;
@@ -717,19 +714,6 @@ pre {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis
-}
-.js-toggle{
-    display: inline;
-}
-.js-toggle:before {
-    content: "\e602";
-    display: block;
-    float: left;
-    font-family: Icon;
-    font-size: 16px;
-    width: 1.2em;
-    margin-left: -1.2em;
-    vertical-align: -.1em
 }
 
 .drawer .toc li.anchor a {
@@ -885,8 +869,8 @@ pre span {
 }
 
 .ios.standalone .article {
-    /* background: -webkit-linear-gradient(top, #fff 50%, #e84e40 0);
-    background: linear-gradient(180deg, #fff 50%, #e84e40 0) */
+    background: -webkit-linear-gradient(top, #fff 50%, #e84e40 0);
+    background: linear-gradient(180deg, #fff 50%, #e84e40 0)
 }
 
 .ios.standalone .article .wrapper {
@@ -917,14 +901,12 @@ pre span {
     border-bottom: 1px solid rgba(0, 0, 0, .12)
 }
 
-.article a,.sticky a{
+.article a {
     border-bottom: 1px dotted
 }
 
 .article a:focus,
-.sticky a:focus,
-.article a:hover, 
-.sticky a:hover {
+.article a:hover {
     color: #00bfa5
 }
 
@@ -953,7 +935,7 @@ pre span {
 }
 
 .footer {
-    /* background: #e84e40; */
+    background: #e84e40;
     color: #fff
 }
 
@@ -984,7 +966,7 @@ pre span {
 }
 
 .admonition.warning {
-    /* background: #e84e40 */
+    background: #e84e40
 }
 
 .admonition a,
@@ -992,32 +974,9 @@ pre span {
     color: #fff
 }
 
-.sticky {
-    width: 20%;
-    position: fixed;
-    top: 0;
-    padding-top: 100px;
-    font-size: 14px;
-    line-height: 1.7em;
-    max-height: calc(100% - 2px);
-    overflow-y: auto;
-    padding-bottom: 100px;
-    right: 0;
-    z-index: 1;
-    padding-left: 4px;
-}
-.sticky a{
-    color: #00bcd4;
-    font-weight: 400;
-    font-style: normal;
-    margin-top: 1.5em
-}
-
 .article {
     font-size: 14px;
-    line-height: 1.7em;
-    width: 60%;
-    margin-left: 20%;
+    line-height: 1.7em
 }
 
 .article:after {
@@ -1027,8 +986,7 @@ pre span {
 }
 
 .article .wrapper {
-    padding: 116px 16px 92px;
-    width: 100%;
+    padding: 116px 16px 92px
 }
 
 .ios.standalone .article {
@@ -1091,37 +1049,24 @@ h1 .article .headerlink {
 
 .article ol,
 .article p,
-.article ul,
-.sticky ol,
-.sticky p,
-.sticky ul  {
+.article ul {
     margin-top: 1.5em
 }
 
 .article li,
 .article li ol,
-.article li ul,
-.sticky li,
-.sticky li ol,
-.sticky li ul  {
+.article li ul {
     margin-top: .75em
 }
 
-.article li  {
+.article li {
     margin-left: 18px
 }
 
-.article li p{
+.article li p {
     display: inline
 }
-.font-weight-bold{
-    font-size: 2rem;
-}
-.toc-nav {
-    position: -webkit-sticky!important;
-    position: sticky!important;
-    overflow-y: auto;
-    -ms-flex-order: 2;
+
 
     order: 2;
     font-size: .875rem; 
@@ -1258,7 +1203,7 @@ h1 .article .headerlink {
 }
 
 .pagination {
-    max-width: 90%;
+    max-width: 1184px;
     height: 92px;
     padding: 4px 0;
     margin-left: auto;
@@ -1361,9 +1306,6 @@ h1 .article .headerlink {
     font-weight: 400;
     font-style: normal
 }
-.contentWrapper{
-    width: 58%;
-} 
 
 .bar {
     -webkit-transform: translateZ(0);
@@ -1470,7 +1412,7 @@ h1 .article .headerlink {
 }
 
 .results .meta {
-    /* background: #e84e40; */
+    background: #e84e40;
     color: #fff
 }
 
@@ -1601,33 +1543,6 @@ h1 .article .headerlink {
     text-transform: uppercase;
     font-weight: 700
 }
-/* yaaa */
-.primary-color{
-    color: #0594CB;
-}
-.primary-color:before{
-    content: "\e602";
-    display: block;
-    float: left;
-    font-family: Icon;
-    font-size: 16px;
-    width: 1.2em;
-    margin-left: -1.2em;
-    vertical-align: -.1em;
-}
-.primary-parent-color{
-    color: rgb(3, 113, 156);
-}
-.primary-parent-color:before{
-    content: "\e945";
-    display: block;
-    float: left;
-    font-family: 'icomoon';
-    font-size: 16px;
-    width: 1.2em;
-    margin-left: -1.2em;
-    vertical-align: -.1em;
-}
 
 @media only screen and (min-width:960px) {
     .backdrop {
@@ -1648,6 +1563,9 @@ h1 .article .headerlink {
     .drawer,
     .drawer .scrollable {
         position: static
+    }
+    .article {
+        margin-left: 262px
     }
     .footer {
         z-index: 4
@@ -1689,7 +1607,7 @@ h1 .article .headerlink {
     }
     .project {
         box-shadow: 0 1.5px 3px rgba(0, 0, 0, .24), 0 3px 8px rgba(0, 0, 0, .05);
-        /* background: #e84e40; */
+        background: #e84e40;
         color: #fff
     }
     #toggle-search:checked~.main .results,
@@ -1698,12 +1616,9 @@ h1 .article .headerlink {
         height: 100%;
         width: 34%;
     }
-    .sticky{
-        display: none;
-    }
 }
 
-@media only screen and (max-width:770px) {
+@media only screen and (min-width:720px) {
     .header {
         height: 64px;
         padding: 8px
@@ -1719,11 +1634,7 @@ h1 .article .headerlink {
         margin: 26px 0 0 5px
     }
     .article .wrapper {
-        padding: 128px 24px 96px 
-    }
-    .contentWrapper{
-        width: 100%;
-    } 
+        padding: 128px 24px 96px
     }
     .article .data {
         margin: 1.5em -24px
@@ -1748,6 +1659,10 @@ h1 .article .headerlink {
     .ios.standalone .article h4 {
         padding-top: 20px;
         margin-top: 0
+    }
+    .article pre {
+        padding: 1.5em 24px;
+        margin: 1.5em -24px 0
     }
     .footer {
         padding: 0 8px
@@ -1780,9 +1695,9 @@ h1 .article .headerlink {
     .result {
         padding: 16px 24px 20px
     }
+}
 
-
-@media only screen and (min-width:1000px) and (max-width:1200px) {
+@media only screen and (min-width:1200px) {
     .header {
         width: 100%
     }
@@ -1800,6 +1715,7 @@ h1 .article .headerlink {
         padding-bottom: 12px;
         padding-right: 0;
     }
+
 }
 
 @media only screen and (orientation:portrait) {
@@ -1853,18 +1769,13 @@ h1 .article .headerlink {
     }
 }
 
-@media only screen and (max-width:800px) {
+@media only screen and (max-width:719px) {
     .bar .path {
         display: none
-    }
-    .article{
-        width: 100%;
-        margin-left: 0;
     }
 }
 
 @media only screen and (max-width:479px) {
-  
     .button-github,
     .button-twitter {
         display: none
@@ -1887,9 +1798,6 @@ h1 .article .headerlink {
 }
 
 @media only screen and (min-width:480px) {
-    .main{
-        width: 100% !important;
-    }
     .pagination .next,
     .pagination .previous {
         width: 50%
@@ -1924,6 +1832,6 @@ h1 .article .headerlink {
         box-shadow: none
     }
     .article table th {
-        /* color: #e84e40 */
+        color: #e84e40
     }
 }
