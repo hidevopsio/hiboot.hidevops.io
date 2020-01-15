@@ -7,7 +7,11 @@
             </div>
             {{ end }}
             <div class="name">
-                <strong>{{ .Site.Title }} {{ with .Site.Params.version }}<span class="version">{{ . }}</span>{{ end }}</strong> {{ with .Scratch.Get "repo_id" }}
+                {{ $repo_id := (.Site.Params.repo_id) }} 
+                {{ $github_api_url := (.Site.Params.github_api_url) }} 
+                {{ $response := getJSON $github_api_url $repo_id "/releases/latest" }}
+                <strong>{{ .Site.Title }} {{ $response.tag_name }}
+                </strong> {{ with .Scratch.Get "repo_id" }}
                 <br> {{ end }}
             </div>
         </div>
