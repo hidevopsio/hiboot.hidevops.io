@@ -15,12 +15,29 @@ This section will show you how to create and run a simple hiboot web application
 
 ```bash
 
-go get -u hidevops.io/hiboot-web-app-demo
+git clone https://github.com/hidevopsio/hiboot-web-app-demo
 
-cd $GOPATH/src/hidevops.io/hiboot-web-app-demo
+cd hiboot-web-app-demo
 
+go mod init
+
+go get hidevops.io/hiboot
+
+go mode download
+
+go mod vendor
+
+```
+
+Inspect git log
+
+```bash
 git log
+```
 
+Result as below：
+
+```bash
 commit 2be5df8e0101b685579f1dd452059d967017148f
 Author: John Deng <john.deng@qq.com>
 Date:   Sat Nov 3 07:48:46 2018 +0800

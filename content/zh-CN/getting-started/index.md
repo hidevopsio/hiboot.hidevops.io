@@ -18,12 +18,20 @@ menu:
 
 ### 获取代码
 
-首先到github拉取演示代码，在命令行终端运行以下命令即可：
+首先到github拉取演示代码，并使用go mod 安装依赖到本地，在命令行终端运行以下命令即可：
 
 ```bash
-go get -u hidevops.io/hiboot-web-app-demo
+git clone https://github.com/hidevopsio/hiboot-web-app-demo
 
-cd $GOPATH/src/hidevops.io/hiboot-web-app-demo
+cd hiboot-web-app-demo
+
+go mod init
+
+go get hidevops.io/hiboot
+
+go mode download
+
+go mod vendor
 
 ```
 
