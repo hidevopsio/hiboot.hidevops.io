@@ -122,8 +122,6 @@ func main()  {
 #### Run web application
 
 ```bash
-dep ensure
-
 go run main.go
 ```
 

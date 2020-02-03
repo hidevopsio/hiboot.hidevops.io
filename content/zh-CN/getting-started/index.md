@@ -316,8 +316,6 @@ func main() {
 ### 运行命令行应用
 
 ```bash
-dep ensure
-
 go run main.go
 ```
 
