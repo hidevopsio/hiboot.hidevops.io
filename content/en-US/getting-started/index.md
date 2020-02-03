@@ -23,7 +23,7 @@ go mod init
 
 go get hidevops.io/hiboot
 
-go mode download
+go mod download
 
 go mod vendor
 
@@ -122,8 +122,6 @@ func main()  {
 #### Run web application
 
 ```bash
-dep ensure
-
 go run main.go
 ```
 

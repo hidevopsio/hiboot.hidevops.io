@@ -29,7 +29,7 @@ go mod init
 
 go get hidevops.io/hiboot
 
-go mode download
+go mod download
 
 go mod vendor
 
@@ -316,8 +316,6 @@ func main() {
 ### 运行命令行应用
 
 ```bash
-dep ensure
-
 go run main.go
 ```
 
