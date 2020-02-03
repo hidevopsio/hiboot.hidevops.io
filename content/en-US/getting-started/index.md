@@ -23,7 +23,7 @@ go mod init
 
 go get hidevops.io/hiboot
 
-go mode download
+go mod download
 
 go mod vendor
 
