@@ -51,7 +51,7 @@ when relevant configuration are found and when you have not declared your own co
 ## 代码示例
 
 This example shows the guide to make customized auto configuration
-下面的例子说明了怎杨创建一个自定义的自动配置
+下面的例子说明了怎样创建一个自定义的自动配置
 for more details, see https://hidevops.io/hiboot-data/blob/master/starter/bolt/autoconfigure.go
 详情请参考: https://hidevops.io/hiboot-data/blob/master/starter/bolt/autoconfigure.go
 
