@@ -1,7 +1,7 @@
 ---
-date: 2020-03-15T14:17:02+01:00
+date: 2020-03-15T14:17:02+08:00
 title: 开放接口文档
-tags: ["api-docs"", "go"]
+tags: ["api-docs", "go"]
 menu:
   docs:
     parent: "Hiboot云原生应用框架"
@@ -10,10 +10,7 @@ menu:
 
 ---
 
-Hiboot开发接口文档采用OpenAPI标准Swagger2.0,
-使用简单几个注解即可完成RESTFul风格接口文档的编写,
-当Hiboot应用运行时,接口文档将自动提供在线GUI文档,
-如http://hiboot-app.your-domain.com/swagger-ui
+Hiboot开发接口文档采用OpenAPI标准Swagger2.0, 使用简单几个注解即可完成RESTFul风格接口文档的编写, 当Hiboot应用运行时,接口文档将自动提供在线GUI文档, 如 `http://hiboot-app.your-domain.com/swagger-ui`
 
 ## Operation
 
