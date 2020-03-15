@@ -1,12 +1,12 @@
 ---
 date: 2020-03-15T14:17:02+08:00
-title: "Open Api doc"
+title: "OpenAPI Documentation"
 tags: ["api-docs", "go"]
 menu:
   docs:
     parent: "Hiboot Cloud Native Application Framework"
     weight: 7
-    title: "Open Api doc"
+    title: "OpenAPI Documentation"
 
 ---
 
