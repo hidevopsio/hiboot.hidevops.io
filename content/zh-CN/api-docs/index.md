@@ -1,11 +1,11 @@
 ---
 date: 2018-10-10T00:11:02+01:00
-title: swagger
+title: api-docs
 menu:
   docs:
     parent: "Hiboot云原生应用框架"
     weight: 5
-    title: "swagger"
+    title: "api-docs"
 ---
 
 ## Operation
