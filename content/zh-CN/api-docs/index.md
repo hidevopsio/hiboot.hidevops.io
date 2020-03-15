@@ -1,6 +1,7 @@
 ---
 date: 2020-03-15T14:17:02+01:00
 title: 开放接口文档
+tags: ["api-docs"", "go"]
 menu:
   docs:
     parent: "Hiboot云原生应用框架"
