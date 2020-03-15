@@ -5,7 +5,7 @@ tags: ["api-docs", "go"]
 menu:
   docs:
     parent: "Hiboot云原生应用框架"
-    weight: 5
+    weight: 7
     title: "开放接口文档"
 
 ---
