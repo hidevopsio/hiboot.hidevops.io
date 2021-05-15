@@ -1,4 +1,5 @@
-baseurl = "https://hiboot.hidevops.io/"
+# baseurl = "https://hiboot.hidevops.io/"
+baseurl = "https://hiboot.netlify.app/"
 
 languageCode = "en-us"
 DefaultContentLanguage = "en"
